@@ -110,7 +110,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 eval "$(starship init zsh)"
-bindkey -s ^f '~/utils/tmux-sessionizer.sh\n'
+bindkey -s ^f '~/scripts/tmux-sessionizer.sh\n'
 export PATH="/opt/nvim-linux64/bin:$PATH"
 
 # fnm
@@ -128,3 +128,10 @@ alias dstop="docker compose stop"
 
 
 
+
+# fnm
+FNM_PATH="/home/vladko_jancar/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/vladko_jancar/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi

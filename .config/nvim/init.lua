@@ -669,7 +669,8 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        python = { 'black', 'isort' },
+        -- cpp = { 'ast-grep' },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
@@ -745,7 +746,7 @@ require('lazy').setup({
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
-          ['<leader><CR>'] = cmp.mapping.confirm { select = true },
+          ['<C-y>'] = cmp.mapping.confirm { select = true },
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
@@ -973,5 +974,29 @@ vim.api.nvim_set_keymap('n', '<C-Up>', ':resize +2<CR>', { noremap = true, silen
 -- Resize window with Ctrl + Down
 vim.api.nvim_set_keymap('n', '<C-Down>', ':resize -2<CR>', { noremap = true, silent = true })
 
+-- Save and exit buffer with <laeder>we
+vim.api.nvim_set_keymap('n', '<leader>we', ':w<CR>:Ex<CR>', { noremap = true, silent = true })
+
+-- Save buffer with <laeder>ww
+vim.api.nvim_set_keymap('n', '<leader>ww', ':w<CR>', { noremap = true, silent = true })
+
+-- Save and quit nvim with <laeder>wq
+vim.api.nvim_set_keymap('n', '<leader>wq', ':wq<CR>', { noremap = true, silent = true })
+
+-- quit nvim with <laeder>qq
+vim.api.nvim_set_keymap('n', '<leader>qq', ':q!<CR>', { noremap = true, silent = true })
+
+-- cente the screen afeter ctrl-d
+vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
+
+-- cente the screen afeter ctrl-u
+vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
+
 -- support CRLF files
 vim.opt.fileformats = 'unix,dos,mac'
+
+-- Set the timeout length for mapped sequences
+vim.o.timeoutlen = 400 -- (default is 1000ms)
+
+-- Set the timeout length for key sequences
+vim.o.ttimeoutlen = 10 -- (default is 50ms)
