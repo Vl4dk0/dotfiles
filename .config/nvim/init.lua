@@ -1000,3 +1000,9 @@ vim.o.timeoutlen = 400 -- (default is 1000ms)
 
 -- Set the timeout length for key sequences
 vim.o.ttimeoutlen = 10 -- (default is 50ms)
+
+-- Disabling that annoying Shift + J shit thal collapses lines
+vim.api.nvim_set_keymap('v', 'J', 'j', { noremap = true, silent = true })
+
+-- Disabling that annoying manual that lags my nvim in v-line mode
+vim.api.nvim_set_keymap('v', 'K', 'k', { noremap = true, silent = true })
