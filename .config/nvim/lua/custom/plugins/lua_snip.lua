@@ -25,7 +25,11 @@ return {
           '    <title>Document</title>',
           '</head>',
           '<body>',
-          '',
+          '\t<h1>',
+        },
+        i(1, 'Hello, world!'),
+        t {
+          '</h1>',
           '</body>',
           '</html>',
         },

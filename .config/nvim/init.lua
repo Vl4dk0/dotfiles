@@ -219,6 +219,19 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Automatically set filetype to htmldjango for files with Django template syntax
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = { '*.html' },
+  callback = function()
+    -- You can make this more complex if needed by checking file contents or paths
+    if vim.fn.search '{%' > 0 or vim.fn.search '{{' > 0 then
+      vim.bo.filetype = 'htmldjango'
+    else
+      vim.bo.filetype = 'html'
+    end
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -648,7 +661,14 @@ require('lazy').setup({
       {
         '<leader>f',
         function()
-          require('conform').format { async = true, lsp_fallback = true }
+          local filetype = vim.bo.filetype
+
+          if filetype == 'htmldjango' then
+            local file = vim.fn.expand '%:p'
+            vim.cmd('!~/.venvs/nvim/bin/djhtml ' .. file)
+          else
+            require('conform').format { async = true, lsp_fallback = true }
+          end
         end,
         mode = '',
         desc = '[F]ormat buffer',
@@ -668,13 +688,7 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        python = { 'black', 'isort' },
-        -- cpp = { 'ast-grep' },
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        python = { 'black' },
       },
     },
   },
@@ -1006,3 +1020,19 @@ vim.api.nvim_set_keymap('v', 'J', 'j', { noremap = true, silent = true })
 
 -- Disabling that annoying manual that lags my nvim in v-line mode
 vim.api.nvim_set_keymap('v', 'K', 'k', { noremap = true, silent = true })
+
+-- Set the colorscheme to tokyonight-night
+vim.cmd [[colorscheme tokyonight-night]]
+
+-- Make the background transparent
+vim.cmd [[
+  highlight Normal guibg=none
+  highlight NonText guibg=none
+  highlight NormalNC guibg=none
+  highlight LineNr guibg=none
+  highlight SignColumn guibg=none
+  highlight EndOfBuffer guibg=none
+  highlight VertSplit guibg=none
+  highlight StatusLine guibg=none
+  highlight TabLineFill guibg=none
+]]
