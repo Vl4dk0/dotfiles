@@ -77,7 +77,9 @@ source <(fzf --zsh)
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git timer)
+
+TIMER_FORMAT='~%d'; TIMER_PRECISION=5
 
 source $ZSH/oh-my-zsh.sh
 
@@ -124,10 +126,6 @@ source "$HOME/.rye/env"
 alias cls="clear"
 alias dup="docker compose up -d"
 alias dstop="docker compose stop"
-
-
-
-
 
 # fnm
 FNM_PATH="/home/vladko_jancar/.local/share/fnm"
