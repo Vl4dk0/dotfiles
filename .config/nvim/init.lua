@@ -219,12 +219,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- Automatically set filetype to htmldjango for files with Django template syntax
+-- Automatically set filetype to htmldjango for files inside the templates/ folder
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = { '*.html' },
   callback = function()
-    -- You can make this more complex if needed by checking file contents or paths
-    if vim.fn.search '{%' > 0 or vim.fn.search '{{' > 0 then
+    local file_path = vim.fn.expand '%:p' -- Get the full path of the file
+    local is_in_templates_folder = string.match(file_path, '/templates/')
+
+    if is_in_templates_folder then
       vim.bo.filetype = 'htmldjango'
     else
       vim.bo.filetype = 'html'
@@ -682,13 +684,14 @@ require('lazy').setup({
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
         return {
-          timeout_ms = 500,
+          timeout_ms = 1000,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
         }
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
         python = { 'black' },
+        zsh = { 'beautysh' },
       },
     },
   },
@@ -1036,3 +1039,6 @@ vim.cmd [[
   highlight StatusLine guibg=none
   highlight TabLineFill guibg=none
 ]]
+
+-- close buffer with <leader>bd
+vim.api.nvim_set_keymap('n', '<leader>bd', ':bd<CR>', { noremap = true, silent = true })
