@@ -14,9 +14,6 @@ $cmd_duration\
 [](fg:#00fd6f)\
 \n$character"""
 
-
-# good bg colour: #003319
-
 [directory]
 style = "fg:#00ff7f bg:#003319"
 format = "[ $path ]($style)"
@@ -30,7 +27,7 @@ truncation_symbol = "…/"
 "Pictures" = " "
 
 [git_branch]
-symbol = ""
+symbol = ""
 style = "bg:#006633"
 format = '[[ $symbol $branch ](fg:#00ff7f bg:#006633)]($style)'
 
@@ -62,7 +59,7 @@ format = '[[ $symbol ($version) ](fg:#00ff7f bg:#00994d)]($style)'
 disabled = false
 time_format = "%T"
 style = "bg:#00cc66"
-format = '[[ 󱑆 $time ](fg:#d7ede1 bg:#00cc66)]($style)'
+format = '[[  $time ](fg:#d7ede1 bg:#00cc66)]($style)'
 
 [cmd_duration]
 min_time = 1  # milliseconds
