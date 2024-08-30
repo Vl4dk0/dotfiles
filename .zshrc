@@ -134,3 +134,5 @@ if [ -d "$FNM_PATH" ]; then
   export PATH="/home/vladko_jancar/.local/share/fnm:$PATH"
   eval "`fnm env`"
 fi
+
+source "$HOME/windows_path_wsl2/shell_setup.sh"
