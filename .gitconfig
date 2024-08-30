@@ -1,0 +1,11 @@
+[user]
+	email = jvladko@gmail.com
+	name = Vladimir Jancar
+[core]
+	eol = lf
+	autocrlf = input
+	pager = 
+[init]
+	defaultBranch = main
+[alias]
+	lg = log --all --oneline --graph --decorate

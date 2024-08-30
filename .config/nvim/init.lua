@@ -246,6 +246,24 @@ if not vim.uv.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+local find_command = {
+  'fd',
+  '--type',
+  'f',
+  '--strip-cwd-prefix',
+  '--hidden',
+  '--no-ignore',
+  '-E',
+  '.git',
+  '-E',
+  'node_modules',
+  '-E',
+  '.next',
+  '-E',
+  '.turbo',
+}
+local is_inside_work_tree = {}
+
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -398,7 +416,11 @@ require('lazy').setup({
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>sf', function()
+        builtin.find_files {
+          find_command = find_command,
+        }
+      end, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
@@ -989,10 +1011,10 @@ vim.api.nvim_set_keymap('n', '<C-Left>', ':vertical resize -2<CR>', { noremap = 
 -- Resize window with Ctrl + Right
 vim.api.nvim_set_keymap('n', '<C-Right>', ':vertical resize +2<CR>', { noremap = true, silent = true })
 
--- Resize window with Ctrl + Up
+-- Resize window with Ctrl + Up (not working)
 vim.api.nvim_set_keymap('n', '<C-Up>', ':resize +2<CR>', { noremap = true, silent = true })
 
--- Resize window with Ctrl + Down
+-- Resize window with Ctrl + Down (not working)
 vim.api.nvim_set_keymap('n', '<C-Down>', ':resize -2<CR>', { noremap = true, silent = true })
 
 -- Save and exit buffer with <laeder>we

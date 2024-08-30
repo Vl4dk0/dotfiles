@@ -21,12 +21,9 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zshhistory
 setopt appendhistory
-source <(fzf --zsh)
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
@@ -92,11 +89,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='nvim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -135,4 +132,10 @@ if [ -d "$FNM_PATH" ]; then
   eval "`fnm env`"
 fi
 
+# this is there for change-path command from Juraj
 source "$HOME/windows_path_wsl2/shell_setup.sh"
+
+# ctrl-a to attach to tmux
+bindkey -s ^a 'tmux a\n'
+
+source <(fzf --zsh)
