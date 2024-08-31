@@ -262,7 +262,6 @@ local find_command = {
   '-E',
   '.turbo',
 }
-local is_inside_work_tree = {}
 
 -- [[ Configure and install plugins ]]
 --
@@ -1068,3 +1067,21 @@ vim.cmd [[
 
 -- close buffer with <leader>bd
 vim.api.nvim_set_keymap('n', '<leader>bd', ':bd<CR>', { noremap = true, silent = true })
+
+-- Remap delete commands to use the black hole register
+vim.api.nvim_set_keymap('n', 'd', '"_d', { noremap = true })
+vim.api.nvim_set_keymap('v', 'd', '"_d', { noremap = true })
+vim.api.nvim_set_keymap('n', 'dd', '"_dd', { noremap = true })
+vim.api.nvim_set_keymap('v', 'dd', '"_dd', { noremap = true })
+vim.api.nvim_set_keymap('n', 'x', '"_x', { noremap = true })
+vim.api.nvim_set_keymap('v', 'x', '"_x', { noremap = true })
+
+-- Remap change commands to use the black hole register
+vim.api.nvim_set_keymap('n', 'c', '"_c', { noremap = true })
+vim.api.nvim_set_keymap('v', 'c', '"_c', { noremap = true })
+vim.api.nvim_set_keymap('n', 'cc', '"_cc', { noremap = true })
+vim.api.nvim_set_keymap('v', 'cc', '"_cc', { noremap = true })
+
+-- Remap substitute commands to use the black hole register
+vim.api.nvim_set_keymap('n', 's', '"_s', { noremap = true })
+vim.api.nvim_set_keymap('v', 's', '"_s', { noremap = true })
