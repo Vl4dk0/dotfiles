@@ -909,6 +909,9 @@ require('lazy').setup({
         --  the list of additional_vim_regex_highlighting and disabled languages for indent.
         additional_vim_regex_highlighting = { 'ruby' },
       },
+      autotag = {
+        enable = true,
+      },
       indent = { enable = true, disable = { 'ruby' } },
     },
     config = function(_, opts)
@@ -980,10 +983,10 @@ vim.keymap.set('n', '<C-/>', 'gcc', { silent = true, noremap = true })
 vim.keymap.set('v', '<C-/>', 'gc', { silent = true, noremap = true })
 
 -- enter visual mode using shift + h/j/k/l
-vim.keymap.set('n', '<S-h>', 'vh', { silent = true, noremap = true })
-vim.keymap.set('n', '<S-j>', 'vj', { silent = true, noremap = true })
-vim.keymap.set('n', '<S-k>', 'vk', { silent = true, noremap = true })
-vim.keymap.set('n', '<S-l>', 'vl', { silent = true, noremap = true })
+-- vim.keymap.set('n', '<S-h>', 'vh', { silent = true, noremap = true })
+-- vim.keymap.set('n', '<S-j>', 'vj', { silent = true, noremap = true })
+-- vim.keymap.set('n', '<S-k>', 'vk', { silent = true, noremap = true })
+-- vim.keymap.set('n', '<S-l>', 'vl', { silent = true, noremap = true })
 
 -- move lines up and down
 vim.keymap.set('n', '<A-j>', ':m .+1<CR>==', { silent = true, noremap = true })
@@ -998,8 +1001,8 @@ vim.keymap.set('n', 'H', '^', { silent = true, noremap = true })
 vim.keymap.set('n', 'L', '$', { silent = true, noremap = true })
 
 -- move to the beginning and end of a line in visual mode
-vim.keymap.set('v', 'H', '^', { silent = true, noremap = true })
-vim.keymap.set('v', 'L', '$', { silent = true, noremap = true })
+-- vim.keymap.set('v', 'H', '^', { silent = true, noremap = true })
+-- vim.keymap.set('v', 'L', '$', { silent = true, noremap = true })
 
 -- visual mode whole file
 vim.keymap.set('n', '<leader>y', 'ggVG', { silent = true, noremap = true })
@@ -1063,6 +1066,7 @@ vim.cmd [[
   highlight VertSplit guibg=none
   highlight StatusLine guibg=none
   highlight TabLineFill guibg=none
+  highlight CursorLine guibg=none
 ]]
 
 -- close buffer with <leader>bd
@@ -1073,8 +1077,10 @@ vim.api.nvim_set_keymap('n', 'd', '"_d', { noremap = true })
 vim.api.nvim_set_keymap('v', 'd', '"_d', { noremap = true })
 vim.api.nvim_set_keymap('n', 'dd', '"_dd', { noremap = true })
 vim.api.nvim_set_keymap('v', 'dd', '"_dd', { noremap = true })
-vim.api.nvim_set_keymap('n', 'x', '"_x', { noremap = true })
-vim.api.nvim_set_keymap('v', 'x', '"_x', { noremap = true })
+
+-- when deleting with x, it will go to the clipboard
+-- vim.api.nvim_set_keymap('n', 'x', '"_x', { noremap = true })
+-- vim.api.nvim_set_keymap('v', 'x', '"_x', { noremap = true })
 
 -- Remap change commands to use the black hole register
 vim.api.nvim_set_keymap('n', 'c', '"_c', { noremap = true })
@@ -1085,3 +1091,19 @@ vim.api.nvim_set_keymap('v', 'cc', '"_cc', { noremap = true })
 -- Remap substitute commands to use the black hole register
 vim.api.nvim_set_keymap('n', 's', '"_s', { noremap = true })
 vim.api.nvim_set_keymap('v', 's', '"_s', { noremap = true })
+
+-- Remap paste command in visual mode to use the black hole register
+vim.api.nvim_set_keymap('v', 'p', '"_dP', { noremap = true })
+
+local function set_python_host_prog()
+  local venv = vim.env.VIRTUAL_ENV
+
+  if venv then
+    vim.g.python3_host_prog = venv .. '/bin/python'
+    print('Python host program set to ' .. vim.g.python3_host_prog)
+  else
+    print 'No virtual environment detected'
+  end
+end
+
+set_python_host_prog()
