@@ -84,7 +84,7 @@ return {
         i(3, ''),
         t {
           '',
-          '\t\t return 0;',
+          '\t\treturn 0;',
           '\t}',
           '};',
         },
