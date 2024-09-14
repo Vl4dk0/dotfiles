@@ -37,38 +37,15 @@ return {
     })
 
     ls.add_snippets('cpp', {
+      -- Basic Snippet
       s('leet', {
         t {
           '#include <bits/stdc++.h>',
           'using namespace std;',
           '',
-          '#define forn(i, n) for (int i = 0; i < n; i++)',
-          '#define forab(i, a, b) for (int i = a; i < b; i++)',
-          '#define forba(i, a, b) for (int i = b; i > a; i--)',
-          '',
-          '#define pb push_back',
-          '',
-          '#define print(x) cout << x',
-          '#define println(x) cout << x << endl',
-          '#define printarr(x, n) cout << "{ "; forn(arrIndex, n) cout << x[arrIndex] << ", "; cout << "}" << endl;',
-          '#define printmat(x, n, m) cout << "{" << endl; forn(arrHeightIndex, n) { cout << "\t{ "; forn(arrWidthIndex, m) cout << x[arrHeightIndex][arrWidthIndex] << ", "; cout << "}," << endl; }',
-          '',
-          '#define umap unordered_map',
-          '#define prq priority_queue',
-          '#define uset unordered_set',
-          '',
           'using ll = long long;',
           'using vi = vector<int>;',
           'using vvi = vector<vi>;',
-          '',
-          'struct hash_pair {',
-          '    template<class T1, class T2>',
-          '    size_t operator()(const pair<T1, T2>& p) const {',
-          '        auto hash1 = hash<T1>{}(p.first);',
-          '        auto hash2 = hash<T2>{}(p.second);',
-          '        return hash1 ^ hash2;',
-          '    }',
-          '};',
           '',
           'class Solution {',
           'public:',
@@ -86,6 +63,79 @@ return {
           '',
           '\t\treturn 0;',
           '\t}',
+          '};',
+        },
+      }),
+
+      -- Cycles Snippet
+      s('cycles', {
+        t {
+          '#define forn(i, n) for (int i = 0; i < n; i++)',
+          '#define forab(i, a, b) for (int i = a; i < b; i++)',
+          '#define forba(i, a, b) for (int i = b; i > a; i--)',
+        },
+      }),
+
+      -- Print Snippet
+      s('prints', {
+        t {
+          '#define print(x) cout << x',
+          '#define println(x) cout << x << endl',
+          '#define printarr(x, n) cout << "{ "; forn(arrIndex, n) cout << x[arrIndex] << ", "; cout << "}" << endl;',
+          '#define printmat(x, n, m) cout << "{" << endl; forn(arrHeightIndex, n) { cout << "\t{ "; forn(arrWidthIndex, m) cout << x[arrHeightIndex][arrWidthIndex] << ", "; cout << "}," << endl; }',
+        },
+      }),
+
+      -- Containers Snippet
+      s('containers', {
+        t {
+          '#define umap unordered_map',
+          '#define prq priority_queue',
+          '#define uset unordered_set',
+        },
+      }),
+
+      -- Hash Pair Struct Snippet
+      s('hashstruct', {
+        t {
+          'struct ',
+        },
+        i(1, 'hash_pair'),
+        t {
+          ' {',
+          '    template<class T1, class T2>',
+          '    size_t operator()(const pair<T1, T2>& p) const {',
+          '        auto hash1 = hash<T1>{}(p.first);',
+          '        auto hash2 = hash<T2>{}(p.second);',
+          '        return hash1 ^ hash2;',
+          '    }',
+          '};',
+        },
+      }),
+
+      -- ListNode Struct Snippet
+      s('listnode', {
+        t {
+          'struct ListNode {',
+          '    int val;',
+          '    ListNode *next;',
+          '    ListNode() : val(0), next(nullptr) {}',
+          '    ListNode(int x) : val(x), next(nullptr) {}',
+          '    ListNode(int x, ListNode *next) : val(x), next(next) {}',
+          '};',
+        },
+      }),
+
+      -- TreeNode Struct Snippet
+      s('treenode', {
+        t {
+          'struct TreeNode {',
+          '    int val;',
+          '    TreeNode *left;',
+          '    TreeNode *right;',
+          '    TreeNode() : val(0), left(nullptr), right(nullptr) {}',
+          '    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}',
+          '    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}',
           '};',
         },
       }),
