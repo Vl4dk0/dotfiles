@@ -116,7 +116,7 @@ vim.opt.showmode = false
 vim.opt.clipboard = 'unnamedplus'
 
 -- Enable break indent
-vim.opt.breakindent = true
+vim.opt.breakindent = false
 
 -- Enable line wrapping
 vim.opt.wrap = true
@@ -422,7 +422,13 @@ require('lazy').setup({
       end, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+      vim.keymap.set('n', '<leader>sg', function()
+        require('telescope.builtin').live_grep {
+          additional_args = function(args)
+            return vim.list_extend(args, { '--hidden', '--glob', '!\\.git', '--glob', '!node_modules' })
+          end,
+        }
+      end, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
@@ -705,7 +711,7 @@ require('lazy').setup({
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
         return {
-          timeout_ms = 1000,
+          timeout_ms = 1500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
         }
       end,
@@ -941,8 +947,6 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
-  require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
@@ -1008,16 +1012,16 @@ vim.keymap.set('n', 'L', '$', { silent = true, noremap = true })
 vim.keymap.set('n', '<leader>y', 'ggVG', { silent = true, noremap = true })
 
 -- Resize window with Ctrl + Left
-vim.api.nvim_set_keymap('n', '<C-Left>', ':vertical resize -2<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-Left>', ':vertical resize -2<CR>', { noremap = true, silent = true })
 
 -- Resize window with Ctrl + Right
-vim.api.nvim_set_keymap('n', '<C-Right>', ':vertical resize +2<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-Right>', ':vertical resize +2<CR>', { noremap = true, silent = true })
 
 -- Resize window with Ctrl + Up (not working)
-vim.api.nvim_set_keymap('n', '<C-Up>', ':resize +2<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-Up>', ':resize +2<CR>', { noremap = true, silent = true })
 
 -- Resize window with Ctrl + Down (not working)
-vim.api.nvim_set_keymap('n', '<C-Down>', ':resize -2<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-Down>', ':resize -2<CR>', { noremap = true, silent = true })
 
 -- Save and exit buffer with <laeder>we
 vim.api.nvim_set_keymap('n', '<leader>we', ':w<CR>:Ex<CR>', { noremap = true, silent = true })
@@ -1107,3 +1111,21 @@ local function set_python_host_prog()
 end
 
 set_python_host_prog()
+
+-- Define a function to compile C++ files
+function CompileCpp()
+  if vim.bo.filetype == 'cpp' then
+    local cmd = ''
+    if vim.fn.has 'win32' == 1 or vim.fn.has 'win64' == 1 then
+      cmd = 'g++ % -o play.exe'
+    else
+      cmd = 'g++ % -o play'
+    end
+    vim.cmd('!' .. cmd)
+  end
+end
+
+-- Map <leader>cc to the CompileCpp function
+vim.api.nvim_set_keymap('n', '<leader>cc', ':lua CompileCpp()<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', 'vv', 'viw', { noremap = true, silent = true })

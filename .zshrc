@@ -121,6 +121,12 @@ if [ -d "$FNM_PATH" ]; then
 fi
 source "$HOME/.rye/env"
 
+# golang
+export PATH=$PATH:/usr/local/go/bin
+
+#sci-markdown
+alias sci-mark="~/sci-markdown/.venv/bin/python ~/sci-markdown/src/sci_markdown/__main__.py"
+
 alias cls="clear"
 alias dup="docker compose up -d"
 alias dstop="docker compose stop"
