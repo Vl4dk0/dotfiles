@@ -131,13 +131,6 @@ alias cls="clear"
 alias dup="docker compose up -d"
 alias dstop="docker compose stop"
 
-# fnm
-FNM_PATH="/home/vladko_jancar/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/vladko_jancar/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
-
 # this is there for change-path command from Juraj
 source "$HOME/windows_path_wsl2/shell_setup.sh"
 
