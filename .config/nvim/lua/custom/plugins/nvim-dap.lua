@@ -1,107 +1,114 @@
 return {
+  { 'nvim-neotest/nvim-nio' },
   {
     'mfussenegger/nvim-dap',
-    dependencies = {
-      'mfussenegger/nvim-dap-python',
-      'leoluz/nvim-dap-go',
-      'rcarriga/nvim-dap-ui',
-      'theHamsta/nvim-dap-virtual-text',
-      'nvim-lua/plenary.nvim', -- Môže byť potrebné pre niektoré pluginy
-    },
     config = function()
       local dap = require 'dap'
-      local dapui = require 'dapui'
+      vim.keymap.set('n', '<leader>db', function()
+        dap.toggle_breakpoint()
+      end, { desc = 'Toggle breakpoint' })
 
-      -- Function to compile and debug the current C++ source file
-      function CompileAndDebug()
-        -- Get the path to the current file
-        local source_file = vim.fn.input('Path to source file: ', vim.fn.expand '%:p', 'file')
+      vim.keymap.set('n', '<leader>dc', function()
+        dap.continue()
+      end, { desc = 'Continue' })
 
-        -- If the user cancels the input, stop the function
-        if source_file == '' then
-          print 'No source file specified.'
-          return
-        end
+      vim.keymap.set('n', '<leader>dr', function()
+        dap.repl.open()
+      end, { desc = 'Open REPL' })
 
-        -- Define the output file path (change 'debug.exe' to your preferred name)
-        local output_file = vim.fn.fnamemodify(source_file, ':r') .. '.out'
+      vim.keymap.set('n', '<F1>', function()
+        dap.step_into()
+      end, { desc = 'Step into' })
 
-        -- Compile the source file with debugging information
-        local compile_cmd = string.format('g++ -g %s -o %s', source_file, output_file)
-        local compile_result = os.execute(compile_cmd)
+      vim.keymap.set('n', '<F2>', function()
+        dap.step_over()
+      end, { desc = 'Step over' })
 
-        -- Check if compilation was successful
-        if compile_result == 0 then
-          dap.run {
-            type = 'lldb',
-            request = 'launch',
-            name = 'Launch',
-            program = output_file,
-            cwd = vim.fn.getcwd(),
-            stopOnEntry = false,
+      vim.keymap.set('n', '<leader>do', function()
+        dap.step_out()
+      end, { desc = 'Step out' })
+
+      vim.keymap.set('n', '<leader>dl', function()
+        dap.run_last()
+      end, { desc = 'Run last' })
+
+      vim.keymap.set('n', '<leader>dt', function()
+        dap.toggle()
+      end, { desc = 'Toggle' })
+
+      vim.keymap.set('n', '<leader>dd', function()
+        dap.disconnect()
+      end, { desc = 'Disconnect' })
+
+      vim.keymap.set('n', '<leader>drb', function()
+        dap.clear_breakpoints()
+      end, { desc = 'Remove all breakpoints' })
+    end,
+  },
+  {
+    'jay-babu/mason-nvim-dap.nvim',
+    event = 'VeryLazy',
+    dependencies = {
+      'mfussenegger/nvim-dap',
+      'williamboman/mason.nvim',
+    },
+    opts = {
+      handlers = {
+        codelldb = function(config)
+          table.insert(config.configurations, {
             args = {},
-            runInTerminal = false,
-          }
-        else
-          print 'Compilation failed. Please check the source code for errors.'
-        end
-      end
+            console = 'integratedTerminal',
+            cwd = '${workspaceFolder}',
+            name = 'LLDB: Launch prog3',
+            program = function()
+              local current_dir = vim.fn.expand '%:p:h'
+              local cmake_lists = io.open(current_dir .. '/CMakeLists.txt')
+              if cmake_lists then
+                local content = cmake_lists:read '*all'
+                cmake_lists:close()
+                local project_name = content:match 'project%(([%w_%-]+)%)'
+                return current_dir .. '/build/' .. project_name
+              end
+            end,
+            request = 'launch',
+            stopOnEntry = false,
+            type = 'codelldb',
+          })
 
-      -- Nastavenie DAP UI
-      dapui.setup()
-
-      -- Otvorenie a zatvorenie DAP UI pri inicializácii a ukončení debugovania
-      dap.listeners.after.event_initialized['dapui_config'] = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated['dapui_config'] = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited['dapui_config'] = function()
-        dapui.close()
-      end
-
-      -- Nastavenie pre Go pomocou nvim-dap-go
+          require('mason-nvim-dap').default_setup(config)
+        end,
+      },
+      ensure_installed = {},
+    },
+  },
+  {
+    'mfussenegger/nvim-dap-python',
+    config = function()
+      require('dap-python').setup '~/.virtualenvs/debugpy/bin/python'
+    end,
+  },
+  {
+    'leoluz/nvim-dap-go',
+    config = function()
       require('dap-go').setup()
+    end,
+  },
+  {
+    'rcarriga/nvim-dap-ui',
+    dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
+    config = function()
+      require('dapui').setup()
 
-      -- Nastavenie pre C++
-      dap.adapters.lldb = {
-        type = 'executable',
-        command = '/home/linuxbrew/.linuxbrew/opt/llvm/bin/lldb-dap',
-        name = 'lldb',
-      }
-
-      dap.configurations.cpp = {
-        {
-          name = 'Launch',
-          type = 'lldb',
-          request = 'launch',
-          program = function()
-            return vim.fn.input('Cesta k spustiteľnému súboru: ', vim.fn.getcwd() .. '/', 'file')
-          end,
-          cwd = '${workspaceFolder}',
-          stopOnEntry = false,
-          args = {},
-          runInTerminal = false,
-        },
-      }
-
-      dap.configurations.c = dap.configurations.cpp -- Pre C zdieľa konfiguráciu s C++
-
-      -- Klávesové skratky pre ovládanie
-      local opts = { noremap = true, silent = true }
-      vim.api.nvim_set_keymap(
-        'n',
-        '<F5>',
-        "<Cmd>lua if vim.bo.filetype == 'cpp' then CompileAndDebug() else require'dap'.continue() end<CR>",
-        { noremap = true, silent = true }
-      )
-      vim.api.nvim_set_keymap('n', '<F1>', "<Cmd>lua require'dap'.step_over()<CR>", opts)
-      vim.api.nvim_set_keymap('n', '<F2>', "<Cmd>lua require'dap'.step_into()<CR>", opts)
-      vim.api.nvim_set_keymap('n', '<F3>', "<Cmd>lua require'dap'.step_out()<CR>", opts)
-      vim.api.nvim_set_keymap('n', '<Leader>bb', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
-      vim.api.nvim_set_keymap('n', '<Leader>lp', "<Cmd>lua require'dap'.repl.open()<CR>", opts)
-      vim.api.nvim_set_keymap('n', '<Leader>dl', "<Cmd>lua require'dap'.run_last()<CR>", opts)
+      vim.keymap.set('n', '<leader>du', function()
+        require('dapui').toggle()
+      end, { desc = 'Toggle UI' })
+    end,
+  },
+  {
+    'theHamsta/nvim-dap-virtual-text',
+    dependencies = { 'mfussenegger/nvim-dap' },
+    config = function()
+      require('nvim-dap-virtual-text').setup()
     end,
   },
 }

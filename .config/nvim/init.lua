@@ -723,6 +723,7 @@ require('lazy').setup({
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
         typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        go = { 'crlfmt', stop_after_first = true },
       },
     },
   },
@@ -1030,7 +1031,7 @@ vim.api.nvim_set_keymap('n', '<leader>we', ':w<CR>:Ex<CR>', { noremap = true, si
 vim.api.nvim_set_keymap('n', '<leader>ww', ':w<CR>', { noremap = true, silent = true })
 
 -- Save and quit nvim with <laeder>wq
-vim.api.nvim_set_keymap('n', '<leader>wq', ':wq<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>wq', ':wq!<CR>', { noremap = true, silent = true })
 
 -- quit nvim with <laeder>qq
 vim.api.nvim_set_keymap('n', '<leader>qq', ':q!<CR>', { noremap = true, silent = true })

@@ -47,6 +47,10 @@ return {
         copilot_node_command = 'node', -- Node.js version must be > 18.x
         server_opts_overrides = {},
       }
+
+      -- Key mappings to enable/disable Copilot
+      vim.api.nvim_set_keymap('n', '<leader>cd', ':Copilot disable<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<leader>ce', ':Copilot enable<CR>', { noremap = true, silent = true })
     end,
   },
 }
