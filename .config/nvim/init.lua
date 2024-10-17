@@ -116,7 +116,7 @@ vim.opt.showmode = false
 vim.opt.clipboard = 'unnamedplus'
 
 -- Enable break indent
-vim.opt.breakindent = false
+vim.opt.breakindent = true
 
 -- Enable line wrapping
 vim.opt.wrap = true
@@ -983,9 +983,6 @@ require('lazy').setup({
 -- vim: ts=2 sts=2 sw=2 et
 
 -- [[ Additional Configuration ]]
--- comment out code
-vim.keymap.set('n', '<C-/>', 'gcc', { silent = true, noremap = true })
-vim.keymap.set('v', '<C-/>', 'gc', { silent = true, noremap = true })
 
 -- enter visual mode using shift + h/j/k/l
 -- vim.keymap.set('n', '<S-h>', 'vh', { silent = true, noremap = true })
@@ -1112,21 +1109,5 @@ local function set_python_host_prog()
 end
 
 set_python_host_prog()
-
--- Define a function to compile C++ files
-function CompileCpp()
-  if vim.bo.filetype == 'cpp' then
-    local cmd = ''
-    if vim.fn.has 'win32' == 1 or vim.fn.has 'win64' == 1 then
-      cmd = 'g++ % -o play.exe'
-    else
-      cmd = 'g++ % -o play'
-    end
-    vim.cmd('!' .. cmd)
-  end
-end
-
--- Map <leader>cc to the CompileCpp function
-vim.api.nvim_set_keymap('n', '<leader>cc', ':lua CompileCpp()<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', 'vv', 'viw', { noremap = true, silent = true })
