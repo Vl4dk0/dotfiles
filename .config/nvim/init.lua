@@ -542,7 +542,7 @@ require('lazy').setup({
           -- Jump to the type of the word under your cursor.
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
-          map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+          map('gtd', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype [D]efinition')
 
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
@@ -559,6 +559,8 @@ require('lazy').setup({
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+
+          map('<leader>ld', vim.diagnostic.open_float, '[L]sp [D]iagnostics')
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
@@ -709,7 +711,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = { c = true, cpp = true, python = true }
         return {
           timeout_ms = 1500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
@@ -717,7 +719,7 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
+        -- python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
         zsh = { 'beautysh' },
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
@@ -1050,9 +1052,11 @@ vim.o.ttimeoutlen = 10 -- (default is 50ms)
 
 -- Disabling that annoying Shift + J shit thal collapses lines
 vim.api.nvim_set_keymap('v', 'J', 'j', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'J', 'j', { noremap = true, silent = true })
 
 -- Disabling that annoying manual that lags my nvim in v-line mode
 vim.api.nvim_set_keymap('v', 'K', 'k', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'K', 'k', { noremap = true, silent = true })
 
 -- Set the colorscheme to tokyonight-night
 vim.cmd [[colorscheme tokyonight-night]]
