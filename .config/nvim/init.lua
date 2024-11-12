@@ -156,9 +156,17 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Set tab width to 4 spaces
-vim.opt.tabstop = 4 -- Number of spaces a Tab character represents
-vim.opt.shiftwidth = 4 -- Number of spaces to use for each step of (auto)indent
-vim.opt.expandtab = true -- Convert tabs to spaces
+-- Set options for cpp, c, and go file types
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+  pattern = { 'cpp', 'c', 'go' },
+  callback = function()
+    vim.defer_fn(function()
+      vim.opt.tabstop = 4
+      vim.opt.shiftwidth = 4
+      vim.opt.expandtab = true
+    end, 1000) -- 1000 milliseconds = 1 second
+  end,
+})
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 7
@@ -711,7 +719,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true, python = true }
+        local disable_filetypes = { c = true, cpp = true, python = true, haskell = true }
         return {
           timeout_ms = 1500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
@@ -726,6 +734,7 @@ require('lazy').setup({
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
         typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         go = { 'crlfmt', stop_after_first = true },
+        -- haskell = { 'fourmolu' },
       },
     },
   },
@@ -843,6 +852,13 @@ require('lazy').setup({
           { name = 'path' },
         },
       }
+      cmp.setup.filetype({ 'sql' }, {
+        sources = {
+          { name = 'vim-dadbod-completion' },
+          { name = 'path' },
+          { name = 'buffer' },
+        },
+      })
     end,
   },
 
@@ -908,7 +924,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'haskell' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {

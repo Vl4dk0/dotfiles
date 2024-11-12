@@ -132,6 +132,10 @@ alias cls="clear"
 alias dup="docker compose up -d"
 alias dstop="docker compose stop"
 
+# alias for running the program
+alias haskell="ghci"
+alias python="python3"
+
 # this is there for change-path command from Juraj
 source "$HOME/windows_path_wsl2/shell_setup.sh"
 
@@ -139,3 +143,5 @@ source "$HOME/windows_path_wsl2/shell_setup.sh"
 bindkey -s ^a 'tmux a\n'
 
 source <(fzf --zsh)
+
+[ -f "/home/vladko_jancar/.ghcup/env" ] && . "/home/vladko_jancar/.ghcup/env" # ghcup-env
