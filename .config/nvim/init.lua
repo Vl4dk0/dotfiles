@@ -899,7 +899,45 @@ require('lazy').setup({
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup()
+      require('mini.surround').setup {
+        -- Add custom surroundings to be used on top of builtin ones. For more
+        -- information with examples, see `:h MiniSurround.config`.
+        custom_surroundings = nil,
+
+        -- Duration (in ms) of highlight when calling `MiniSurround.highlight()`
+        highlight_duration = 500,
+
+        -- Module mappings. Use `''` (empty string) to disable one.
+        mappings = {
+          add = 'Sa', -- Add surrounding in Normal and Visual modes
+          delete = '', -- Delete surrounding
+          find = '', -- Find surrounding (to the right)
+          find_left = '', -- Find surrounding (to the left)
+          highlight = '', -- Highlight surrounding
+          replace = '', -- Replace surrounding
+          update_n_lines = '', -- Update `n_lines`
+
+          suffix_last = '', -- Suffix to search with "prev" method
+          suffix_next = '', -- Suffix to search with "next" method
+        },
+
+        -- Number of lines within which surrounding is searched
+        n_lines = 20,
+
+        -- Whether to respect selection type:
+        -- - Place surroundings on separate lines in linewise mode.
+        -- - Place surroundings on each line in blockwise mode.
+        respect_selection_type = false,
+
+        -- How to search for surrounding (first inside current line, then inside
+        -- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
+        -- 'cover_or_nearest', 'next', 'prev', 'nearest'. For more details,
+        -- see `:h MiniSurround.config`.
+        search_method = 'cover',
+
+        -- Whether to disable showing non-error feedback
+        silent = false,
+      }
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
@@ -1028,34 +1066,34 @@ vim.keymap.set('n', 'L', '$', { silent = true, noremap = true })
 vim.keymap.set('n', '<leader>y', 'ggVG', { silent = true, noremap = true })
 
 -- Resize window with Ctrl + Left
-vim.api.nvim_set_keymap('n', '<A-Left>', ':vertical resize -2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-Left>', ':vertical resize -2<CR>', { noremap = true, silent = true })
 
 -- Resize window with Ctrl + Right
-vim.api.nvim_set_keymap('n', '<A-Right>', ':vertical resize +2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-Right>', ':vertical resize +2<CR>', { noremap = true, silent = true })
 
 -- Resize window with Ctrl + Up (not working)
-vim.api.nvim_set_keymap('n', '<A-Up>', ':resize +2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-Up>', ':resize +2<CR>', { noremap = true, silent = true })
 
 -- Resize window with Ctrl + Down (not working)
-vim.api.nvim_set_keymap('n', '<A-Down>', ':resize -2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-Down>', ':resize -2<CR>', { noremap = true, silent = true })
 
 -- Save and exit buffer with <laeder>we
-vim.api.nvim_set_keymap('n', '<leader>we', ':w<CR>:Ex<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>we', ':w<CR>:Ex<CR>', { noremap = true, silent = true })
 
 -- Save buffer with <laeder>ww
-vim.api.nvim_set_keymap('n', '<leader>ww', ':w<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ww', ':w<CR>', { noremap = true, silent = true })
 
 -- Save and quit nvim with <laeder>wq
-vim.api.nvim_set_keymap('n', '<leader>wq', ':wq!<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>wq', ':wq!<CR>', { noremap = true, silent = true })
 
 -- quit nvim with <laeder>qq
-vim.api.nvim_set_keymap('n', '<leader>qq', ':q!<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>qq', ':q!<CR>', { noremap = true, silent = true })
 
--- cente the screen afeter ctrl-d
-vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
+-- center the screen after ctrl-d
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
 
--- cente the screen afeter ctrl-u
-vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
+-- center the screen after ctrl-u
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
 
 -- support CRLF files
 vim.opt.fileformats = 'unix,dos,mac'
@@ -1067,12 +1105,12 @@ vim.o.timeoutlen = 400 -- (default is 1000ms)
 vim.o.ttimeoutlen = 10 -- (default is 50ms)
 
 -- Disabling that annoying Shift + J shit thal collapses lines
-vim.api.nvim_set_keymap('v', 'J', 'j', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'J', 'j', { noremap = true, silent = true })
+vim.keymap.set('v', 'J', 'j', { noremap = true, silent = true })
+vim.keymap.set('n', 'J', 'j', { noremap = true, silent = true })
 
 -- Disabling that annoying manual that lags my nvim in v-line mode
-vim.api.nvim_set_keymap('v', 'K', 'k', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'K', 'k', { noremap = true, silent = true })
+vim.keymap.set('v', 'K', 'k', { noremap = true, silent = true })
+vim.keymap.set('n', 'K', 'k', { noremap = true, silent = true })
 
 -- Set the colorscheme to tokyonight-night
 vim.cmd [[colorscheme tokyonight-night]]
@@ -1092,30 +1130,30 @@ vim.cmd [[
 ]]
 
 -- close buffer with <leader>bd
-vim.api.nvim_set_keymap('n', '<leader>bd', ':bd<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>bd', ':bd<CR>', { noremap = true, silent = true })
 
 -- Remap delete commands to use the black hole register
-vim.api.nvim_set_keymap('n', 'd', '"_d', { noremap = true })
-vim.api.nvim_set_keymap('v', 'd', '"_d', { noremap = true })
-vim.api.nvim_set_keymap('n', 'dd', '"_dd', { noremap = true })
-vim.api.nvim_set_keymap('v', 'dd', '"_dd', { noremap = true })
+vim.keymap.set('n', 'd', '"_d', { noremap = true })
+vim.keymap.set('v', 'd', '"_d', { noremap = true })
+vim.keymap.set('n', 'dd', '"_dd', { noremap = true })
+vim.keymap.set('v', 'dd', '"_dd', { noremap = true })
 
 -- when deleting with x, it will go to the clipboard
--- vim.api.nvim_set_keymap('n', 'x', '"_x', { noremap = true })
--- vim.api.nvim_set_keymap('v', 'x', '"_x', { noremap = true })
+-- vim.keymap.set('n', 'x', '"_x', { noremap = true })
+-- vim.keymap.set('v', 'x', '"_x', { noremap = true })
 
 -- Remap change commands to use the black hole register
-vim.api.nvim_set_keymap('n', 'c', '"_c', { noremap = true })
-vim.api.nvim_set_keymap('v', 'c', '"_c', { noremap = true })
-vim.api.nvim_set_keymap('n', 'cc', '"_cc', { noremap = true })
-vim.api.nvim_set_keymap('v', 'cc', '"_cc', { noremap = true })
+vim.keymap.set('n', 'c', '"_c', { noremap = true })
+vim.keymap.set('v', 'c', '"_c', { noremap = true })
+vim.keymap.set('n', 'cc', '"_cc', { noremap = true })
+vim.keymap.set('v', 'cc', '"_cc', { noremap = true })
 
 -- Remap substitute commands to use the black hole register
-vim.api.nvim_set_keymap('n', 's', '"_s', { noremap = true })
-vim.api.nvim_set_keymap('v', 's', '"_s', { noremap = true })
+vim.keymap.set('n', 's', '"_s', { noremap = true })
+vim.keymap.set('v', 's', '"_s', { noremap = true })
 
 -- Remap paste command in visual mode to use the black hole register
-vim.api.nvim_set_keymap('v', 'p', '"_dP', { noremap = true })
+vim.keymap.set('v', 'p', '"_dP', { noremap = true })
 
 local function set_python_host_prog()
   local venv = vim.env.VIRTUAL_ENV
@@ -1130,4 +1168,5 @@ end
 
 set_python_host_prog()
 
-vim.api.nvim_set_keymap('n', 'vv', 'viw', { noremap = true, silent = true })
+vim.keymap.set('n', 'vv', 'viw', { noremap = true, silent = true })
+vim.keymap.set({ 'v', 'n' }, 'S', '', { noremap = true, silent = true })
