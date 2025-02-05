@@ -242,6 +242,13 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   end,
 })
 
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = { '*.cs' },
+  callback = function()
+    vim.bo.filetype = 'cs'
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -659,6 +666,22 @@ require('lazy').setup({
             },
           },
         },
+        omnisharp = {
+          cmd = { 'omnisharp', '--languageserver' },
+          settings = {
+            FormattingOptions = {
+              EnableEditorConfigSupport = true,
+              OrganizeImports = true,
+            },
+            RoslynExtensionsOptions = {
+              EnableAnalyzersSupport = true,
+              EnableImportCompletion = true,
+            },
+            Sdk = {
+              IncludePrereleases = true,
+            },
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -733,7 +756,7 @@ require('lazy').setup({
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
         typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-        go = { 'crlfmt', stop_after_first = true },
+        go = { 'gofumpt', 'crlfmt', stop_after_first = true },
         -- haskell = { 'fourmolu' },
       },
     },
@@ -909,7 +932,7 @@ require('lazy').setup({
 
         -- Module mappings. Use `''` (empty string) to disable one.
         mappings = {
-          add = 'Sa', -- Add surrounding in Normal and Visual modes
+          add = 'sa', -- Add surrounding in Normal and Visual modes
           delete = '', -- Delete surrounding
           find = '', -- Find surrounding (to the right)
           find_left = '', -- Find surrounding (to the left)
@@ -1059,8 +1082,8 @@ vim.keymap.set('n', 'H', '^', { silent = true, noremap = true })
 vim.keymap.set('n', 'L', '$', { silent = true, noremap = true })
 
 -- move to the beginning and end of a line in visual mode
--- vim.keymap.set('v', 'H', '^', { silent = true, noremap = true })
--- vim.keymap.set('v', 'L', '$', { silent = true, noremap = true })
+vim.keymap.set('v', 'H', '^', { silent = true, noremap = true })
+vim.keymap.set('v', 'L', '$', { silent = true, noremap = true })
 
 -- visual mode whole file
 vim.keymap.set('n', '<leader>y', 'ggVG', { silent = true, noremap = true })
@@ -1149,8 +1172,8 @@ vim.keymap.set('n', 'cc', '"_cc', { noremap = true })
 vim.keymap.set('v', 'cc', '"_cc', { noremap = true })
 
 -- Remap substitute commands to use the black hole register
-vim.keymap.set('n', 's', '"_s', { noremap = true })
-vim.keymap.set('v', 's', '"_s', { noremap = true })
+vim.keymap.set('n', 'S', '"_s', { noremap = true })
+vim.keymap.set('v', 'S', '"_s', { noremap = true })
 
 -- Remap paste command in visual mode to use the black hole register
 vim.keymap.set('v', 'p', '"_dP', { noremap = true })
@@ -1168,5 +1191,11 @@ end
 
 set_python_host_prog()
 
+-- faster selecting word
 vim.keymap.set('n', 'vv', 'viw', { noremap = true, silent = true })
-vim.keymap.set({ 'v', 'n' }, 'S', '', { noremap = true, silent = true })
+
+-- I dont use the S command to rewrite a line
+-- vim.keymap.set({ 'v', 'n' }, 'S', '', { noremap = true, silent = true })
+
+-- syntax check with swipl
+vim.keymap.set('n', '<leader>cp', ':!swipl -1 -t halt -c %<CR>', { noremap = true, silent = true })

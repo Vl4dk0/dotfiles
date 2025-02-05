@@ -107,7 +107,7 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zshconfig="nvim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 eval "$(starship init zsh)"
 bindkey -s ^f '~/scripts/tmux-sessionizer.sh\n'
@@ -135,6 +135,10 @@ alias dstop="docker compose stop"
 # alias for running the program
 alias haskell="ghci"
 alias python="python3"
+alias prolog="swipl"
+
+# alias for opening an image
+alias show="explorer.exe"
 
 # this is there for change-path command from Juraj
 source "$HOME/windows_path_wsl2/shell_setup.sh"
@@ -145,3 +149,10 @@ bindkey -s ^a 'tmux a\n'
 source <(fzf --zsh)
 
 [ -f "/home/vladko_jancar/.ghcup/env" ] && . "/home/vladko_jancar/.ghcup/env" # ghcup-env
+
+
+# functions
+cd() {
+  builtin cd "$@" || return
+  ls -a
+}

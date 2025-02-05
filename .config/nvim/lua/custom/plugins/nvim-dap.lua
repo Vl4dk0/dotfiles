@@ -43,6 +43,30 @@ return {
       vim.keymap.set('n', '<leader>drb', function()
         dap.clear_breakpoints()
       end, { desc = 'Remove all breakpoints' })
+
+      dap.adapters.coreclr = {
+        type = 'executable',
+        command = vim.fn.stdpath 'data' .. '/mason/bin/netcoredbg',
+        args = { '--interpreter=vscode' },
+      }
+
+      dap.configurations.cs = {
+        {
+          type = 'coreclr',
+          name = 'Launch .NET',
+          request = 'launch',
+          program = function()
+            return vim.fn.input('Path to DLL > ', vim.gn.getcwd() .. '/bin/Debug/net8.0/', 'file')
+          end,
+          cwd = '${workspaceFolder}',
+          env = {
+            ASPNETCORE_ENVIRONMENT = 'Development',
+            ASPNETCORE_URLS = 'https://localhost:5001;http://localhost:5000',
+          },
+          stopAtEntry = false,
+          justMyCode = true,
+        },
+      }
     end,
   },
   {
@@ -77,38 +101,40 @@ return {
 
           require('mason-nvim-dap').default_setup(config)
         end,
+        ensure_installed = {
+          'netcoredbg',
+        },
       },
-      ensure_installed = {},
     },
-  },
-  {
-    'mfussenegger/nvim-dap-python',
-    config = function()
-      require('dap-python').setup '~/.virtualenvs/debugpy/bin/python'
-    end,
-  },
-  {
-    'leoluz/nvim-dap-go',
-    config = function()
-      require('dap-go').setup()
-    end,
-  },
-  {
-    'rcarriga/nvim-dap-ui',
-    dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
-    config = function()
-      require('dapui').setup()
+    {
+      'mfussenegger/nvim-dap-python',
+      config = function()
+        require('dap-python').setup '~/.virtualenvs/debugpy/bin/python'
+      end,
+    },
+    {
+      'leoluz/nvim-dap-go',
+      config = function()
+        require('dap-go').setup()
+      end,
+    },
+    {
+      'rcarriga/nvim-dap-ui',
+      dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
+      config = function()
+        require('dapui').setup()
 
-      vim.keymap.set('n', '<leader>du', function()
-        require('dapui').toggle()
-      end, { desc = 'Toggle UI' })
-    end,
-  },
-  {
-    'theHamsta/nvim-dap-virtual-text',
-    dependencies = { 'mfussenegger/nvim-dap' },
-    config = function()
-      require('nvim-dap-virtual-text').setup()
-    end,
+        vim.keymap.set('n', '<leader>du', function()
+          require('dapui').toggle()
+        end, { desc = 'Toggle UI' })
+      end,
+    },
+    {
+      'theHamsta/nvim-dap-virtual-text',
+      dependencies = { 'mfussenegger/nvim-dap' },
+      config = function()
+        require('nvim-dap-virtual-text').setup()
+      end,
+    },
   },
 }
