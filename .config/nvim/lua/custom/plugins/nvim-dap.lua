@@ -56,7 +56,7 @@ return {
           name = 'Launch .NET',
           request = 'launch',
           program = function()
-            return vim.fn.input('Path to DLL > ', vim.gn.getcwd() .. '/bin/Debug/net8.0/', 'file')
+            return vim.fn.input('Path to DLL > ', vim.fn.getcwd() .. '/bin/Debug/net8.0/', 'file')
           end,
           cwd = '${workspaceFolder}',
           env = {
@@ -133,7 +133,7 @@ return {
       'theHamsta/nvim-dap-virtual-text',
       dependencies = { 'mfussenegger/nvim-dap' },
       config = function()
-        require('nvim-dap-virtual-text').setup()
+        require('nvim-dap-virtual-text').setup {}
       end,
     },
   },

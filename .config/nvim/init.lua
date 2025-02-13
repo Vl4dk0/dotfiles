@@ -581,6 +581,8 @@ require('lazy').setup({
           --  For example, in C this would take you to the header.
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
+          map('<leader>h', vim.lsp.buf.hover, 'Show hover information')
+
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --    See `:help CursorHold` for information about when this is executed
@@ -1088,6 +1090,9 @@ vim.keymap.set('v', 'L', '$', { silent = true, noremap = true })
 -- visual mode whole file
 vim.keymap.set('n', '<leader>y', 'ggVG', { silent = true, noremap = true })
 
+-- copy whole file
+vim.keymap.set('n', '<leader>Y', 'ggVGy<C-o>', { silent = true, noremap = true })
+
 -- Resize window with Ctrl + Left
 vim.keymap.set('n', '<A-Left>', ':vertical resize -2<CR>', { noremap = true, silent = true })
 
@@ -1170,8 +1175,12 @@ vim.keymap.set('n', 'c', '"_c', { noremap = true })
 vim.keymap.set('v', 'c', '"_c', { noremap = true })
 vim.keymap.set('n', 'cc', '"_cc', { noremap = true })
 vim.keymap.set('v', 'cc', '"_cc', { noremap = true })
+vim.keymap.set('n', 'C', '"_C', { noremap = true })
+vim.keymap.set('v', 'C', '"_C', { noremap = true })
 
 -- Remap substitute commands to use the black hole register
+vim.keymap.set('n', 's', '"_s', { noremap = true })
+vim.keymap.set('v', 's', '"_s', { noremap = true })
 vim.keymap.set('n', 'S', '"_s', { noremap = true })
 vim.keymap.set('v', 'S', '"_s', { noremap = true })
 
