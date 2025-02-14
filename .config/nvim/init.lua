@@ -1075,17 +1075,9 @@ require('lazy').setup({
 vim.keymap.set('n', '<A-j>', ':m .+1<CR>==', { silent = true, noremap = true })
 vim.keymap.set('n', '<A-k>', ':m .-2<CR>==', { silent = true, noremap = true })
 
--- move visual block up and down
-vim.keymap.set('x', '<A-j>', ":m '>+1<CR>gv=gv", { silent = true, noremap = true })
-vim.keymap.set('x', '<A-k>', ":m '<-2<CR>gv=gv", { silent = true, noremap = true })
-
 -- move to the beginning and end of a line
-vim.keymap.set('n', 'H', '^', { silent = true, noremap = true })
-vim.keymap.set('n', 'L', '$', { silent = true, noremap = true })
-
--- move to the beginning and end of a line in visual mode
-vim.keymap.set('v', 'H', '^', { silent = true, noremap = true })
-vim.keymap.set('v', 'L', '$', { silent = true, noremap = true })
+vim.keymap.set({ 'n', 'v' }, 'H', '^', { silent = true, noremap = true })
+vim.keymap.set({ 'n', 'v' }, 'L', '$', { silent = true, noremap = true })
 
 -- visual mode whole file
 vim.keymap.set('n', '<leader>y', 'ggVG', { silent = true, noremap = true })

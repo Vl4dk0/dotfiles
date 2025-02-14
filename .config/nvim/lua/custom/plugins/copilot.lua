@@ -4,15 +4,12 @@ return {
     config = function()
       require('copilot').setup {
         panel = {
-          enabled = false,
+          enabled = true,
           auto_refresh = false,
           keymap = {
-            jump_prev = '[[',
-            jump_next = ']]',
             accept = '<CR>',
-            refresh = 'gr',
-            open = '<leader>oc',
-            close = '<Esc>',
+            open = '<C-p>',
+            refresh = '<C-r>',
           },
           layout = {
             position = 'right', -- | top | left | right
@@ -27,10 +24,7 @@ return {
           keymap = {
             accept = '<C-j>',
             accept_word = '<C-Right>',
-            accept_line = '<C-Down>',
-            next = '<M-]>',
-            prev = '<M-[>',
-            dismiss = '<C-]>',
+            dismiss = '<C-d>',
           },
         },
         filetypes = {
@@ -49,8 +43,8 @@ return {
       }
 
       -- Key mappings to enable/disable Copilot
-      vim.api.nvim_set_keymap('n', '<leader>cd', ':Copilot disable<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<leader>ce', ':Copilot enable<CR>', { noremap = true, silent = true })
+      vim.keymap.set('n', '<leader>cd', ':Copilot disable<CR>', { noremap = true, silent = true })
+      vim.keymap.set('n', '<leader>ce', ':Copilot enable<CR>', { noremap = true, silent = true })
     end,
   },
 }
