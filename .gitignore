@@ -1,0 +1,6 @@
+.config/gh/**
+.config/gh-copilot/**
+.config/ghc/**
+.config/go/**
+.config/swi-prolog/**
+
