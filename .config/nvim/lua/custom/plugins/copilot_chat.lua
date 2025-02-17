@@ -9,13 +9,21 @@ return {
     build = 'make tiktoken',
     opts = {
       model = 'o3-mini',
-      question_header = '## Vladko ',
-      answer_header = '## Jurko Petras ',
-      error_header = '[!Error] Error',
+      question_header = os.getenv 'USER' .. ' ',
+      answer_header = 'Jurko Petras ',
+      chat_autocomplete = false,
       window = {
-        layout = 'vertical', -- 'vertical', 'horizontal', 'float', 'replace'
-        width = 0.5, -- fractional width of parent, or absolute width in columns when > 1
-        height = 0.5, -- fractional height of parent, or absolute height in rows when > 1
+        layout = 'float', -- 'vertical', 'horizontal', 'float', 'replace'
+        width = 0.75, -- fractional width of parent, or absolute width in columns when > 1
+        height = 0.75, -- fractional height of parent, or absolute height in rows when > 1
+        col = 30,
+        row = 1,
+      },
+      mappings = {
+        complete = {
+          insert = '<Tab>',
+          normal = '<Tab>',
+        },
       },
     },
     keys = {
