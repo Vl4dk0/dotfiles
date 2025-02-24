@@ -8,9 +8,9 @@ return {
     },
     build = 'make tiktoken',
     opts = {
-      model = 'o3-mini:github_models',
+      model = 'o3-mini',
       question_header = os.getenv 'USER' .. ' ',
-      answer_header = 'Jurko Petras ',
+      answer_header = 'jurko_petras ',
       chat_autocomplete = false,
       window = {
         layout = 'vertical', -- 'vertical', 'horizontal', 'float', 'replace'
