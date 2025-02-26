@@ -3,4 +3,5 @@
 .config/ghc/**
 .config/go/**
 .config/swi-prolog/**
+.config/github-copilot/**
 

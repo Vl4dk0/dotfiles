@@ -152,3 +152,11 @@ cd() {
   builtin cd "$@" || return
   ls -a
 }
+
+if [ -f "./.venv/bin/activate" ]; then
+  read -q "REPLY?Virtualenv found in .venv, do you want to activate it? (Y/n): "
+  echo ""
+  if [[ -z "$REPLY" || "$REPLY" =~ ^[Yy]$ ]]; then
+    source ./.venv/bin/activate
+  fi
+fi

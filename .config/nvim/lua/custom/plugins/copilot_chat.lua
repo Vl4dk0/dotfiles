@@ -13,11 +13,9 @@ return {
       answer_header = 'jurko_petras ',
       chat_autocomplete = false,
       window = {
-        layout = 'vertical', -- 'vertical', 'horizontal', 'float', 'replace'
-        width = 0.45, -- fractional width of parent, or absolute width in columns when > 1
-        height = 1, -- fractional height of parent, or absolute height in rows when > 1
-        col = 30,
-        row = 1,
+        layout = 'float', -- 'vertical', 'horizontal', 'float', 'replace'
+        width = 0.75, -- fractional width of parent, or absolute width in columns when > 1
+        height = 0.75, -- fractional height of parent, or absolute height in rows when > 1
       },
       mappings = {
         complete = {
