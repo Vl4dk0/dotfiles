@@ -41,6 +41,7 @@ return {
       { '<leader>c', ':CopilotChat<CR>', desc = 'CopilotChat', mode = { 'n', 'v' } },
       { '<leader>cs', ':CopilotChatStop<CR>', desc = 'CopilotChat Stop', mode = { 'n', 'v' } },
       { '<leader>ct', ':CopilotChatToggle<CR>', desc = 'CopilotChat Toggle', mode = { 'n', 'v' } },
+      { '<leader>cc', ':CopilotChatToggle<CR>', desc = 'CopilotChat Toggle', mode = { 'n', 'v' } },
 
       -- Ask the Perplexity agent a quick question
       {
@@ -55,6 +56,18 @@ return {
           end
         end,
         desc = 'CopilotChat - Perplexity Search',
+        mode = { 'n', 'v' },
+      },
+
+      -- Chat with DeepSeek R1 model
+      {
+        '<leader>ccd',
+        function()
+          require('CopilotChat').ask('', {
+            model = 'DeepSeek-R1',
+          })
+        end,
+        desc = 'CopilotChat - DeepSeek',
         mode = { 'n', 'v' },
       },
     },
