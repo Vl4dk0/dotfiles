@@ -103,7 +103,7 @@ export EDITOR='nvim'
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="nvim ~/.zshrc"
+alias zshrc="nvim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 eval "$(starship init zsh)"
 bindkey -s ^f '~/scripts/tmux-sessionizer.sh\n'
@@ -133,8 +133,11 @@ alias haskell="ghci"
 alias python="python3"
 alias prolog="swipl"
 
-# alias for opening an image
+# alias for opening
 alias show="explorer.exe"
+
+# alias for alacritty config
+alias alacritty="nvim /mnt/c/Users/ThinkPad/AppData/Roaming/alacritty/alacritty.toml"
 
 # this is there for change-path command from Juraj
 source "$HOME/windows_path_wsl2/shell_setup.sh"
