@@ -1054,8 +1054,14 @@ require('lazy').setup({
 -- vim.keymap.set('n', '<S-l>', 'vl', { silent = true, noremap = true })
 
 -- move lines up and down
-vim.keymap.set('n', '<A-j>', ':m .+1<CR>==', { silent = true, noremap = true })
 vim.keymap.set('n', '<A-k>', ':m .-2<CR>==', { silent = true, noremap = true })
+vim.keymap.set('n', '<A-j>', ':m .+1<CR>==', { silent = true, noremap = true })
+vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", { silent = true, noremap = true })
+vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", { silent = true, noremap = true })
+
+-- alt + hl in visual mode to indent and unindent
+vim.keymap.set('v', '<A-h>', '<gv', { silent = true, noremap = true })
+vim.keymap.set('v', '<A-l>', '>gv', { silent = true, noremap = true })
 
 -- move to the beginning and end of a line
 vim.keymap.set({ 'n', 'v' }, 'H', '^', { silent = true, noremap = true })
@@ -1107,12 +1113,14 @@ vim.o.timeoutlen = 400 -- (default is 1000ms)
 vim.o.ttimeoutlen = 10 -- (default is 50ms)
 
 -- Disabling that annoying Shift + J shit thal collapses lines
-vim.keymap.set('v', 'J', 'j', { noremap = true, silent = true })
-vim.keymap.set('n', 'J', 'j', { noremap = true, silent = true })
+vim.keymap.set({ 'v', 'n' }, 'J', 'j', { noremap = true, silent = true })
 
 -- Disabling that annoying manual that lags my nvim in v-line mode
-vim.keymap.set('v', 'K', 'k', { noremap = true, silent = true })
-vim.keymap.set('n', 'K', 'k', { noremap = true, silent = true })
+vim.keymap.set({ 'v', 'n' }, 'K', 'k', { noremap = true, silent = true })
+
+-- remap weird w and b movement to W and B, which are more predictable
+vim.keymap.set({ 'v', 'n' }, 'w', 'W', { noremap = true, silent = true })
+vim.keymap.set({ 'v', 'n' }, 'b', 'B', { noremap = true, silent = true })
 
 -- Make the background transparent
 -- vim.cmd [[
@@ -1132,28 +1140,21 @@ vim.keymap.set('n', 'K', 'k', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>bd', ':bd<CR>', { noremap = true, silent = true })
 
 -- Remap delete commands to use the black hole register
-vim.keymap.set('n', 'd', '"_d', { noremap = true })
-vim.keymap.set('v', 'd', '"_d', { noremap = true })
-vim.keymap.set('n', 'dd', '"_dd', { noremap = true })
-vim.keymap.set('v', 'dd', '"_dd', { noremap = true })
+vim.keymap.set({ 'v', 'n' }, 'd', '"_d', { noremap = true })
+vim.keymap.set({ 'v', 'n' }, 'dd', '"_dd', { noremap = true })
 
 -- when deleting with x, it will go to the clipboard
 -- vim.keymap.set('n', 'x', '"_x', { noremap = true })
 -- vim.keymap.set('v', 'x', '"_x', { noremap = true })
 
 -- Remap change commands to use the black hole register
-vim.keymap.set('n', 'c', '"_c', { noremap = true })
-vim.keymap.set('v', 'c', '"_c', { noremap = true })
-vim.keymap.set('n', 'cc', '"_cc', { noremap = true })
-vim.keymap.set('v', 'cc', '"_cc', { noremap = true })
-vim.keymap.set('n', 'C', '"_C', { noremap = true })
-vim.keymap.set('v', 'C', '"_C', { noremap = true })
+vim.keymap.set({ 'v', 'n' }, 'c', '"_c', { noremap = true })
+vim.keymap.set({ 'v', 'n' }, 'cc', '"_cc', { noremap = true })
+vim.keymap.set({ 'v', 'n' }, 'C', '"_C', { noremap = true })
 
 -- Remap substitute commands to use the black hole register
-vim.keymap.set('n', 's', '"_s', { noremap = true })
-vim.keymap.set('v', 's', '"_s', { noremap = true })
-vim.keymap.set('n', 'S', '"_s', { noremap = true })
-vim.keymap.set('v', 'S', '"_s', { noremap = true })
+vim.keymap.set({ 'v', 'n' }, 's', '"_s', { noremap = true })
+vim.keymap.set({ 'v', 'n' }, 'S', '"_s', { noremap = true })
 
 -- Remap paste command in visual mode to use the black hole register
 vim.keymap.set('v', 'p', '"_dP', { noremap = true })
@@ -1175,7 +1176,4 @@ set_python_host_prog()
 vim.keymap.set('n', 'vv', 'viw', { noremap = true, silent = true })
 
 -- I dont use the S command to rewrite a line
--- vim.keymap.set({ 'v', 'n' }, 'S', '', { noremap = true, silent = true })
-
--- syntax check with swipl
-vim.keymap.set('n', '<leader>cp', ':!swipl -1 -t halt -c %<CR>', { noremap = true, silent = true })
+vim.keymap.set({ 'v', 'n' }, 'S', '', { noremap = true, silent = true })
