@@ -90,6 +90,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
+export TERM='xterm-256color'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -138,6 +139,9 @@ alias show="explorer.exe"
 
 # alias for alacritty config
 alias alacritty="nvim /mnt/c/Users/ThinkPad/AppData/Roaming/alacritty/alacritty.toml"
+
+# alias to go to windows documents
+alias windows="cd /mnt/c/Users/ThinkPad/Documents"
 
 # this is there for change-path command from Juraj
 source "$HOME/windows_path_wsl2/shell_setup.sh"

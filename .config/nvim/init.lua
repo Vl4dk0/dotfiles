@@ -1098,10 +1098,29 @@ vim.keymap.set('n', '<leader>wq', ':wq!<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>qq', ':q!<CR>', { noremap = true, silent = true })
 
 -- center the screen after ctrl-d
-vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
 
 -- center the screen after ctrl-u
-vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
+
+local cinnamon = require 'cinnamon'
+cinnamon.setup()
+
+-- Centered scrolling:
+vim.keymap.set('n', '<C-U>', function()
+  cinnamon.scroll '<C-U>zz'
+end)
+vim.keymap.set('n', '<C-D>', function()
+  cinnamon.scroll '<C-D>zz'
+end)
+
+-- LSP:
+vim.keymap.set('n', 'gd', function()
+  cinnamon.scroll(vim.lsp.buf.definition)
+end)
+vim.keymap.set('n', 'gD', function()
+  cinnamon.scroll(vim.lsp.buf.declaration)
+end)
 
 -- support CRLF files
 vim.opt.fileformats = 'unix,dos,mac'
