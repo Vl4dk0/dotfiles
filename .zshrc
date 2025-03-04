@@ -111,6 +111,12 @@ bindkey -s ^f '~/scripts/tmux-sessionizer.sh\n'
 export PATH="/opt/nvim-linux64/bin:$PATH"
 
 # fnm
+FNM_PATH="/home/vladko_jancar/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/vladko_jancar/.local/share/fnm:$PATH"
+  eval "`fnm env --use-on-cd --shell zsh`"
+fi
+
 if command -v fnm > /dev/null; then
   eval "`fnm env --use-on-cd --shell zsh`"
 fi
