@@ -654,6 +654,20 @@ require('lazy').setup({
         -- tsserver = {},
         --
 
+        jdtls = {
+          settings = {
+            java = {
+              import = {
+                gradle = {
+                  wrapper = {
+                    checksums = { 'sha256:81a82aaea5abcc8ff68b3dfcb58b3c3c429378efd98e7433460610fecd7ae45f' },
+                  },
+                },
+              },
+            },
+          },
+        },
+
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -744,7 +758,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true, python = true, haskell = true }
+        local disable_filetypes = { c = true, cpp = true, python = true, haskell = true, java = true }
         return {
           timeout_ms = 1500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
@@ -1103,25 +1117,6 @@ vim.keymap.set('n', '<leader>qq', ':q!<CR>', { noremap = true, silent = true })
 -- center the screen after ctrl-u
 -- vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
 
-local cinnamon = require 'cinnamon'
-cinnamon.setup()
-
--- Centered scrolling:
-vim.keymap.set('n', '<C-U>', function()
-  cinnamon.scroll '<C-U>zz'
-end)
-vim.keymap.set('n', '<C-D>', function()
-  cinnamon.scroll '<C-D>zz'
-end)
-
--- LSP:
-vim.keymap.set('n', 'gd', function()
-  cinnamon.scroll(vim.lsp.buf.definition)
-end)
-vim.keymap.set('n', 'gD', function()
-  cinnamon.scroll(vim.lsp.buf.declaration)
-end)
-
 -- support CRLF files
 vim.opt.fileformats = 'unix,dos,mac'
 
@@ -1137,9 +1132,10 @@ vim.keymap.set({ 'v', 'n' }, 'J', 'j', { noremap = true, silent = true })
 -- Disabling that annoying manual that lags my nvim in v-line mode
 vim.keymap.set({ 'v', 'n' }, 'K', 'k', { noremap = true, silent = true })
 
--- remap weird w and b movement to W and B, which are more predictable
+-- remap weird w, b and e movement to W, B and E which are more predictable
 vim.keymap.set({ 'v', 'n' }, 'w', 'W', { noremap = true, silent = true })
 vim.keymap.set({ 'v', 'n' }, 'b', 'B', { noremap = true, silent = true })
+vim.keymap.set({ 'v', 'n' }, 'e', 'E', { noremap = true, silent = true })
 
 -- Make the background transparent
 -- vim.cmd [[
@@ -1184,8 +1180,8 @@ local function set_python_host_prog()
   if venv then
     vim.g.python3_host_prog = venv .. '/bin/python'
     print('Python host program set to ' .. vim.g.python3_host_prog)
-  else
-    print 'No virtual environment detected'
+    -- else
+    --   print 'No virtual environment detected'
   end
 end
 
