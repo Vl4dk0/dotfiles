@@ -119,7 +119,7 @@ vim.opt.clipboard = 'unnamedplus'
 vim.opt.breakindent = true
 
 -- Enable line wrapping
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.showbreak = '↪ '
 
 -- Save undo history
@@ -246,6 +246,13 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = { '*.cs' },
   callback = function()
     vim.bo.filetype = 'cs'
+  end,
+})
+
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = { '*.workbook' },
+  callback = function()
+    vim.bo.filetype = 'json'
   end,
 })
 
