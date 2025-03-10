@@ -4,7 +4,6 @@ return {
     lazy = false,
     config = function()
       vim.g.copilot_filetypes = {
-        markdown = false,
         yaml = false,
         help = false,
         gitcommit = false,
@@ -12,7 +11,6 @@ return {
         hgcommit = false,
         svn = false,
         cvs = false,
-        ['copilot-chat'] = false,
       }
 
       vim.g.copilot_no_tab_map = true
