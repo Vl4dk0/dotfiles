@@ -2,8 +2,9 @@ return {
   {
     'CopilotC-Nvim/CopilotChat.nvim',
     branch = 'main',
+    lazy = false,
     dependencies = {
-      { 'zbirenbaum/copilot.lua' }, -- or github/copilot.vim
+      { 'github/copilot.vim' }, -- or github/copilot.vim
       { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
     },
     build = 'make tiktoken',
@@ -12,6 +13,10 @@ return {
       question_header = os.getenv 'USER' .. ' ',
       answer_header = 'jurko_petras ',
       chat_autocomplete = false,
+      provider = 'copilot',
+      copilot_agent = {
+        enable = true,
+      },
       window = {
         layout = 'float', -- 'vertical', 'horizontal', 'float', 'replace'
         width = 0.75, -- fractional width of parent, or absolute width in columns when > 1
@@ -39,9 +44,10 @@ return {
     },
     keys = {
       { '<leader>c', ':CopilotChat<CR>', desc = 'CopilotChat', mode = { 'n', 'v' } },
-      { '<leader>cs', ':CopilotChatStop<CR>', desc = 'CopilotChat Stop', mode = { 'n', 'v' } },
-      { '<leader>ct', ':CopilotChatToggle<CR>', desc = 'CopilotChat Toggle', mode = { 'n', 'v' } },
-      { '<leader>cc', ':CopilotChatToggle<CR>', desc = 'CopilotChat Toggle', mode = { 'n', 'v' } },
+      { '<leader>cs', ':CopilotChatStop<CR>', desc = 'CopilotChatStop', mode = { 'n', 'v' } },
+      { '<leader>cr', ':CopilotChatStop<CR>', desc = 'CopilotChatReset', mode = { 'n', 'v' } },
+      { '<leader>ct', ':CopilotChatToggle<CR>', desc = 'CopilotChatToggle', mode = { 'n', 'v' } },
+      { '<leader>cc', ':CopilotChatToggle<CR>', desc = 'CopilotChatToggle', mode = { 'n', 'v' } },
 
       -- Ask the Perplexity agent a quick question
       {
@@ -63,8 +69,9 @@ return {
       {
         '<leader>ccd',
         function()
-          require('CopilotChat').ask('', {
-            model = 'DeepSeek-R1',
+          local input = vim.fn.input 'Ask DeepSeek: '
+          require('CopilotChat').ask('> $DeepSeek-R1\n\n' .. input, {
+            agent = 'DeepSeek-R1',
           })
         end,
         desc = 'CopilotChat - DeepSeek',
