@@ -40,6 +40,12 @@ return {
           mapping = '<leader>cen',
           description = 'Will rewrite English text with correct grammar',
         },
+        SystemProgrammingChat = {
+          prompt = '> You will answer me based on info from this file\n> You are an expert on system programming, but make sure to tell me where it is written in the material, based on what you respond.\n> Make your answers that require explanation brief -> one sentence.\n\n',
+          system_prompt = 'You are precise and follow code formatting instructions. Do not include additional text or line numbers.',
+          mapping = '<leader>pcb',
+          description = 'Expert system programming responses based on file material',
+        },
       },
     },
     keys = {
