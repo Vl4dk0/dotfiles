@@ -4,6 +4,7 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+export PATH="$HOME/.local/mygit/git/usr/bin:$HOME/.local/bin:$PATH"
 export SHELL=$(which zsh)
 
 # Set name of the theme to load --- if set to "random", it will
