@@ -167,10 +167,20 @@ cd() {
   ls -a
 }
 
-if [ -f "./.venv/bin/activate" ]; then
-  read -q "REPLY?Virtualenv found in .venv, do you want to activate it? (Y/n): "
-  echo ""
-  if [[ -z "$REPLY" || "$REPLY" =~ ^[Yy]$ ]]; then
-    source ./.venv/bin/activate
+# if there is .venv file in the directory, ask user if he wants to activate it
+# if he hits y/Y or enter, activate it
+# if he hits something else, do nothing
+chpwd() {
+  if [ -n "$VIRTUAL_ENV" ]; then
+    return
   fi
-fi
+  if [ -d ".venv" ]; then
+    echo "Do you want to activate the virtual environment? (y/n)"
+    read -k 1 answer
+    if [ "$answer" = "y" ] || [ "$answer" = "Y" ] || [ "$answer" = "" ]; then
+      source .venv/bin/activate
+    fi
+  fi
+}
+
+chpwd
