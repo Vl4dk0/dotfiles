@@ -70,11 +70,26 @@ return {
         '<leader>ccd',
         function()
           local input = vim.fn.input 'Ask DeepSeek: '
-          require('CopilotChat').ask('> $DeepSeek-R1\n\n' .. input, {
-            agent = 'DeepSeek-R1',
+          local var = 'DeepSeek-R1'
+          require('CopilotChat').ask('> $' .. var .. '\n\n' .. input, {
+            agent = var,
           })
         end,
         desc = 'CopilotChat - DeepSeek',
+        mode = { 'n', 'v' },
+      },
+
+      -- Chat with gpt-4o model, good for fast responses
+      {
+        '<leader>ccg',
+        function()
+          local input = vim.fn.input 'Ask GPT-4o: '
+          local var = 'gpt-4o'
+          require('CopilotChat').ask('> $' .. var .. '\n\n' .. input, {
+            model = var,
+          })
+        end,
+        desc = 'CopilotChat - GPT-4o',
         mode = { 'n', 'v' },
       },
     },
