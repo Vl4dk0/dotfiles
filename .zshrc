@@ -156,6 +156,10 @@ alias downloads="cd /mnt/c/Users/ThinkPad/Downloads"
 # alias to gh copilot suggest
 alias ghcs="gh copilot suggest"
 
+# alias for git fzf
+alias fsb='~/dotfiles/scripts/fsb.sh'
+alias fshow='~/dotfiles/scripts/fshow.sh'
+
 # this is there for change-path command from Juraj
 source "$HOME/windows_path_wsl2/shell_setup.sh"
 
