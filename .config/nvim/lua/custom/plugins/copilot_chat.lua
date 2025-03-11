@@ -55,9 +55,9 @@ return {
       { '<leader>ct', ':CopilotChatToggle<CR>', desc = 'CopilotChatToggle', mode = { 'n', 'v' } },
       { '<leader>cc', ':CopilotChatToggle<CR>', desc = 'CopilotChatToggle', mode = { 'n', 'v' } },
 
-      -- Ask the Perplexity agent a quick question
+      -- Chat with perplexityai model, good for web search
       {
-        '<leader>ccs',
+        '<leader>ccp',
         function()
           local input = vim.fn.input 'Perplexity: '
           if input ~= '' then
@@ -71,7 +71,7 @@ return {
         mode = { 'n', 'v' },
       },
 
-      -- Chat with DeepSeek R1 model
+      -- Chat with DeepSeek-R1 model, good for detailed responses
       {
         '<leader>ccd',
         function()
