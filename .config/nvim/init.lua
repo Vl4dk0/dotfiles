@@ -159,7 +159,7 @@ vim.opt.cursorline = true
 -- Set tab width to 4 spaces
 -- Set options for cpp, c, and go file types
 vim.api.nvim_create_autocmd({ 'FileType' }, {
-  pattern = { 'cpp', 'c', 'go' },
+  pattern = { 'cpp', 'c', 'go', 'java' },
   callback = function()
     vim.defer_fn(function()
       vim.opt.tabstop = 4
@@ -767,7 +767,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true, python = true, haskell = true, java = true }
+        local disable_filetypes = { c = true, cpp = true, python = true, haskell = true }
         return {
           timeout_ms = 1500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
@@ -782,6 +782,7 @@ require('lazy').setup({
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
         typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         go = { 'gofumpt', 'crlfmt', stop_after_first = true },
+        java = { 'clang-format' },
         -- haskell = { 'fourmolu' },
       },
     },
