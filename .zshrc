@@ -107,7 +107,7 @@ export TERM='xterm-256color'
 #
 # Example aliases
 alias zshrc="nvim ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+
 eval "$(starship init zsh)"
 bindkey -s ^f '~/scripts/tmux-sessionizer.sh\n'
 export PATH="/opt/nvim-linux64/bin:$PATH"
@@ -149,6 +149,12 @@ alias alacritty="nvim /mnt/c/Users/ThinkPad/AppData/Roaming/alacritty/alacritty.
 
 # alias to go to windows documents
 alias windows="cd /mnt/c/Users/ThinkPad/Documents"
+
+# alias to go to windows downloads
+alias downloads="cd /mnt/c/Users/ThinkPad/Downloads"
+
+# alias to gh copilot suggest
+alias ghcs="gh copilot suggest"
 
 # this is there for change-path command from Juraj
 source "$HOME/windows_path_wsl2/shell_setup.sh"
