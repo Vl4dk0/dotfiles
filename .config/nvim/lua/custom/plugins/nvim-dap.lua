@@ -21,11 +21,11 @@ return {
         dap.step_into()
       end, { desc = 'Step into' })
 
-      vim.keymap.set('n', '<leader>do', function()
+      vim.keymap.set('n', '<leader>dov', function()
         dap.step_over()
       end, { desc = 'Step over' })
 
-      vim.keymap.set('n', '<leader>du', function()
+      vim.keymap.set('n', '<leader>dou', function()
         dap.step_out()
       end, { desc = 'Step out' })
 
