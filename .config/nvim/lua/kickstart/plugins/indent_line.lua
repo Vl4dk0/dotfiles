@@ -4,6 +4,10 @@ return {
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help ibl`
     main = 'ibl',
-    opts = {},
+    opts = {
+      scope = {
+        show_start = false, -- disable the highlight at the top of the scope
+      },
+    },
   },
 }
