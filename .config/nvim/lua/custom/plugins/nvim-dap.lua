@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-parameter
 return {
   { 'nvim-neotest/nvim-nio' },
   {
@@ -16,15 +17,15 @@ return {
         dap.repl.open()
       end, { desc = 'Open REPL' })
 
-      vim.keymap.set('n', '<F1>', function()
+      vim.keymap.set('n', '<leader>di', function()
         dap.step_into()
       end, { desc = 'Step into' })
 
-      vim.keymap.set('n', '<F2>', function()
+      vim.keymap.set('n', '<leader>do', function()
         dap.step_over()
       end, { desc = 'Step over' })
 
-      vim.keymap.set('n', '<leader>do', function()
+      vim.keymap.set('n', '<leader>du', function()
         dap.step_out()
       end, { desc = 'Step out' })
 
@@ -48,24 +49,6 @@ return {
         type = 'executable',
         command = vim.fn.stdpath 'data' .. '/mason/bin/netcoredbg',
         args = { '--interpreter=vscode' },
-      }
-
-      dap.configurations.cs = {
-        {
-          type = 'coreclr',
-          name = 'Launch .NET',
-          request = 'launch',
-          program = function()
-            return vim.fn.input('Path to DLL > ', vim.fn.getcwd() .. '/bin/Debug/net8.0/', 'file')
-          end,
-          cwd = '${workspaceFolder}',
-          env = {
-            ASPNETCORE_ENVIRONMENT = 'Development',
-            ASPNETCORE_URLS = 'https://localhost:5001;http://localhost:5000',
-          },
-          stopAtEntry = false,
-          justMyCode = true,
-        },
       }
     end,
   },
@@ -133,7 +116,7 @@ return {
       'theHamsta/nvim-dap-virtual-text',
       dependencies = { 'mfussenegger/nvim-dap' },
       config = function()
-        require('nvim-dap-virtual-text').setup {}
+        require('nvim-dap-virtual-text').setup()
       end,
     },
   },
