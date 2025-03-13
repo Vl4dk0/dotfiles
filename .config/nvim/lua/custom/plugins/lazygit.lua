@@ -1,5 +1,4 @@
--- nvim v0.8.0
-return {
+return { -- LAZYGIT, SIMPLE GIT GUI
   'kdheepak/lazygit.nvim',
   cmd = {
     'LazyGit',

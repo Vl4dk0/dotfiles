@@ -1,5 +1,4 @@
----@diagnostic disable: missing-parameter
-return {
+return { -- DEBUGGING ADAPTER PROTOCOL, USEFUL FOR SETTING UP DEBUGGING
   { 'nvim-neotest/nvim-nio' },
   {
     'mfussenegger/nvim-dap',

@@ -1,4 +1,4 @@
-return {
+return { -- HARPOON, FAST FILE NAVIGATION
   {
     'ThePrimeagen/harpoon',
     dependencies = { 'nvim-lua/plenary.nvim' },

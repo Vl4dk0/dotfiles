@@ -1,4 +1,4 @@
-return {
+return { -- COPILOT CHAT AI CHATBOT
   {
     'CopilotC-Nvim/CopilotChat.nvim',
     branch = 'main',
@@ -49,11 +49,9 @@ return {
       },
     },
     keys = {
-      { '<leader>c', ':CopilotChat<CR>', desc = 'CopilotChat', mode = { 'n', 'v' } },
-      { '<leader>cs', ':CopilotChatStop<CR>', desc = 'CopilotChatStop', mode = { 'n', 'v' } },
-      { '<leader>cr', ':CopilotChatStop<CR>', desc = 'CopilotChatReset', mode = { 'n', 'v' } },
-      { '<leader>ct', ':CopilotChatToggle<CR>', desc = 'CopilotChatToggle', mode = { 'n', 'v' } },
-      { '<leader>cc', ':CopilotChatToggle<CR>', desc = 'CopilotChatToggle', mode = { 'n', 'v' } },
+      { '<Down>', ':CopilotChatStop<CR>', desc = 'CopilotChatStop', mode = { 'n', 'v' } },
+      { '<Right>', ':CopilotChatReset<CR>', desc = 'CopilotChatReset', mode = { 'n', 'v' } },
+      { '<Up>', ':CopilotChatToggle<CR>', desc = 'CopilotChat', mode = { 'n', 'v' } },
 
       -- Chat with perplexityai model, good for web search
       {

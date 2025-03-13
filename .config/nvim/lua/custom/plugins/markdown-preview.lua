@@ -1,4 +1,4 @@
-return {
+return { -- DISPLAYS MARKDOWN IN BROWSER
   'iamcco/markdown-preview.nvim',
   cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
   ft = { 'markdown' },

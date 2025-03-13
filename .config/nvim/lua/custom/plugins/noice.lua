@@ -1,4 +1,4 @@
-return {
+return { -- NVIM UI LOOKS BETTER
   'folke/noice.nvim',
   event = 'VeryLazy',
   opts = {

@@ -1,4 +1,4 @@
-return {
+return { -- GITHUB COPILOT AI AUTOCOMPLETE
   {
     'github/copilot.vim',
     lazy = false,
