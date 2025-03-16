@@ -9,7 +9,7 @@ return { -- COPILOT CHAT AI CHATBOT
     },
     build = 'make tiktoken',
     opts = {
-      model = 'o3-mini',
+      model = 'claude-3.7-sonnet-thought',
       question_header = os.getenv 'USER' .. ' ',
       answer_header = 'jurko_petras ',
       chat_autocomplete = false,
@@ -41,17 +41,22 @@ return { -- COPILOT CHAT AI CHATBOT
           description = 'Will rewrite English text with correct grammar',
         },
         SystemProgrammingChat = {
-          prompt = '> You will answer me based on info from this file\n> You are an expert on system programming, but make sure to tell me where it is written in the material, based on what you respond.\n> Make your answers that require explanation brief -> one sentence.\n\n',
-          system_prompt = 'You are precise and follow code formatting instructions. Do not include additional text or line numbers.',
+          prompt = '> You will answer me based on info from this file\n> You are an expert on system programming, but make sure to tell me where it is written in the material, based on what you respond.\n> Make your answers that require explanation brief -> one sentence.\n\n> You may be asked to explain something, be brief and precise. Or to choose single or multiple answers from given choices, be precise and briefly explain based on which info you chose the answer.\n\n> You may be asked to write code, be precise and follow code formatting instructions. Do not include additional text or line numbers.',
+          system_prompt = 'You are precise and follow code formatting instructions. Do not include additional text or line numbers. Only answer based on the given context.',
           mapping = '<leader>pcb',
           description = 'Expert system programming responses based on file material',
         },
       },
     },
     keys = {
-      { '<Down>', ':CopilotChatStop<CR>', desc = 'CopilotChatStop', mode = { 'n', 'v' } },
-      { '<Right>', ':CopilotChatReset<CR>', desc = 'CopilotChatReset', mode = { 'n', 'v' } },
-      { '<Up>', ':CopilotChatToggle<CR>', desc = 'CopilotChat', mode = { 'n', 'v' } },
+      { '<leader><Left>', ':CopilotChat<CR>', desc = 'CopilotChatStart', mode = { 'n', 'v' } },
+      { '<leader>cc', ':CopilotChat<CR>', desc = 'CopilotChatStart', mode = { 'n', 'v' } }, -- temporary, until I get used to arrow keys
+      { '<leader><Down>', ':CopilotChatStop<CR>', desc = 'CopilotChatStop', mode = { 'n', 'v' } },
+      { '<leader>cs', ':CopilotChatStop<CR>', desc = 'CopilotChatStop', mode = { 'n', 'v' } }, -- temporary
+      { '<leader><Right>', ':CopilotChatReset<CR>', desc = 'CopilotChatReset', mode = { 'n', 'v' } },
+      { '<leader>cr', ':CopilotChatReset<CR>', desc = 'CopilotChatReset', mode = { 'n', 'v' } },
+      { '<leader><Up>', ':CopilotChatToggle<CR>', desc = 'CopilotChat', mode = { 'n', 'v' } },
+      { '<leader>ct', ':CopilotChatToggle<CR>', desc = 'CopilotChat', mode = { 'n', 'v' } },
 
       -- Chat with perplexityai model, good for web search
       {
