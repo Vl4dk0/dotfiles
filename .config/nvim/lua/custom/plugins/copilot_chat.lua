@@ -49,13 +49,11 @@ return { -- COPILOT CHAT AI CHATBOT
       },
     },
     keys = {
-      { '<leader><Left>', ':CopilotChat<CR>', desc = 'CopilotChatStart', mode = { 'n', 'v' } },
-      { '<leader>cc', ':CopilotChat<CR>', desc = 'CopilotChatStart', mode = { 'n', 'v' } }, -- temporary, until I get used to arrow keys
-      { '<leader><Down>', ':CopilotChatStop<CR>', desc = 'CopilotChatStop', mode = { 'n', 'v' } },
-      { '<leader>cs', ':CopilotChatStop<CR>', desc = 'CopilotChatStop', mode = { 'n', 'v' } }, -- temporary
-      { '<leader><Right>', ':CopilotChatReset<CR>', desc = 'CopilotChatReset', mode = { 'n', 'v' } },
+      { '<Left>', ':CopilotChat<CR>', desc = 'CopilotChatStart', mode = { 'n', 'v' } },
+      { '<leader>cc', ':CopilotChat<CR>', desc = 'CopilotChatStart', mode = { 'n', 'v' } },
+      { '<leader>cs', ':CopilotChatStop<CR>', desc = 'CopilotChatStop', mode = { 'n', 'v' } },
       { '<leader>cr', ':CopilotChatReset<CR>', desc = 'CopilotChatReset', mode = { 'n', 'v' } },
-      { '<leader><Up>', ':CopilotChatToggle<CR>', desc = 'CopilotChat', mode = { 'n', 'v' } },
+      { '<Up>', ':CopilotChatToggle<CR>', desc = 'CopilotChat', mode = { 'n', 'v' } },
       { '<leader>ct', ':CopilotChatToggle<CR>', desc = 'CopilotChat', mode = { 'n', 'v' } },
 
       -- Chat with perplexityai model, good for web search
