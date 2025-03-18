@@ -67,6 +67,15 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
   end,
 })
 
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+  pattern = { 'markdown' },
+  callback = function()
+    vim.defer_fn(function()
+      vim.opt.wrap = true
+    end, 1000) -- 1000 milliseconds
+  end,
+})
+
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 7
 
