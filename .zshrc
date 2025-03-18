@@ -160,6 +160,9 @@ alias ghcs="gh copilot suggest"
 alias fsb='~/dotfiles/scripts/fsb.sh'
 alias fshow='~/dotfiles/scripts/fshow.sh'
 
+#loglang alias
+alias loglang="~/loglang/.venv/bin/python ~/loglang/src/loglang/main.py"
+
 # this is there for change-path command from Juraj
 source "$HOME/windows_path_wsl2/shell_setup.sh"
 
@@ -187,7 +190,7 @@ chpwd() {
   if [ -d ".venv" ]; then
     echo "Do you want to activate the virtual environment? (y/n)"
     read -k 1 answer
-    if [ "$answer" = "y" ] || [ "$answer" = "Y" ] || [ "$answer" = "" ]; then
+    if [ "$answer" = "y" ] || [ "$answer" = "Y" ] || [ "$answer" = "\n\n" ]; then
       source .venv/bin/activate
     fi
   fi

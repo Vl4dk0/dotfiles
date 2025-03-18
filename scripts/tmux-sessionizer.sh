@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/dotfiles/ ~/code/ ~/programming_shit/ ~/school/ ~/school/2year2semester/ ~/school/2year1semester/ ~/side_projects/ -mindepth 0 -maxdepth 1 -type d 2>/dev/null | fzf)
+    selected=$(find ~/dotfiles/ ~/code/ ~/programming_shit/ ~/sci-markdown/ ~/log_lang/ ~/school/ ~/school/2year2semester/ ~/school/2year1semester/ ~/side_projects/ -mindepth 0 -maxdepth 1 -type d 2>/dev/null | fzf)
 fi
 
 if [[ -z $selected ]]; then
@@ -18,11 +18,11 @@ if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
+if ! tmux has-session -t=$selected_name 2>/dev/null; then
     tmux new-session -ds $selected_name -c $selected
 fi
 
-if [[ -z $TMUX ]] && tmux has-session -t=$selected_name 2> /dev/null; then
+if [[ -z $TMUX ]] && tmux has-session -t=$selected_name 2>/dev/null; then
     tmux a -t $selected_name
     exit 0
 fi
