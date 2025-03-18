@@ -5,6 +5,7 @@ return { -- VERTICAL LINE SHOWING INDENTATION
     opts = {
       scope = {
         show_start = false,
+        show_end = false,
       },
     },
   },
