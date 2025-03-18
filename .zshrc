@@ -161,7 +161,7 @@ alias fsb='~/dotfiles/scripts/fsb.sh'
 alias fshow='~/dotfiles/scripts/fshow.sh'
 
 #loglang alias
-alias loglang="~/loglang/.venv/bin/python ~/loglang/src/loglang/main.py"
+alias loglang="~/log_lang/.venv/bin/python3 ~/log_lang/main.py"
 
 # this is there for change-path command from Juraj
 source "$HOME/windows_path_wsl2/shell_setup.sh"
