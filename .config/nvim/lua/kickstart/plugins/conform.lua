@@ -1,4 +1,4 @@
-return { -- AUTOFORMAT, FORMATTING
+return { -- AUTOFORMAT, FORMATTING, FORMATTERS
   { -- Autoformat
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
@@ -23,8 +23,7 @@ return { -- AUTOFORMAT, FORMATTING
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        local disable_filetypes = { c = true, cpp = true, python = true, haskell = true, kotlin = true, json = true }
+        local disable_filetypes = { c = true, cpp = true, python = true, haskell = true, kotlin = true, json = true, typescript = true }
         return {
           timeout_ms = 1500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
@@ -32,7 +31,7 @@ return { -- AUTOFORMAT, FORMATTING
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        -- python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
+        python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
         bash = { 'shfmt' },
         zsh = { 'beautysh' },
         sh = { 'shfmt' },
