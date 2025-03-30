@@ -79,6 +79,9 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 7
 
+-- Show virtual text
+vim.diagnostic.config { virtual_text = true }
+
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -272,6 +275,7 @@ vim.keymap.set('n', '<leader>bd', ':bd<CR>', { noremap = true, silent = true })
 -- Remap delete commands to use the black hole register
 vim.keymap.set({ 'v', 'n' }, 'd', '"_d', { noremap = true })
 vim.keymap.set({ 'v', 'n' }, 'dd', '"_dd', { noremap = true })
+vim.keymap.set({ 'v', 'n' }, 'D', '"_D', { noremap = true })
 
 -- Remap change commands to use the black hole register
 vim.keymap.set({ 'v', 'n' }, 'c', '"_c', { noremap = true })
