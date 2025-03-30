@@ -128,7 +128,10 @@ source "$HOME/.rye/env"
 # golang
 export PATH=$PATH:/usr/local/go/bin
 
+# https://github.com/Hackder/list-submit
+
 # sci-markdown
+# https://github.com/Hackder/sci-markdown
 alias sci-mark="~/sci-markdown/.venv/bin/python ~/sci-markdown/src/sci_markdown/__main__.py"
 
 # docker aliases
@@ -144,23 +147,26 @@ alias prolog="swipl"
 # alias for opening
 alias show="explorer.exe"
 
-# alias for alacritty config
-alias alacritty="nvim /mnt/c/Users/ThinkPad/AppData/Roaming/alacritty/alacritty.toml"
-
-# alias to go to windows documents
+# windows aliases
 alias windows="cd /mnt/c/Users/ThinkPad/Documents"
-
-# alias to go to windows downloads
 alias downloads="cd /mnt/c/Users/ThinkPad/Downloads"
 
+# aliases for config files
+alias weztermconf="nvim /mnt/c/Users/ThinkPad/.wezterm.lua"
+alias alacritty="nvim /mnt/c/Users/ThinkPad/AppData/Roaming/alacritty/alacritty.toml"
+alias wslconf="nvim /mnt/c/Users/ThinkPad/wsl.conf"
+alias wslconfig="nvim /mnt/c/Users/ThinkPad/.wslconfig"
+
 # alias to gh copilot suggest
+# https://docs.github.com/en/copilot/managing-copilot/configure-personal-settings/installing-github-copilot-in-the-cli
 alias ghcs="gh copilot suggest"
 
 # alias for git fzf
 alias fsb='~/dotfiles/scripts/fsb.sh'
 alias fshow='~/dotfiles/scripts/fshow.sh'
 
-#loglang alias
+# loglang alias
+# https://github.com/Hackder/log_lang
 alias loglang="~/log_lang/.venv/bin/python3 ~/log_lang/main.py"
 
 # this is there for change-path command from Juraj
