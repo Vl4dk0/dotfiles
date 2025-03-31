@@ -157,6 +157,9 @@ alias alacritty="nvim /mnt/c/Users/ThinkPad/AppData/Roaming/alacritty/alacritty.
 alias wslconf="nvim /mnt/c/Users/ThinkPad/wsl.conf"
 alias wslconfig="nvim /mnt/c/Users/ThinkPad/.wslconfig"
 
+# alias to dotfiles directory
+alias dotfiles="~/dotfiles"
+
 # alias to gh copilot suggest
 # https://docs.github.com/en/copilot/managing-copilot/configure-personal-settings/installing-github-copilot-in-the-cli
 alias ghcs="gh copilot suggest"
