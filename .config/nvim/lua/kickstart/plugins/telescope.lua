@@ -64,13 +64,60 @@ return { -- SEARCH TOOL
       end, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-      vim.keymap.set('n', '<leader>sg', function()
-        require('telescope.builtin').live_grep {
-          additional_args = function(args)
-            return vim.list_extend(args, { '--hidden', '--glob', '!\\.git', '--glob', '!node_modules' })
+      local default_pickers = require 'telescope.pickers'
+      local finders = require 'telescope.finders'
+      local make_entry = require 'telescope.make_entry'
+      local conf = require('telescope.config').values
+      vim.keymap.set('n', '<leader>sg', function(opts)
+        local finder = finders.new_async_job {
+          command_generator = function(prompt)
+            if not prompt or prompt == '' then
+              return nil
+            end
+
+            local pieces = vim.split(prompt, '  ')
+            local args = { 'rg' }
+
+            if pieces[1] then
+              table.insert(args, '-e')
+              table.insert(args, pieces[1])
+            end
+
+            if pieces[2] then
+              table.insert(args, '--glob')
+              table.insert(args, pieces[2])
+            end
+
+            return vim.list_extend(args, {
+              '--hidden',
+              '--glob',
+              '!\\.git',
+              '--glob',
+              '!node_modules',
+              '--color=never',
+              '--no-heading',
+              '--with-filename',
+              '--line-number',
+              '--column',
+              '--smart-case',
+            })
           end,
+
+          entry_maker = make_entry.gen_from_vimgrep(opts),
         }
-      end, { desc = '[S]earch by [G]rep' })
+
+        default_pickers
+          .new({}, {
+            debounce = 100,
+            prompt_title = 'Multi Grep',
+            finder = finder,
+            previewer = conf.grep_previewer {},
+            sorter = require('telescope.sorters').empty(),
+          })
+          :find()
+      end, {
+        desc = 'Grep string in all files (including hidden)',
+      })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })

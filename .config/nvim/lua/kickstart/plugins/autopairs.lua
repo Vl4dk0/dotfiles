@@ -17,7 +17,6 @@ return { -- PARENTHESES AUTOCOMPLETE PAIRS
     npairs.add_rule(Rule('$$', '$$', 'tex'))
 
     local cond = require 'nvim-autopairs.conds'
-    print(vim.inspect(cond))
 
     npairs.add_rules {
       Rule('$', '$', { 'markdown', 'tex', 'latex' })
