@@ -307,3 +307,8 @@ vim.keymap.set('n', 'vv', 'viw', { noremap = true, silent = true })
 
 -- I dont use the S command to rewrite a line
 vim.keymap.set({ 'v', 'n' }, 'S', '', { noremap = true, silent = true })
+
+-- Clear right-click menu
+vim.cmd [[
+  aunmenu PopUp
+]]
