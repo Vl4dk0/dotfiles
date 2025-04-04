@@ -10,39 +10,35 @@ return { -- DEBUGGING ADAPTER PROTOCOL, USEFUL FOR SETTING UP DEBUGGING
 
       vim.keymap.set('n', '<leader>dc', function()
         dap.continue()
-      end, { desc = 'Continue' })
+      end, { desc = '[d]ap [c]ontinue' })
 
       vim.keymap.set('n', '<leader>dr', function()
         dap.repl.open()
-      end, { desc = 'Open REPL' })
+      end, { desc = '[d]ap open [R]EPL' })
 
       vim.keymap.set('n', '<leader>di', function()
         dap.step_into()
-      end, { desc = 'Step into' })
+      end, { desc = '[d]ap step [i]nto' })
 
-      vim.keymap.set('n', '<leader>dov', function()
+      vim.keymap.set('n', '<leader>dv', function()
         dap.step_over()
-      end, { desc = 'Step over' })
+      end, { desc = '[d]ap step o[v]er' })
 
-      vim.keymap.set('n', '<leader>dou', function()
+      vim.keymap.set('n', '<leader>do', function()
         dap.step_out()
-      end, { desc = 'Step out' })
+      end, { desc = '[d]ap step o[u]t' })
 
       vim.keymap.set('n', '<leader>dl', function()
         dap.run_last()
-      end, { desc = 'Run last' })
-
-      vim.keymap.set('n', '<leader>dt', function()
-        dap.toggle()
-      end, { desc = 'Toggle' })
+      end, { desc = '[d]ap run [l]ast' })
 
       vim.keymap.set('n', '<leader>dd', function()
         dap.disconnect()
-      end, { desc = 'Disconnect' })
+      end, { desc = '[d]ap [d]isconnect' })
 
-      vim.keymap.set('n', '<leader>drb', function()
+      vim.keymap.set('n', '<leader>dcb', function()
         dap.clear_breakpoints()
-      end, { desc = 'Remove all breakpoints' })
+      end, { desc = '[d]ap [c]lear [b]reakpoints' })
 
       dap.adapters.coreclr = {
         type = 'executable',
@@ -106,7 +102,7 @@ return { -- DEBUGGING ADAPTER PROTOCOL, USEFUL FOR SETTING UP DEBUGGING
       config = function()
         require('dapui').setup()
 
-        vim.keymap.set('n', '<leader>du', function()
+        vim.keymap.set('n', '<leader>dt', function()
           require('dapui').toggle()
         end, { desc = 'Toggle UI' })
       end,
@@ -115,6 +111,7 @@ return { -- DEBUGGING ADAPTER PROTOCOL, USEFUL FOR SETTING UP DEBUGGING
       'theHamsta/nvim-dap-virtual-text',
       dependencies = { 'mfussenegger/nvim-dap' },
       config = function()
+        ---@diagnostic disable-next-line: missing-parameter
         require('nvim-dap-virtual-text').setup()
       end,
     },
