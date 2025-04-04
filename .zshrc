@@ -47,7 +47,7 @@ setopt appendhistory
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -113,9 +113,9 @@ bindkey -s ^f '~/scripts/tmux-sessionizer.sh\n'
 export PATH="/opt/nvim-linux64/bin:$PATH"
 
 # fnm
-FNM_PATH="/home/vladko_jancar/.local/share/fnm"
+FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/vladko_jancar/.local/share/fnm:$PATH"
+  export PATH="$HOME/.local/share/fnm:$PATH"
   eval "`fnm env --use-on-cd --shell zsh`"
 fi
 
@@ -136,8 +136,6 @@ alias sci-mark="~/sci-markdown/.venv/bin/python ~/sci-markdown/src/sci_markdown/
 
 # docker aliases
 alias cls="clear"
-alias dup="docker compose up -d"
-alias dstop="docker compose stop"
 
 # alias for running the program
 alias haskell="ghci"
@@ -157,10 +155,6 @@ alias alacritty="nvim /mnt/c/Users/ThinkPad/AppData/Roaming/alacritty/alacritty.
 alias wslconf="nvim /mnt/c/Users/ThinkPad/wsl.conf"
 alias wslconfig="nvim /mnt/c/Users/ThinkPad/.wslconfig"
 
-# alias to gh copilot suggest
-# https://docs.github.com/en/copilot/managing-copilot/configure-personal-settings/installing-github-copilot-in-the-cli
-alias ghcs="gh copilot suggest"
-
 # alias for git fzf
 alias fsb='~/dotfiles/scripts/fsb.sh'
 alias fshow='~/dotfiles/scripts/fshow.sh'
@@ -177,7 +171,7 @@ bindkey -s ^a 'tmux a\n'
 
 source <(fzf --zsh)
 
-[ -f "/home/vladko_jancar/.ghcup/env" ] && . "/home/vladko_jancar/.ghcup/env" # ghcup-env
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
 
 
 # functions
@@ -203,6 +197,8 @@ chpwd() {
 }
 
 chpwd
+
+eval "$(gh copilot alias -- zsh)"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
