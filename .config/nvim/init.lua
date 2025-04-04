@@ -244,12 +244,6 @@ vim.o.timeoutlen = 400 -- (default is 1000ms)
 -- Set the timeout length for key sequences
 vim.o.ttimeoutlen = 10 -- (default is 50ms)
 
--- Disabling that annoying Shift + J shit thal collapses lines
-vim.keymap.set({ 'v', 'n' }, 'J', 'j', { noremap = true, silent = true })
-
--- Disabling that annoying manual that lags my nvim in v-line mode
-vim.keymap.set({ 'v', 'n' }, 'K', 'k', { noremap = true, silent = true })
-
 -- remap weird w, b and e movement to W, B and E which are more predictable
 vim.keymap.set({ 'v', 'n' }, 'w', 'W', { noremap = true, silent = true })
 vim.keymap.set({ 'v', 'n' }, 'b', 'B', { noremap = true, silent = true })
@@ -312,3 +306,12 @@ vim.keymap.set({ 'v', 'n' }, 'S', '', { noremap = true, silent = true })
 vim.cmd [[
   aunmenu PopUp
 ]]
+
+-- Move up 4 lines on shift + k
+vim.keymap.set('n', 'K', '5k', { noremap = true, silent = true })
+
+-- Move down 4 lines on shift + j
+vim.keymap.set('n', 'J', '5j', { noremap = true, silent = true })
+
+-- disable <C-p> in insert mode
+vim.keymap.set('i', '<C-p>', '<Esc>', { noremap = true, silent = true })
