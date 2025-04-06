@@ -4,12 +4,29 @@ return { -- DEBUGGING ADAPTER PROTOCOL, USEFUL FOR SETTING UP DEBUGGING
     'mfussenegger/nvim-dap',
     config = function()
       local dap = require 'dap'
+
+      -- hints to use fkeys
+
+      local enable_hint = true
+      vim.keymap.set('n', '<leader>ddh', function()
+        enable_hint = false
+      end, { desc = '[d]ap [d]isable [h]ints' })
+
+      vim.keymap.set('n', '<leader>deh', function()
+        enable_hint = true
+      end, { desc = '[d]ap [e]nable [h]ints' })
+
+      -- motions controls
+
       vim.keymap.set('n', '<leader>db', function()
         dap.toggle_breakpoint()
       end, { desc = 'Toggle breakpoint' })
 
       vim.keymap.set('n', '<leader>dc', function()
         dap.continue()
+        if enable_hint then
+          print 'You can use F5'
+        end
       end, { desc = '[d]ap [c]ontinue' })
 
       vim.keymap.set('n', '<leader>dr', function()
@@ -18,14 +35,23 @@ return { -- DEBUGGING ADAPTER PROTOCOL, USEFUL FOR SETTING UP DEBUGGING
 
       vim.keymap.set('n', '<leader>di', function()
         dap.step_into()
+        if enable_hint then
+          print 'You can use F2'
+        end
       end, { desc = '[d]ap step [i]nto' })
 
       vim.keymap.set('n', '<leader>dv', function()
         dap.step_over()
+        if enable_hint then
+          print 'You can use F3'
+        end
       end, { desc = '[d]ap step o[v]er' })
 
       vim.keymap.set('n', '<leader>do', function()
         dap.step_out()
+        if enable_hint then
+          print 'You can use F4'
+        end
       end, { desc = '[d]ap step o[u]t' })
 
       vim.keymap.set('n', '<leader>dl', function()
@@ -39,6 +65,31 @@ return { -- DEBUGGING ADAPTER PROTOCOL, USEFUL FOR SETTING UP DEBUGGING
       vim.keymap.set('n', '<leader>dcb', function()
         dap.clear_breakpoints()
       end, { desc = '[d]ap [c]lear [b]reakpoints' })
+
+      vim.keymap.set('n', '<leader>dcl', function()
+        local input = vim.fn.input 'Condition: '
+        if input ~= '' then
+          vim.cmd(string.format("lua require('dap').set_breakpoint('%s')", input))
+        end
+      end, { desc = '[d]ap set [c]onditiona[l] breakpoint' })
+
+      -- fkeys controls
+
+      vim.keymap.set('n', '<F2>', function()
+        dap.step_into()
+      end, { desc = 'Step into' })
+
+      vim.keymap.set('n', '<F3>', function()
+        dap.step_over()
+      end, { desc = 'Step over' })
+
+      vim.keymap.set('n', '<F4>', function()
+        dap.step_out()
+      end, { desc = 'Step out' })
+
+      vim.keymap.set('n', '<F5>', function()
+        dap.continue()
+      end, { desc = 'Continue' })
 
       dap.adapters.coreclr = {
         type = 'executable',
@@ -68,9 +119,37 @@ return { -- DEBUGGING ADAPTER PROTOCOL, USEFUL FOR SETTING UP DEBUGGING
               if cmake_lists then
                 local content = cmake_lists:read '*all'
                 cmake_lists:close()
-                local project_name = content:match 'project%(([%w_%-]+)%)'
+                local project_name = content:match 'TARGET ([%w_%-]+)'
                 return current_dir .. '/build/' .. project_name
               end
+            end,
+            preRunCommands = {
+              'breakpoint name configure --disable cpp_exception',
+            },
+            request = 'launch',
+            stopOnEntry = false,
+            type = 'codelldb',
+          })
+
+          table.insert(config.configurations, {
+            console = 'integratedTerminal',
+            cwd = '${workspaceFolder}',
+            name = 'LLDB: Launch with arguments',
+            program = function()
+              return vim.fn.input {
+                prompt = 'Path to executable: ',
+                default = vim.fn.getcwd() .. '/',
+                completion = 'file',
+              }
+            end,
+            args = function()
+              local args = vim.fn.input {
+                prompt = 'Arguments: ',
+                default = vim.fn.getcwd() .. '/',
+                completion = 'file',
+              }
+
+              return vim.split(args, ' ')
             end,
             request = 'launch',
             stopOnEntry = false,
@@ -79,10 +158,8 @@ return { -- DEBUGGING ADAPTER PROTOCOL, USEFUL FOR SETTING UP DEBUGGING
 
           require('mason-nvim-dap').default_setup(config)
         end,
-        ensure_installed = {
-          'netcoredbg',
-        },
       },
+      ensure_installed = {},
     },
     {
       'mfussenegger/nvim-dap-python',
