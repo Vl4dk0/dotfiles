@@ -308,10 +308,17 @@ vim.cmd [[
 ]]
 
 -- Move up 4 lines on shift + k
-vim.keymap.set('n', 'K', '5k', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, 'K', '5k', { noremap = true, silent = true })
 
 -- Move down 4 lines on shift + j
-vim.keymap.set('n', 'J', '5j', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, 'J', '5j', { noremap = true, silent = true })
 
 -- disable <C-p> in insert mode
 vim.keymap.set('i', '<C-p>', '<Esc>', { noremap = true, silent = true })
+
+-- tabs
+vim.keymap.set('n', '<leader>tn', ':tabnew<CR>', { desc = '[t]ab [n]ew', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tc', ':tabclose<CR>', { desc = '[t]ab [c]lose', noremap = true, silent = true })
+
+vim.keymap.set('n', '<leader>tl', ':tabnext<CR>', { desc = '[t]ab next', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>th', ':tabprevious<CR>', { desc = '[t]ab prev', noremap = true, silent = true })
