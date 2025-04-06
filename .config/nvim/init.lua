@@ -320,5 +320,4 @@ vim.keymap.set('i', '<C-p>', '<Esc>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>tn', ':tabnew<CR>', { desc = '[t]ab [n]ew', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>tc', ':tabclose<CR>', { desc = '[t]ab [c]lose', noremap = true, silent = true })
 
-vim.keymap.set('n', '<leader>tl', ':tabnext<CR>', { desc = '[t]ab next', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>th', ':tabprevious<CR>', { desc = '[t]ab prev', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tt', ':tabnext<CR>', { desc = '[t]ab nex[t]', noremap = true, silent = true })
