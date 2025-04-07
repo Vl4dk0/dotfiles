@@ -96,6 +96,30 @@ return { -- DEBUGGING ADAPTER PROTOCOL, USEFUL FOR SETTING UP DEBUGGING
         command = vim.fn.stdpath 'data' .. '/mason/bin/netcoredbg',
         args = { '--interpreter=vscode' },
       }
+
+      dap.adapters.codelldb = {
+        type = 'server',
+        port = '${port}',
+        executable = {
+          command = vim.fn.stdpath 'data' .. '/mason/bin/codelldb',
+          args = { '--port', '${port}' },
+        },
+      }
+
+      dap.configurations.cpp = {
+        {
+          name = 'Launch file',
+          type = 'codelldb',
+          request = 'launch',
+          program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+          end,
+          cwd = '${workspaceFolder}',
+          stopOnEntry = false,
+        },
+      }
+
+      dap.configurations.c = dap.configurations.cpp
     end,
   },
   {
@@ -159,7 +183,7 @@ return { -- DEBUGGING ADAPTER PROTOCOL, USEFUL FOR SETTING UP DEBUGGING
           require('mason-nvim-dap').default_setup(config)
         end,
       },
-      ensure_installed = {},
+      ensure_installed = { 'codelldb' },
     },
     {
       'mfussenegger/nvim-dap-python',
