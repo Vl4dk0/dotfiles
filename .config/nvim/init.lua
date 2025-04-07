@@ -263,9 +263,6 @@ vim.cmd [[
   highlight CursorLine guibg=none
 ]]
 
--- close buffer with <leader>bd
-vim.keymap.set('n', '<leader>bd', ':bd<CR>', { noremap = true, silent = true })
-
 -- Remap delete commands to use the black hole register
 vim.keymap.set({ 'v', 'n' }, 'd', '"_d', { noremap = true })
 vim.keymap.set({ 'v', 'n' }, 'dd', '"_dd', { noremap = true })
