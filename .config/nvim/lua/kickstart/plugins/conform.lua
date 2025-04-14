@@ -43,7 +43,7 @@ return { -- AUTOFORMAT, FORMATTING, FORMATTERS
         java = { 'clang-format' },
         kotlin = { 'ktfmt' },
         toml = { 'prettierd', 'prettier', stop_after_first = true },
-        -- haskell = { 'fourmolu' },
+        typst = { 'typstfmt', 'typstyle' },
       },
     },
   },
