@@ -123,8 +123,6 @@ if command -v fnm > /dev/null; then
   eval "`fnm env --use-on-cd --shell zsh`"
 fi
 
-source "$HOME/.rye/env"
-
 # golang
 export PATH=$PATH:/usr/local/go/bin
 
@@ -139,7 +137,6 @@ alias cls="clear"
 
 # alias for running the program
 alias haskell="ghci"
-alias python="python3"
 alias prolog="swipl"
 
 # alias for opening
@@ -158,6 +155,10 @@ alias wslconfig="nvim /mnt/c/Users/ThinkPad/.wslconfig"
 # alias for git fzf
 alias fsb='~/dotfiles/scripts/fsb.sh'
 alias fshow='~/dotfiles/scripts/fshow.sh'
+
+# aliases for workflows
+alias dulogika="$HOME/dotfiles/workflows/dulogika.sh"
+alias pulogika="$HOME/dotfiles/workflows/pulogika.sh"
 
 # loglang alias
 # https://github.com/Hackder/log_lang
