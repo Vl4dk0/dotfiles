@@ -3,7 +3,7 @@
 syntax clear
 
 " Keywords
-syntax keyword clKeyword incl mod loc fun header theory thm pred axiom
+syntax keyword clKeyword incl mod loc fun header theory thm pred axiom proved proof ind indm inst use case cut
 syntax match clKeywordBackslash /\\items/
 syntax match clKeywordBackslash /\\eq/
 syntax match clKeywordBackslash /\\item/
@@ -17,7 +17,7 @@ highlight link clKeyword Keyword
 highlight link clKeywordBackslash Keyword
 
 " Highlights but shouldn't
-syntax keyword clSpecialKeyword Define with do and if else while
+syntax keyword clSpecialKeyword Define with do and if else while While
 highlight link clSpecialKeyword None
 
 " Constants
