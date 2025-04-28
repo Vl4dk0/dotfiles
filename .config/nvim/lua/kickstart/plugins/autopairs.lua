@@ -19,7 +19,7 @@ return { -- PARENTHESES AUTOCOMPLETE PAIRS
     local cond = require 'nvim-autopairs.conds'
 
     npairs.add_rules {
-      Rule('$', '$', { 'markdown', 'tex', 'latex' })
+      Rule('$', '$', { 'markdown', 'tex', 'latex', 'typst' })
         -- don't add a pair if the next character is $
         -- :with_pair(cond.not_after_regex '%$'),
         -- don't move right when repeat character
