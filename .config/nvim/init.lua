@@ -251,16 +251,16 @@ vim.keymap.set({ 'v', 'n' }, 'e', 'E', { noremap = true, silent = true })
 
 -- Make the background transparent
 vim.cmd [[
-  highlight Normal guibg=none
+  "highlight Normal guibg=none
   "highlight NonText guibg=none
-  highlight NormalNC guibg=none
+  "highlight NormalNC guibg=none
   "highlight LineNr guibg=none
   "highlight SignColumn guibg=none
   "highlight EndOfBuffer guibg=none
   "highlight VertSplit guibg=none
   "highlight StatusLine guibg=none
   "highlight TabLineFill guibg=none
-  highlight CursorLine guibg=none
+  "highlight CursorLine guibg=none
 ]]
 
 -- Remap delete commands to use the black hole register
