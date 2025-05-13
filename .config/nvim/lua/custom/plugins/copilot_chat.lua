@@ -92,7 +92,7 @@ You are an AI assistant specialized in answering questions about systems program
       },
     },
     keys = {
-      { '<Left>', ':CopilotChat<CR>', desc = 'CopilotChatStart', mode = { 'n', 'v' } },
+      { '<Right>', ':CopilotChat<CR>', desc = 'CopilotChatStart', mode = { 'n', 'v' } },
       { '<leader>cc', ':CopilotChat<CR>', desc = 'CopilotChatStart', mode = { 'n', 'v' } },
       { '<leader>cs', ':CopilotChatStop<CR>', desc = 'CopilotChatStop', mode = { 'n', 'v' } },
       { '<leader>cr', ':CopilotChatReset<CR>', desc = 'CopilotChatReset', mode = { 'n', 'v' } },

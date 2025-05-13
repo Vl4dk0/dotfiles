@@ -1,3 +1,7 @@
+-- Disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Set <space> as the leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -90,7 +94,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Close the current buffer
-vim.api.nvim_set_keymap('n', '<leader>e', ':Ex<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>e', ':Neotree toggle<CR>', { noremap = true, silent = true })
 
 -- Indent selected text by four spaces in visual mode
 vim.api.nvim_set_keymap('v', '<Tab>', '>gv', { noremap = true, silent = true })
@@ -218,7 +222,7 @@ vim.keymap.set('n', '<A-Up>', ':resize +2<CR>', { noremap = true, silent = true 
 vim.keymap.set('n', '<A-Down>', ':resize -2<CR>', { noremap = true, silent = true })
 
 -- Save and exit buffer with <laeder>we
-vim.keymap.set('n', '<leader>we', ':w<CR>:Ex<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>we', ':w<CR>:Neotree toggle<CR>', { noremap = true, silent = true })
 
 -- Save buffer with <laeder>ww
 vim.keymap.set('n', '<leader>ww', ':w<CR>', { noremap = true, silent = true })
