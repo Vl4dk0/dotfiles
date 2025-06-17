@@ -1,4 +1,4 @@
-return { -- DEBUGGING ADAPTER PROTOCOL, USEFUL FOR SETTING UP DEBUGGING
+return { -- DEBUGGING, DEBUGGER
   { 'nvim-neotest/nvim-nio' },
   {
     'mfussenegger/nvim-dap',
@@ -90,12 +90,6 @@ return { -- DEBUGGING ADAPTER PROTOCOL, USEFUL FOR SETTING UP DEBUGGING
       vim.keymap.set('n', '<F5>', function()
         dap.continue()
       end, { desc = 'Continue' })
-
-      dap.adapters.coreclr = {
-        type = 'executable',
-        command = vim.fn.stdpath 'data' .. '/mason/bin/netcoredbg',
-        args = { '--interpreter=vscode' },
-      }
 
       dap.adapters.codelldb = {
         type = 'server',
@@ -189,12 +183,6 @@ return { -- DEBUGGING ADAPTER PROTOCOL, USEFUL FOR SETTING UP DEBUGGING
       'mfussenegger/nvim-dap-python',
       config = function()
         require('dap-python').setup '~/.virtualenvs/debugpy/bin/python'
-      end,
-    },
-    {
-      'leoluz/nvim-dap-go',
-      config = function()
-        require('dap-go').setup()
       end,
     },
     {

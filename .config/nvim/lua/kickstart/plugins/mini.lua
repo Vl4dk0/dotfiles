@@ -10,16 +10,16 @@ return { -- SURROUND + STATUSLINE
         highlight_duration = 500,
 
         mappings = {
-          add = 'sa', -- Add surrounding in Normal and Visual modes
-          delete = '', -- Delete surrounding
-          find = '', -- Find surrounding (to the right)
-          find_left = '', -- Find surrounding (to the left)
-          highlight = '', -- Highlight surrounding
-          replace = '', -- Replace surrounding
-          update_n_lines = '', -- Update `n_lines`
+          add = 'sa',
+          delete = '',
+          find = '',
+          find_left = '',
+          highlight = '',
+          replace = '',
+          update_n_lines = '',
 
-          suffix_last = '', -- Suffix to search with "prev" method
-          suffix_next = '', -- Suffix to search with "next" method
+          suffix_last = '',
+          suffix_next = '',
         },
 
         n_lines = 20,

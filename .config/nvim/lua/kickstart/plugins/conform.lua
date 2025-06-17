@@ -1,5 +1,5 @@
 return { -- AUTOFORMAT, FORMATTING, FORMATTERS
-  { -- Autoformat
+  {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
@@ -7,14 +7,7 @@ return { -- AUTOFORMAT, FORMATTING, FORMATTERS
       {
         '<leader>f',
         function()
-          local filetype = vim.bo.filetype
-
-          if filetype == 'htmldjango' then
-            local file = vim.fn.expand '%:p'
-            vim.cmd('!~/.venvs/nvim/bin/djhtml ' .. file)
-          else
-            require('conform').format { async = true, lsp_fallback = true }
-          end
+          require('conform').format { async = true, lsp_fallback = true }
         end,
         mode = '',
         desc = '[F]ormat buffer',
@@ -39,9 +32,7 @@ return { -- AUTOFORMAT, FORMATTING, FORMATTERS
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
         typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-        go = { 'gofumpt', 'crlfmt', stop_after_first = true },
         java = { 'clang-format' },
-        kotlin = { 'ktfmt' },
         toml = { 'prettierd', 'prettier', stop_after_first = true },
         typst = { 'typstfmt', 'typstyle' },
         html = { 'prettierd', 'prettier', stop_after_first = true },

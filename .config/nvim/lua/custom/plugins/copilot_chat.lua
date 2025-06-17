@@ -4,8 +4,8 @@ return { -- COPILOT CHAT AI CHATBOT
     branch = 'main',
     lazy = false,
     dependencies = {
-      { 'github/copilot.vim' }, -- or github/copilot.vim
-      { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
+      { 'github/copilot.vim' },
+      { 'nvim-lua/plenary.nvim' },
     },
     build = 'make tiktoken',
     opts = {
@@ -19,8 +19,6 @@ return { -- COPILOT CHAT AI CHATBOT
       },
       window = {
         layout = 'vertical', -- 'vertical', 'horizontal', 'float', 'replace'
-        -- width = 0.75, -- fractional width of parent, or absolute width in columns when > 1
-        -- height = 0.75, -- fractional height of parent, or absolute height in rows when > 1
       },
       mappings = {
         complete = {
