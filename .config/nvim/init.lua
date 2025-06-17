@@ -241,6 +241,11 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
 -- center the screen after ctrl-u
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
 
+-- toggle line wrap with <leader>wr
+vim.keymap.set('n', '<leader>wr', function()
+  vim.wo.wrap = not vim.wo.wrap
+end, { noremap = true, silent = true })
+
 -- support CRLF files
 vim.opt.fileformats = 'unix,dos,mac'
 
