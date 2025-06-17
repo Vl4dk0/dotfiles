@@ -164,6 +164,9 @@ alias pulogika="$HOME/dotfiles/workflows/pulogika.sh"
 # https://github.com/Hackder/log_lang
 alias loglang="~/log_lang/.venv/bin/python3 ~/log_lang/main.py"
 
+# vim -> nvim alias
+alias vim="nvim"
+
 # this is there for change-path command from Juraj
 source "$HOME/windows_path_wsl2/shell_setup.sh"
 
