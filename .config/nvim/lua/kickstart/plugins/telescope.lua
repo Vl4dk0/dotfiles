@@ -19,16 +19,13 @@ return { -- SEARCH TOOL
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
+      vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = 'NONE' })
+
       require('telescope').setup {
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
-        -- pickers = {}
+        defaults = {},
         extensions = {
           ['ui-select'] = {
-            require('telescope.themes').get_dropdown(),
+            require('telescope.themes').get_dropdown {},
           },
         },
       }

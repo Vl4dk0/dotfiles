@@ -240,3 +240,8 @@ vim.keymap.set('n', '<leader>tn', ':tabnew<CR>', { desc = '[t]ab [n]ew', noremap
 vim.keymap.set('n', '<leader>tc', ':tabclose<CR>', { desc = '[t]ab [c]lose', noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>tt', ':tabnext<CR>', { desc = '[t]ab nex[t]', noremap = true, silent = true })
+
+-- source current lua file
+vim.keymap.set('n', '<leader>x', ':source %<CR>', { desc = '([x]) source current lua file', noremap = true, silent = true })
+
+-- vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = 'NONE' })
