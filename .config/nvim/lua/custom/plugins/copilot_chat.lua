@@ -9,7 +9,7 @@ return { -- COPILOT CHAT AI CHATBOT
     },
     build = 'make tiktoken',
     opts = {
-      model = 'claude-3.7-sonnet-thought',
+      model = 'claude-sonnet-4',
       question_header = os.getenv 'USER' .. ' ',
       answer_header = 'jurko_petras ',
       chat_autocomplete = false,
