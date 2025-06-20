@@ -6,3 +6,4 @@
 .config/github-copilot/**
 
 .config/xp_project
+.config/nvim/lazy-lock.json

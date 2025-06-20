@@ -91,118 +91,46 @@ return { -- DEBUGGING, DEBUGGER
         dap.continue()
       end, { desc = 'Continue' })
 
-      dap.adapters.codelldb = {
-        type = 'server',
-        port = '${port}',
-        executable = {
-          command = vim.fn.stdpath 'data' .. '/mason/bin/codelldb',
-          args = { '--port', '${port}' },
-        },
-      }
+      -- dap ui controls
 
-      dap.configurations.cpp = {
-        {
-          name = 'Launch file',
-          type = 'codelldb',
-          request = 'launch',
-          program = function()
-            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-          end,
-          cwd = '${workspaceFolder}',
-          stopOnEntry = false,
-        },
-      }
-
-      dap.configurations.c = dap.configurations.cpp
+      local dapui = require 'dapui'
+      dap.listeners.before.attach.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.launch.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated.dapui_config = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited.dapui_config = function()
+        dapui.close()
+      end
     end,
   },
   {
-    'jay-babu/mason-nvim-dap.nvim',
-    event = 'VeryLazy',
-    dependencies = {
-      'mfussenegger/nvim-dap',
-      'williamboman/mason.nvim',
-    },
-    opts = {
-      handlers = {
-        codelldb = function(config)
-          table.insert(config.configurations, {
-            args = {},
-            console = 'integratedTerminal',
-            cwd = '${workspaceFolder}',
-            name = 'LLDB: Launch prog3',
-            program = function()
-              local current_dir = vim.fn.expand '%:p:h'
-              local cmake_lists = io.open(current_dir .. '/CMakeLists.txt')
-              if cmake_lists then
-                local content = cmake_lists:read '*all'
-                cmake_lists:close()
-                local project_name = content:match 'TARGET ([%w_%-]+)'
-                return current_dir .. '/build/' .. project_name
-              end
-            end,
-            preRunCommands = {
-              'breakpoint name configure --disable cpp_exception',
-            },
-            request = 'launch',
-            stopOnEntry = false,
-            type = 'codelldb',
-          })
+    'mfussenegger/nvim-dap-python',
+    config = function()
+      require('dap-python').setup '~/.virtualenvs/debugpy/bin/python'
+    end,
+  },
+  {
+    'rcarriga/nvim-dap-ui',
+    dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
+    config = function()
+      require('dapui').setup()
 
-          table.insert(config.configurations, {
-            console = 'integratedTerminal',
-            cwd = '${workspaceFolder}',
-            name = 'LLDB: Launch with arguments',
-            program = function()
-              return vim.fn.input {
-                prompt = 'Path to executable: ',
-                default = vim.fn.getcwd() .. '/',
-                completion = 'file',
-              }
-            end,
-            args = function()
-              local args = vim.fn.input {
-                prompt = 'Arguments: ',
-                default = vim.fn.getcwd() .. '/',
-                completion = 'file',
-              }
-
-              return vim.split(args, ' ')
-            end,
-            request = 'launch',
-            stopOnEntry = false,
-            type = 'codelldb',
-          })
-
-          require('mason-nvim-dap').default_setup(config)
-        end,
-      },
-      ensure_installed = { 'codelldb' },
-    },
-    {
-      'mfussenegger/nvim-dap-python',
-      config = function()
-        require('dap-python').setup '~/.virtualenvs/debugpy/bin/python'
-      end,
-    },
-    {
-      'rcarriga/nvim-dap-ui',
-      dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
-      config = function()
-        require('dapui').setup()
-
-        vim.keymap.set('n', '<leader>dt', function()
-          require('dapui').toggle()
-        end, { desc = 'Toggle UI' })
-      end,
-    },
-    {
-      'theHamsta/nvim-dap-virtual-text',
-      dependencies = { 'mfussenegger/nvim-dap' },
-      config = function()
-        ---@diagnostic disable-next-line: missing-parameter
-        require('nvim-dap-virtual-text').setup()
-      end,
-    },
+      vim.keymap.set('n', '<leader>dt', function()
+        require('dapui').toggle()
+      end, { desc = 'Toggle UI' })
+    end,
+  },
+  {
+    'theHamsta/nvim-dap-virtual-text',
+    dependencies = { 'mfussenegger/nvim-dap' },
+    config = function()
+      ---@diagnostic disable-next-line: missing-parameter
+      require('nvim-dap-virtual-text').setup()
+    end,
   },
 }

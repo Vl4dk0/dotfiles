@@ -41,6 +41,7 @@ return { -- AUTOFORMAT, FORMATTING, FORMATTERS
         tex = { 'tex-fmt' },
         plaintex = { 'tex-fmt' },
         bib = { 'bibtex-tidy' },
+        rust = { 'rustfmt' },
       },
     },
   },
