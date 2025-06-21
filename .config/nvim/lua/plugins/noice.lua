@@ -26,7 +26,4 @@ return { -- UI
     'MunifTanjim/nui.nvim',
     'rcarriga/nvim-notify',
   },
-  keymaps = {
-    { '<leader>nd', ':Noice dismiss<CR>', desc = 'Noice Dismiss' },
-  },
 }
