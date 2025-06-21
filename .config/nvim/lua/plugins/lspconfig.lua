@@ -3,12 +3,12 @@ return { -- LSP CONFIGURATION
   {
     'neovim/nvim-lspconfig',
     dependencies = {
+      'saghen/blink.cmp',
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       { 'j-hui/fidget.nvim', opts = {} },
-
       {
         'folke/lazydev.nvim',
         ft = 'lua',
@@ -20,9 +20,13 @@ return { -- LSP CONFIGURATION
       },
       { 'Bilal2453/luvit-meta', lazy = true },
     },
+
     config = function()
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
+      require('lspconfig').lua_ls.setup { capabilities = capabilities }
+
       vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+        group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
         callback = function(event)
           local map = function(keys, func, desc)
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
@@ -49,12 +53,12 @@ return { -- LSP CONFIGURATION
 
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-          map('<leader>h', vim.lsp.buf.hover, 'Show hover information')
+          -- map('<leader>h', vim.lsp.buf.hover, 'Show hover information')
         end,
       })
 
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+      -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       local servers = {
         clangd = {},
@@ -73,6 +77,7 @@ return { -- LSP CONFIGURATION
             },
           },
         },
+
         lua_ls = {
           settings = {
             Lua = {
@@ -83,22 +88,7 @@ return { -- LSP CONFIGURATION
             },
           },
         },
-        omnisharp = {
-          cmd = { 'omnisharp', '--languageserver' },
-          settings = {
-            FormattingOptions = {
-              EnableEditorConfigSupport = true,
-              OrganizeImports = true,
-            },
-            RoslynExtensionsOptions = {
-              EnableAnalyzersSupport = true,
-              EnableImportCompletion = true,
-            },
-            Sdk = {
-              IncludePrereleases = true,
-            },
-          },
-        },
+
         ts_ls = {
           handlers = {
             ['textDocument/publishDiagnostics'] = function(_, result, ctx, config)
@@ -128,6 +118,12 @@ return { -- LSP CONFIGURATION
           },
         },
       }
+
+      -- local lspconfig = require 'lspconfig'
+      -- for server, config in pairs(servers) do
+      --   config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+      --   lspconfig[server].setup(config)
+      -- end
 
       require('mason').setup()
 

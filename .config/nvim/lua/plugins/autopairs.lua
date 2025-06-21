@@ -28,6 +28,8 @@ return { -- PARENTHESES AUTOCOMPLETE PAIRS
         ),
       Rule('\\lbrace ', ' \\rbrace', { 'markdown', 'tex', 'latex' }),
       Rule('\\Lbrace ', ' \\Rbrace', { 'markdown', 'tex', 'latex' }),
+
+      Rule('function(', ') end', { 'lua' }),
     }
   end,
 }

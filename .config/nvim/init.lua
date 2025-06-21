@@ -91,13 +91,13 @@ vim.keymap.set({ 'n', 'v' }, '<down>', '<cmd>echo "Use j to move!!"<CR>')
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
 })
 
-require 'kickstart.lazy'
+require '.lazy'
 
 vim.keymap.set({ 'n', 'v' }, '<leader>nd', ':Noice dismiss<CR>', { noremap = true, silent = true })
 
@@ -243,5 +243,3 @@ vim.keymap.set('n', '<leader>tt', ':tabnext<CR>', { desc = '[t]ab nex[t]', norem
 
 -- source current lua file
 vim.keymap.set('n', '<leader>x', ':source %<CR>', { desc = '([x]) source current lua file', noremap = true, silent = true })
-
--- vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = 'NONE' })
