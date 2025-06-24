@@ -1,63 +1,49 @@
 format = """
+$username\
+$hostname\
 $directory\
 $git_branch\
+$git_state\
 $git_status\
-$python\
-$nodejs\
-$golang\
-$time\
 $cmd_duration\
-\n$character"""
+$line_break\
+$python\
+$character"""
 
 [directory]
-style = "fg:#00ff7f bg:#003319"
+style = "green"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+[character]
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
 
 [git_branch]
-symbol = ""
-style = "bg:#006633"
-format = '[[ $symbol $branch ](fg:#00ff7f bg:#006633)]($style)'
+format = "[$branch]($style)"
+style = "bright-black"
 
 [git_status]
-style = "bg:#006633"
-format = '[[($all_status$ahead_behind )](fg:#00ff7f bg:#006633)]($style)'
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "cyan"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
 
-[python]
-symbol = ""
-style = "bg:#00994d"
-format = '[[ $symbol ($version) ](fg:#00ff7f bg:#00994d)]($style)'
-
-[nodejs]
-symbol = ""
-style = "bg:#00994d"
-format = '[[ $symbol ($version) ](fg:#00ff7f bg:#00994d)]($style)'
-
-[rust]
-symbol = ""
-style = "bg:#00994d"
-format = '[[ $symbol ($version) ](fg:#00ff7f bg:#00994d)]($style)'
-
-[golang]
-symbol = ""
-style = "bg:#00994d"
-format = '[[ $symbol ($version) ](fg:#00ff7f bg:#00994d)]($style)'
-
-[time]
-disabled = false
-time_format = "%T"
-style = "bg:#00cc66"
-format = '[[  $time ](fg:#d7ede1 bg:#00cc66)]($style)'
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
 
 [cmd_duration]
-min_time = 1  # milliseconds
-style = "bold yellow"
-format = '[[ $duration ](fg:#ffffff)]($style)'
-disabled = false
+format = "[$duration]($style) "
+style = "yellow"
+
+[python]
+format = "[$virtualenv]($style) "
+style = "bright-black"

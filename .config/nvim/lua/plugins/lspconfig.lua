@@ -137,7 +137,6 @@ return { -- LSP CONFIGURATION
         'prettierd',
         'prettier',
         'clang-format',
-        'typstfmt',
         'typstyle',
         'tex-fmt',
         'bibtex-tidy',

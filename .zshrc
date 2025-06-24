@@ -140,17 +140,17 @@ alias haskell="ghci"
 alias prolog="swipl"
 
 # alias for opening
-alias show="explorer.exe"
+# alias show="explorer.exe"
 
 # windows aliases
-alias windows="cd /mnt/c/Users/ThinkPad/Documents"
-alias downloads="cd /mnt/c/Users/ThinkPad/Downloads"
+# alias windows="cd /mnt/c/Users/ThinkPad/Documents"
+# alias downloads="cd /mnt/c/Users/ThinkPad/Downloads"
 
 # aliases for config files
-alias weztermconf="nvim /mnt/c/Users/ThinkPad/.wezterm.lua"
-alias alacritty="nvim /mnt/c/Users/ThinkPad/AppData/Roaming/alacritty/alacritty.toml"
-alias wslconf="nvim /mnt/c/Users/ThinkPad/wsl.conf"
-alias wslconfig="nvim /mnt/c/Users/ThinkPad/.wslconfig"
+# alias weztermconf="nvim /mnt/c/Users/ThinkPad/.wezterm.lua"
+# alias alacritty="nvim /mnt/c/Users/ThinkPad/AppData/Roaming/alacritty/alacritty.toml"
+# alias wslconf="nvim /mnt/c/Users/ThinkPad/wsl.conf"
+# alias wslconfig="nvim /mnt/c/Users/ThinkPad/.wslconfig"
 
 # alias for git fzf
 alias fsb='~/dotfiles/scripts/fsb.sh'
@@ -168,7 +168,7 @@ alias loglang="~/log_lang/.venv/bin/python3 ~/log_lang/main.py"
 alias vim="nvim"
 
 # this is there for change-path command from Juraj
-source "$HOME/windows_path_wsl2/shell_setup.sh"
+# source "$HOME/windows_path_wsl2/shell_setup.sh"
 
 # ctrl-a to attach to tmux
 bindkey -s ^a 'tmux a\n'
