@@ -49,48 +49,43 @@ style = "fg:#01a2fb"
 format = " ($conflicted$untracked$modified$staged$renamed$deleted)($ahead_behind$stashed) "
 
 [cmd_duration]
-style = "yellow"
-format = "[$duration]($style) "
+style = "fg:01a2fb"
+format = "| [$duration]($style)"
 
 [python]
 symbol = " "
 style = "fg:#01a2fb"
-format = '| [$symbol]($style) ($virtualenv $version)'
+format = '| [$symbol]($style) ($virtualenv $version) '
 
 [nodejs]
 symbol = ""
 style = "fg:#01a2fb"
-format = '| [$symbol ($version) ]($style)'
+format = '| [$symbol ($version) ]($style) '
 
 [rust]
 symbol = ""
 style = "fg:#01a2fb"
-format = '| [$symbol ($version) ]($style)'
+format = '| [$symbol ($version) ]($style) '
 
 [golang]
 symbol = ""
 style = "fg:#01a2fb"
-format = '| [$symbol ($version) ]($style)'
+format = '| [$symbol ($version) ]($style) '
 
 [php]
 symbol = ""
 style = "fg:#01a2fb"
-format = '| [$symbol ($version) ]($style)'
+format = '| [$symbol ($version) ]($style) '
 
 [cpp]
 symbol = " "
 style = "fg:#01a2fb"
-format = '| [$symbol ($version) ]($style)'
+format = '| [$symbol ($version) ]($style) '
 
 [lua]
 symbol = " "
 style = "fg:#01a2fb"
-format = '| [$symbol ($version) ]($style)'
-
-[memory_usage]
-symbol = "󰍛 "
-style = "fg:#01a2fb"
-format = '| [$symbol ($version) ]($style)'
+format = '| [$symbol ($version) ]($style) '
 
 [os.symbols]
 Android = " "
