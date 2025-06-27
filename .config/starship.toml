@@ -8,9 +8,11 @@ $git_status\
 $cmd_duration\
 $line_break\
 $python\
+$rust\
 $character"""
 
 [directory]
+read_only = " 󰌾"
 style = "green"
 format = "[ $path ]($style)"
 truncation_length = 3
@@ -22,18 +24,19 @@ error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
 
 [git_branch]
+symbol = " "
 format = "[$branch]($style)"
 style = "bright-black"
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
 style = "cyan"
-conflicted = "​"
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
+conflicted = ""
+untracked = ""
+modified = ""
+staged = ""
+renamed = ""
+deleted = ""
 stashed = "≡"
 
 [git_state]
@@ -45,5 +48,81 @@ format = "[$duration]($style) "
 style = "yellow"
 
 [python]
+symbol = " "
 format = "[$virtualenv]($style) "
 style = "bright-black"
+
+[nodejs]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[php]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[aws]
+symbol = "  "
+
+[bun]
+symbol = " "
+
+[c]
+symbol = " "
+
+[cpp]
+symbol = " "
+
+[cmake]
+symbol = " "
+
+[deno]
+symbol = " "
+
+[docker_context]
+symbol = " "
+
+[git_commit]
+tag_symbol = '  '
+
+[haskell]
+symbol = " "
+
+[java]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[os.symbols]
+Android = " "
+Linux = " "
+Macos = " "
+Ubuntu = " "
+Windows = "󰍲 "
+
+[package]
+symbol = "󰏗 "
+
+[zig]
+symbol = " "
+
+[gradle]
+symbol = " "

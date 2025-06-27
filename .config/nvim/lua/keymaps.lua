@@ -75,9 +75,9 @@ vim.keymap.set('n', '<leader>wr', function()
 end, { noremap = true, silent = true })
 
 -- remap weird w, b and e movement to W, B and E which are more predictable
-vim.keymap.set({ 'v', 'n' }, 'w', 'W', { noremap = true, silent = true })
-vim.keymap.set({ 'v', 'n' }, 'b', 'B', { noremap = true, silent = true })
-vim.keymap.set({ 'v', 'n' }, 'e', 'E', { noremap = true, silent = true })
+-- vim.keymap.set({ 'v', 'n' }, 'w', 'W', { noremap = true, silent = true })
+-- vim.keymap.set({ 'v', 'n' }, 'b', 'B', { noremap = true, silent = true })
+-- vim.keymap.set({ 'v', 'n' }, 'e', 'E', { noremap = true, silent = true })
 
 -- Remap delete commands to use the black hole register
 vim.keymap.set({ 'v', 'n' }, 'd', '"_d', { noremap = true })

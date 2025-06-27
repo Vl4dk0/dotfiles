@@ -23,9 +23,11 @@ selection-foreground = #acb1ab
 
 # [window]
 maximize = true
-fullscreen = true
 title = " "
-window-decoration = none
+quit-after-last-window-closed = false
 
 # [keybinds]
 keybind = ctrl+v=paste_from_clipboard
+
+# [mouse]
+mouse-hide-while-typing = false
