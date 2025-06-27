@@ -28,9 +28,9 @@ style = "fg:#01a2fb"
 format = "[ $path ]($style)"
 
 [character]
-success_symbol ='[\$](fg:#01a2fb)'
-error_symbol = '[\$](red)'
-vimcmd_symbol = '[\$](fg:#01a2fb)'
+success_symbol ='[❯](fg:#01a2fb)'
+error_symbol = '[❯](red)'
+vimcmd_symbol = '[❯](fg:#01a2fb)'
 
 [git_branch]
 symbol = ""
