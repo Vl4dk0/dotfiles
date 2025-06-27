@@ -147,6 +147,7 @@ alias prolog="swipl"
 # alias downloads="cd /mnt/c/Users/ThinkPad/Downloads"
 
 # aliases for config files
+alias ghosttyconf="nvim ~/.config/ghostty/config"
 # alias weztermconf="nvim /mnt/c/Users/ThinkPad/.wezterm.lua"
 # alias alacritty="nvim /mnt/c/Users/ThinkPad/AppData/Roaming/alacritty/alacritty.toml"
 # alias wslconf="nvim /mnt/c/Users/ThinkPad/wsl.conf"
