@@ -110,12 +110,14 @@ vim.cmd [[
 -- set the color scheme
 vim.cmd [[
   colorscheme habamax
+  highlight Normal guibg=#101010
+  highlight NonText guibg=#101010
 ]]
 
--- Move up 4 lines on shift + k
+-- Move up 5 lines on shift + k
 vim.keymap.set({ 'n', 'v' }, 'K', '5k', { noremap = true, silent = true })
 
--- Move down 4 lines on shift + j
+-- Move down 5 lines on shift + j
 vim.keymap.set({ 'n', 'v' }, 'J', '5j', { noremap = true, silent = true })
 
 -- disable <C-p> in insert mode
