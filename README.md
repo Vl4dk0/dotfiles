@@ -1,0 +1,88 @@
+# My Personal Development Environment Setup
+
+This guide outlines the steps to set up my personal development environment on a new Ubuntu-based system.
+
+## 1. Prerequisites & Initial Git Setup
+
+First, ensure `curl` and `git` are installed. They typically come pre-installed on modern Ubuntu distributions.
+
+Then, clone this dotfiles repository and configure Git with your personal details.
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/dotfiles.git ~/dotfiles
+
+# Configure Git
+git config --global user.name "Your Name"
+git config --global user.email "youremail@example.com"
+```
+
+## 2. Install Homebrew
+
+Homebrew is used to install and manage most of the required packages.
+
+```bash
+# Install Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Add Homebrew to your PATH
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+```
+
+## 3. Install Core Packages
+
+Install Neovim, Python, FNM (for Node.js), Tmux, Stow (for managing dotfiles), and Zsh using Homebrew.
+
+```bash
+brew install neovim python fnm tmux stow zsh
+```
+
+## 4. Set Up Node.js
+
+Use FNM to install and set the latest Long-Term Support (LTS) version of Node.js.
+
+```bash
+fnm install --lts
+fnm use --lts
+```
+
+## 5. Install Rust
+
+Install Rust using the official `rustup` installer.
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+Follow the on-screen instructions to complete the installation.
+
+## 6. Stow Dotfiles
+
+Use `stow` to create symlinks from the files in this repository to your home directory. This effectively "installs" your configurations.
+
+```bash
+cd ~/dotfiles
+stow .
+```
+
+## 7. Set Up Zsh & Oh My Zsh
+
+Now that your `.zshrc` is in place, install Oh My Zsh and set Zsh as your default shell.
+
+```bash
+# Install Oh My Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Change the default shell to Zsh
+chsh -s $(which zsh)
+```
+**Important:** You must **log out and log back in** for the shell change to take full effect.
+
+## 8. Finalize Neovim Setup
+
+The last step is to let `lazy.nvim` install all your Neovim plugins.
+
+Simply launch Neovim:
+```bash
+nvim
+```
+On the first launch, `lazy.nvim` will automatically download and set up all the plugins defined in your configuration. Once it's finished, restart Neovim, and your setup will be complete.
