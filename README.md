@@ -1,10 +1,10 @@
-# My Personal Development Environment Setup
+# Setup
 
-This guide outlines the steps to set up my personal development environment on a new Ubuntu-based system.
+This guide outlines the steps to set up these dotfiles.
 
 ## 1. Prerequisites & Initial Git Setup
 
-First, ensure `curl` and `git` are installed. They typically come pre-installed on modern Ubuntu distributions.
+First, ensure `curl` and `git` are installed.
 
 Then, clone this dotfiles repository and configure Git with your personal details.
 
@@ -29,7 +29,7 @@ Homebrew is used to install and manage most of the required packages.
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 ```
 
-## 3. Install Core Packages
+## 3. Install Core Packages via Homebrew
 
 Install Neovim, Python, FNM (for Node.js), Tmux, Stow (for managing dotfiles), and Zsh using Homebrew.
 
@@ -37,7 +37,7 @@ Install Neovim, Python, FNM (for Node.js), Tmux, Stow (for managing dotfiles), a
 brew install neovim python fnm tmux stow zsh
 ```
 
-## 4. Set Up Node.js
+## 4. Set Up Node.js using fnm
 
 Use FNM to install and set the latest Long-Term Support (LTS) version of Node.js.
 
@@ -46,7 +46,7 @@ fnm install --lts
 fnm use --lts
 ```
 
-## 5. Install Rust
+## 5. Install Rust from rustup
 
 Install Rust using the official `rustup` installer.
 
@@ -63,6 +63,7 @@ Use `stow` to create symlinks from the files in this repository to your home dir
 cd ~/dotfiles
 stow .
 ```
+If there is error with files already existing, just delete those files and only keep those inside dotfiles, then try stowing again.
 
 ## 7. Set Up Zsh & Oh My Zsh
 
@@ -85,4 +86,4 @@ Simply launch Neovim:
 ```bash
 nvim
 ```
-On the first launch, `lazy.nvim` will automatically download and set up all the plugins defined in your configuration. Once it's finished, restart Neovim, and your setup will be complete.
+On the first launch, `lazy.nvim` will automatically download and set up all the plugins defined in your configuration.
