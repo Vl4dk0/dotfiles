@@ -103,7 +103,7 @@ return {
     dashboard.section.buttons.val = {
       dashboard.button('e', '  New file', ':ene <BAR> startinsert <CR>'),
       dashboard.button('f', '  Find file', find_files),
-      dashboard.button('g', 'grep  Find word', live_grep),
+      dashboard.button('g', '  Grep word', live_grep),
       dashboard.button('r', '  Recent files', ':Telescope oldfiles <CR>'),
       dashboard.button('l', '鈴  Lazy', ':Lazy<CR>'),
       dashboard.button('q', '  Quit', ':qa<CR>'),
@@ -111,11 +111,11 @@ return {
     dashboard.section.footer.val = footer()
 
     dashboard.config.layout = {
-      { type = 'padding', val = 2 },
+      { type = 'padding', val = 4 },
       dashboard.section.header,
-      { type = 'padding', val = 2 },
+      { type = 'padding', val = 4 },
       dashboard.section.buttons,
-      { type = 'padding', val = 2 },
+      { type = 'padding', val = 4 },
       dashboard.section.footer,
     }
 
