@@ -18,17 +18,17 @@ $character\
 [directory]
 truncation_length = 3
 truncation_symbol = "…/"
-style = "fg:#01a2fb"
+style = "fg:#00cc00"
 format = "[ $path ]($style)"
 
 [character]
-success_symbol ='[❯](fg:#01a2fb)'
+success_symbol ='[❯](fg:#00cc00)'
 error_symbol = '[❯](red)'
-vimcmd_symbol = '[❯](fg:#01a2fb)'
+vimcmd_symbol = '[❯](fg:#00cc00)'
 
 [git_branch]
 symbol = ""
-style = "fg:#01a2fb"
+style = "fg:#00cc00"
 format = "| [$symbol]($style) main"
 
 [git_status]
@@ -39,51 +39,39 @@ staged = "+"
 renamed = "R"
 deleted = "-"
 stashed = "≡"
-style = "fg:#01a2fb"
+style = "fg:#00cc00"
 format = " ($conflicted$untracked$modified$staged$renamed$deleted)($ahead_behind$stashed) "
 
 [cmd_duration]
-style = "fg:01a2fb"
+style = "yellow"
 format = "| [$duration]($style)"
 
 [python]
 symbol = " "
-style = "fg:#01a2fb"
+style = "fg:#00cc00"
 format = '| [$symbol]($style) ($virtualenv $version) '
 
 [nodejs]
 symbol = ""
-style = "fg:#01a2fb"
+style = "fg:#00cc00"
 format = '| [$symbol ($version) ]($style) '
 
 [rust]
 symbol = ""
-style = "fg:#01a2fb"
+style = "fg:#00cc00"
 format = '| [$symbol ($version) ]($style) '
 
 [golang]
 symbol = ""
-style = "fg:#01a2fb"
-format = '| [$symbol ($version) ]($style) '
-
-[php]
-symbol = ""
-style = "fg:#01a2fb"
+style = "fg:#00cc00"
 format = '| [$symbol ($version) ]($style) '
 
 [cpp]
 symbol = " "
-style = "fg:#01a2fb"
+style = "fg:#00cc00"
 format = '| [$symbol ($version) ]($style) '
 
 [lua]
 symbol = " "
-style = "fg:#01a2fb"
+style = "fg:#00cc00"
 format = '| [$symbol ($version) ]($style) '
-
-[os.symbols]
-Android = " "
-Linux = " "
-Macos = " "
-Ubuntu = " "
-Windows = "󰍲 "
