@@ -29,7 +29,7 @@ vimcmd_symbol = '[❯](fg:#00cc00)'
 [git_branch]
 symbol = ""
 style = "fg:#00cc00"
-format = "| [$symbol]($style) main"
+format = "| [$symbol]($style) $branch"
 
 [git_status]
 conflicted = "X"
