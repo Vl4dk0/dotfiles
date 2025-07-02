@@ -62,7 +62,6 @@ return { -- LSP CONFIGURATION
 
       local servers = {
         clangd = {},
-        pyright = {},
 
         jdtls = {
           settings = {
@@ -124,9 +123,9 @@ return { -- LSP CONFIGURATION
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua',
-        'ruff',
-        'isort',
         'shfmt',
+        'yapf',
+        'reorder-python-imports',
         'beautysh',
         'prettierd',
         'prettier',

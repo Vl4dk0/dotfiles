@@ -24,7 +24,7 @@ return { -- AUTOFORMAT, FORMATTING, FORMATTERS
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        python = { 'ruff', 'isort' },
+        python = { 'yapf', 'reorder-python-imports' },
         bash = { 'shfmt' },
         zsh = { 'beautysh' },
         sh = { 'shfmt' },
