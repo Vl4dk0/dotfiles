@@ -87,3 +87,13 @@ Simply launch Neovim:
 nvim
 ```
 On the first launch, `lazy.nvim` will automatically download and set up all the plugins defined in your configuration.
+
+If you get error with debugpy:
+```
+mkdir ~/.virtualenvs
+cd ~/.virtualenvs
+python -m venv debugpy
+debugpy/bin/python -m pip install debugpy
+```
+
+TODO: consider using pyenv by default, add docker instalation steps and setup.
