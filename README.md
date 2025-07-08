@@ -34,7 +34,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 Install Neovim, Python, FNM (for Node.js), Tmux, Stow (for managing dotfiles), and Zsh using Homebrew.
 
 ```bash
-brew install neovim python fnm tmux stow zsh
+brew install neovim python fnm tmux stow zsh tldr
 ```
 
 ## 4. Set Up Node.js using fnm
