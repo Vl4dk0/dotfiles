@@ -111,7 +111,20 @@ return { -- DEBUGGING, DEBUGGER
   {
     'mfussenegger/nvim-dap-python',
     config = function()
-      require('dap-python').setup '~/.virtualenvs/debugpy/bin/python'
+      require('dap-python').setup()
+      local dap = require 'dap'
+      dap.configurations.python = {
+        {
+          type = 'python',
+          request = 'launch',
+          name = 'Launch file',
+          program = '${file}',
+          pythonPath = function()
+            return 'python'
+          end,
+          cwd = '${workspaceFolder}',
+        },
+      }
     end,
   },
   {
