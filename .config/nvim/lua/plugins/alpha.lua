@@ -31,6 +31,8 @@ return {
           '.next',
           '-E',
           '.venv',
+          '-E',
+          '__pycache__',
         },
       }
     end
@@ -101,12 +103,13 @@ return {
     -- Dashboard configuration
     dashboard.section.header.val = header()
     dashboard.section.buttons.val = {
-      dashboard.button('e', '  New file', ':ene <BAR> startinsert <CR>'),
-      dashboard.button('f', '  Find file', find_files),
-      dashboard.button('g', '  Grep word', live_grep),
+      dashboard.button('n', '  New file', ':ene <BAR> startinsert <CR>'),
       dashboard.button('r', '  Recent files', ':Telescope oldfiles <CR>'),
-      dashboard.button('l', '鈴  Lazy', ':Lazy<CR>'),
-      dashboard.button('q', '  Quit', ':qa<CR>'),
+      dashboard.button('f', '  Find file', find_files),
+      dashboard.button('s', '  Grep word', live_grep),
+      dashboard.button('l', '鈴 Lazy', ':Lazy<CR>'),
+      dashboard.button('g', ' LazyGit', ':LazyGit<CR>'),
+      dashboard.button('q', 'X  Quit', ':qa<CR>'),
     }
     dashboard.section.footer.val = footer()
 
