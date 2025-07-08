@@ -57,6 +57,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
+export VISUAL='nvim'
+
 export TERM='xterm-256color'
 
 # Compilation flags
@@ -111,6 +113,9 @@ alias loglang="~/log_lang/.venv/bin/python3 ~/log_lang/main.py"
 
 # vim -> nvim alias
 alias vim="nvim"
+
+# show -> xdg-open
+alias show="xdg-open"
 
 # ctrl-a to attach to tmux
 bindkey -s ^a 'tmux a\n'
