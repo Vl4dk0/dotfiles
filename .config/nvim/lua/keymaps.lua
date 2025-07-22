@@ -51,17 +51,14 @@ vim.keymap.set('n', '<A-Up>', ':resize +2<CR>', { noremap = true, silent = true 
 -- Resize window with Ctrl + Down (not working)
 vim.keymap.set('n', '<A-Down>', ':resize -2<CR>', { noremap = true, silent = true })
 
--- Save and exit buffer with <laeder>we
-vim.keymap.set('n', '<leader>we', ':w<CR>:Ex<CR>', { noremap = true, silent = true })
+-- Exit buffer with <laeder>e
+vim.keymap.set('n', '<leader>e', ':Ex<CR>', { noremap = true, silent = true })
 
--- Save buffer with <laeder>ww
-vim.keymap.set('n', '<leader>ww', ':w<CR>', { noremap = true, silent = true })
+-- Save buffer with <laeder>w
+vim.keymap.set('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })
 
--- Save and quit nvim with <laeder>wq
-vim.keymap.set('n', '<leader>wq', ':wq!<CR>', { noremap = true, silent = true })
-
--- quit nvim with <laeder>qq
-vim.keymap.set('n', '<leader>qq', ':q!<CR>', { noremap = true, silent = true })
+-- quit nvim with <laeder>q
+vim.keymap.set('n', '<leader>q', ':q!<CR>', { noremap = true, silent = true })
 
 -- center the screen after ctrl-d
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
@@ -94,7 +91,7 @@ vim.keymap.set({ 'v', 'n' }, 's', '"_s', { noremap = true })
 vim.keymap.set({ 'v', 'n' }, 'S', '"_s', { noremap = true })
 
 -- Remap paste command in visual mode to use the black hole register
-vim.keymap.set('v', 'p', '"_dP', { noremap = true })
+vim.keymap.set('v', 'p', '"_dp', { noremap = true })
 
 -- faster selecting word
 vim.keymap.set('n', 'vv', 'viw', { noremap = true, silent = true })
