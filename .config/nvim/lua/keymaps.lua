@@ -57,8 +57,11 @@ vim.keymap.set('n', '<leader>e', ':Ex<CR>', { noremap = true, silent = true })
 -- Save buffer with <laeder>w
 vim.keymap.set('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })
 
--- quit nvim with <laeder>q
+-- Quit nvim with <laeder>q
 vim.keymap.set('n', '<leader>q', ':q!<CR>', { noremap = true, silent = true })
+
+-- Save and quit nvim with <leader>x
+vim.keymap.set('n', '<leader>x', ':wq!<CR>', { noremap = true, silent = true })
 
 -- center the screen after ctrl-d
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
@@ -92,6 +95,7 @@ vim.keymap.set({ 'v', 'n' }, 'S', '"_s', { noremap = true })
 
 -- Remap paste command in visual mode to use the black hole register
 vim.keymap.set('v', 'p', '"_dp', { noremap = true })
+vim.keymap.set('v', 'P', '"_dP', { noremap = true })
 
 -- faster selecting word
 vim.keymap.set('n', 'vv', 'viw', { noremap = true, silent = true })
@@ -127,7 +131,7 @@ vim.keymap.set('n', '<leader>tc', ':tabclose<CR>', { desc = '[t]ab [c]lose', nor
 vim.keymap.set('n', '<leader>tt', ':tabnext<CR>', { desc = '[t]ab nex[t]', noremap = true, silent = true })
 
 -- source current lua file
-vim.keymap.set('n', '<leader>x', ':source %<CR>', { desc = '([x]) source current lua file', noremap = true, silent = true })
+-- vim.keymap.set('n', '<leader>x', ':source %<CR>', { desc = '([x]) source current lua file', noremap = true, silent = true })
 
 -- Noice dismiss
 vim.keymap.set({ 'n', 'v' }, '<leader>nd', ':Noice dismiss<CR>', { noremap = true, silent = true })
