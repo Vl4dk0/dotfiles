@@ -46,14 +46,6 @@ return {
       math.randomseed(os.time())
       local headers = {
         {
-          '███╗   ██╗██╗   ██╗██╗██╗   ██╗██╗',
-          '████╗  ██║██║   ██║██║╚██╗ ██╔╝██║',
-          '██╔██╗ ██║██║   ██║██║ ╚████╔╝ ██║',
-          '██║╚██╗██║██║   ██║██║  ╚██╔╝  ╚═╝',
-          '██║ ╚████║╚██████╔╝██║   ██║   ██╗',
-          '╚═╝  ╚═══╝ ╚═════╝ ╚═╝   ╚═╝   ╚═╝',
-        },
-        {
           ' _   _ _                        ',
           '| \\ | (_)                      ',
           '|  \\| |_  __ _  __ _  ___ _ __ ',
@@ -103,7 +95,6 @@ return {
     -- Dashboard configuration
     dashboard.section.header.val = header()
     dashboard.section.buttons.val = {
-      dashboard.button('n', '📝 New file', ':ene <BAR> startinsert <CR>'),
       dashboard.button('r', '📅 Recent files', ':Telescope oldfiles <CR>'),
       dashboard.button('f', '🔍  Find file', find_files),
       dashboard.button('s', '🔍 Grep word', live_grep),
