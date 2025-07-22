@@ -103,13 +103,13 @@ return {
     -- Dashboard configuration
     dashboard.section.header.val = header()
     dashboard.section.buttons.val = {
-      dashboard.button('n', '  New file', ':ene <BAR> startinsert <CR>'),
-      dashboard.button('r', '  Recent files', ':Telescope oldfiles <CR>'),
-      dashboard.button('f', '  Find file', find_files),
-      dashboard.button('s', '  Grep word', live_grep),
-      dashboard.button('l', '鈴 Lazy', ':Lazy<CR>'),
-      dashboard.button('g', ' LazyGit', ':LazyGit<CR>'),
-      dashboard.button('q', 'X  Quit', ':qa<CR>'),
+      dashboard.button('n', '📝 New file', ':ene <BAR> startinsert <CR>'),
+      dashboard.button('r', '📅 Recent files', ':Telescope oldfiles <CR>'),
+      dashboard.button('f', '🔍  Find file', find_files),
+      dashboard.button('s', '🔍 Grep word', live_grep),
+      dashboard.button('l', '💤 Lazy', ':Lazy<CR>'),
+      dashboard.button('g', '🌱 LazyGit', ':LazyGit<CR>'),
+      dashboard.button('q', '⏻  Quit', ':qa<CR>'),
     }
     dashboard.section.footer.val = footer()
 
