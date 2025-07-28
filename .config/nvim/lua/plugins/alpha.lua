@@ -96,7 +96,7 @@ return {
     dashboard.section.header.val = header()
     dashboard.section.buttons.val = {
       dashboard.button('r', '📅 Recent files', ':Telescope oldfiles <CR>'),
-      dashboard.button('f', '🔍  Find file', find_files),
+      dashboard.button('f', '🔍 Find file', find_files),
       dashboard.button('s', '🔍 Grep word', live_grep),
       dashboard.button('l', '💤 Lazy', ':Lazy<CR>'),
       dashboard.button('g', '🌱 LazyGit', ':LazyGit<CR>'),
