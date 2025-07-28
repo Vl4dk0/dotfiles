@@ -60,7 +60,7 @@ vim.o.timeoutlen = 400
 vim.o.ttimeoutlen = 10
 
 -- Show virtual text
-vim.diagnostic.config { virtual_text = true }
+vim.diagnostic.config { virtual_lines = true }
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
