@@ -10,11 +10,11 @@ Then, clone this dotfiles repository and configure Git with your personal detail
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/dotfiles.git ~/dotfiles
+git clone https://github.com/Vl4dk0/dotfiles.git ~/dotfiles
 
 # Configure Git
-git config --global user.name "Your Name"
-git config --global user.email "youremail@example.com"
+git config --global user.name "Vladko Jancar"
+git config --global user.email "jvladko@gmail.com"
 ```
 
 ## 2. Install Homebrew
@@ -31,10 +31,10 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 ## 3. Install Core Packages via Homebrew
 
-Install Neovim, Python, FNM (for Node.js), Tmux, Stow (for managing dotfiles), and Zsh using Homebrew.
+Install stuff using Homebrew.
 
 ```bash
-brew install neovim python fnm tmux stow zsh tldr
+brew install neovim python fnm tmux stow zsh tldr gemini-cli
 ```
 
 ## 4. Set Up Node.js using fnm
