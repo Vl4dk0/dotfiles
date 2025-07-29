@@ -103,10 +103,6 @@ alias ghosttyconf="nvim ~/.config/ghostty/config"
 alias fsb='~/dotfiles/scripts/fsb.sh'
 alias fshow='~/dotfiles/scripts/fshow.sh'
 
-# aliases for workflows
-alias dulogika="$HOME/dotfiles/workflows/dulogika.sh"
-alias pulogika="$HOME/dotfiles/workflows/pulogika.sh"
-
 # loglang alias
 # https://github.com/Hackder/log_lang
 alias loglang="~/log_lang/.venv/bin/python3 ~/log_lang/main.py"
@@ -116,6 +112,9 @@ alias vim="nvim"
 
 # show -> xdg-open
 alias show="xdg-open"
+
+# cd alias
+alias work="cd ~/Documents/nabu/Web_scraping_data/legal_ai/scrapping/microservices/"
 
 # ctrl-a to attach to tmux
 bindkey -s ^a 'tmux a\n'
