@@ -23,7 +23,7 @@ return { -- AUTOFORMAT, FORMATTING, FORMATTERS
         }
       end,
       formatters_by_ft = {
-        sql = { 'sqlfmt' },
+        sql = { 'sqlfmt', 'pgformatter' },
         xml = { 'xmlformatter' },
         lua = { 'stylua' },
         python = { 'yapf', 'reorder-python-imports' },
