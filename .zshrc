@@ -5,7 +5,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export PATH="$HOME/.local/mygit/git/usr/bin:$HOME/.local/bin:$PATH"
-# chsh 
+# chsh
 # export SHELL=$(which zsh)
 
 # Set name of the theme to load --- if set to "random", it will
@@ -61,11 +61,14 @@ export VISUAL='nvim'
 
 export TERM='xterm-256color'
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+if [ -f ~/.zsh_secrets ]; then
+  source ~/.zsh_secrets
+fi
 
 # For a full list of active aliases, run `alias`.
-alias zshrc="nvim ~/.zshrc"
+if [ -f ~/.zsh_aliases ]; then
+  source ~/.zsh_aliases
+fi
 
 eval "$(starship init zsh)"
 bindkey -s ^f '~/scripts/tmux-sessionizer.sh\n'
@@ -73,48 +76,20 @@ export PATH="/opt/nvim-linux64/bin:$PATH"
 
 # fnm
 FNM_PATH="$HOME/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
+if [ -d "$FNM_PATH" ];
+then
   export PATH="$HOME/.local/share/fnm:$PATH"
   eval "`fnm env --use-on-cd --shell zsh`"
 fi
 
-if command -v fnm > /dev/null; then
+if command -v fnm > /dev/null;
+then
   eval "`fnm env --use-on-cd --shell zsh`"
 fi
 
 # golang
 export PATH=$PATH:/usr/local/go/bin
 
-# sci-markdown
-# https://github.com/Hackder/sci-markdown
-alias sci-mark="~/sci-markdown/.venv/bin/python ~/sci-markdown/src/sci_markdown/__main__.py"
-
-# docker aliases
-alias cls="clear"
-
-# alias for running the program
-alias haskell="ghci"
-alias prolog="swipl"
-
-# aliases for config files
-alias ghosttyconf="nvim ~/.config/ghostty/config"
-
-# alias for git fzf
-alias fsb='~/dotfiles/scripts/fsb.sh'
-alias fshow='~/dotfiles/scripts/fshow.sh'
-
-# loglang alias
-# https://github.com/Hackder/log_lang
-alias loglang="~/log_lang/.venv/bin/python3 ~/log_lang/main.py"
-
-# vim -> nvim alias
-alias vim="nvim"
-
-# show -> xdg-open
-alias show="xdg-open"
-
-# cd alias
-alias work="cd ~/Documents/nabu/Web_scraping_data/legal_ai/scrapping/microservices/"
 
 # ctrl-a to attach to tmux
 bindkey -s ^a 'tmux a\n'
@@ -145,8 +120,6 @@ chpwd() {
 }
 
 chpwd
-
-eval "$(gh copilot alias -- zsh)"
 
 #SDKMAN
 export SDKMAN_DIR="$HOME/.sdkman"

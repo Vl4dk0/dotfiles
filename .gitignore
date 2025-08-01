@@ -7,3 +7,5 @@
 
 .config/xp_project
 .config/nvim/lazy-lock.json
+.zsh_secrets
+.gemini/settings.json

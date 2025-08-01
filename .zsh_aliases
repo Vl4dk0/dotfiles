@@ -1,0 +1,28 @@
+# General aliases
+alias cls="clear"
+alias vim="nvim"
+alias show="xdg-open"
+
+# Config file aliases
+alias zshrc="nvim ~/.zshrc"
+alias ghosty="nvim ~/.config/ghostty/config"
+alias ghostty="nvim ~/.config/ghostty/config"
+
+# Navigation
+alias work="cd ~/Documents/nabu/Web_scraping_data/legal_ai/scrapping/microservices/"
+
+# Language/tooling aliases
+alias haskell="ghci"
+alias prolog="swipl"
+
+# Custom scripts
+alias sci-mark="~/sci-markdown/.venv/bin/python ~/sci-markdown/src/sci_markdown/__main__.py"
+alias loglang="~/log_lang/.venv/bin/python3 ~/log_lang/main.py"
+alias fsb='~/dotfiles/scripts/fsb.sh'
+alias fshow='~/dotfiles/scripts/fshow.sh'
+
+# env replace alias
+alias gen-config="envsubst '\$GITHUB_TOKEN' < ~/.gemini/settings.template.json > ~/.gemini/settings.json && echo 'geminis settings.json generated'"
+
+# gh alias
+eval "$(gh copilot alias -- zsh)"
