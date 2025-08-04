@@ -13,6 +13,10 @@
         "Authorization": "${GITHUB_TOKEN}"
       },
       "timeout": 5000
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"]
     }
   },
   "checkpointing": {
