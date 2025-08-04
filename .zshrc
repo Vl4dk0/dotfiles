@@ -51,7 +51,7 @@ setopt appendhistory
 # ENABLE_CORRECTION="true"
 
 # plugins
-plugins=(git)
+plugins=(git poetry poetry-env autojump sudo)
 
 source $ZSH/oh-my-zsh.sh
 
