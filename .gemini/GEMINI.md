@@ -6,35 +6,42 @@ This document outlines my preferences and technical environment to ensure our in
 
 ## About Me & My Environment
 
-- **Role:** I am a university student studying Computer Science and also work a coding job.
-- **Location:** I am based in Slovakia. I may occasionally ask questions in Slovak, but unless I specifically ask for a response in Slovak (e.g., for translation or content creation), **please always reply in English.**
-- **Operating System:** I use Linux, specifically Ubuntu 24.04 with the Wayland display server. 
-- **Shell:** I use zsh, so I have my config in `.zshrc`.
+- **Role:** I am a Computer Science university student and also work a coding job. I have an advanced understanding of mathematics, algorithms, and core computer science concepts.
+- **Location:** I am from Slovakia. Please always reply in English unless I specifically ask for a Slovak response.
+- **Operating System:** I use Linux, specifically Ubuntu 24.04 with the Wayland display server.
+- **Shell:** I use `zsh`, and my configuration file is located at `~/.zshrc`.
 - **Hardware:** My machine is a Lenovo ThinkPad E15 Gen 4 with a Ryzen 7 CPU and integrated graphics.
 - **Package Management:** I use **Homebrew** for installing system-wide tools whenever possible.
-- **Python:** I manage Python versions with `pyenv`. Please always use the `python` command, not `python3`.
-- **Node.js:** I use `fnm` (Fast Node Manager) to manage Node.js versions.
-- **Code Editor:** My primary editor is **Neovim** with **Lazy** package manager. I may ask for help with my configuration from time to time.
+- **Programming Languages & Skills:**
+    - **Python:** Advanced. I have multiple versions: `python` (3.12.11), `python3` (3.13.5), `python3.12` (3.12.11).
+    - **JavaScript, Java, C++:** Medium proficiency.
+    - **Go, Rust, C#:** Beginner level.
+    - **Web Development:** I prefer using **React**.
+- **Development Tools:**
+    - **Git:** Medium proficiency.
+    - **PostgreSQL, Docker, Kubernetes:** Upper-beginner level. I understand the concepts but am not fully confident in using them.
+- **Code Editor:** My primary editor is **Neovim**, and I use **Lazy** as my package manager. I may ask for help with my configuration.
 
 ---
 
 ## Core Principles & Coding Style
 
-- **Simplicity is Key:** I strongly prefer code that is simple, clean, and easy to understand. Prioritize readability and maintainability over overly clever or complex solutions.
-- **Reusability:** I value utility functions and reusable code blocks. If you see an opportunity to create a reusable function, please do so.
-- **Don't Delete, Comment:** When refactoring or suggesting changes, please do not delete code you think is unnecessary. Instead, comment it out and explain why you believe it might be redundant. I will remove it myself once I am sure. This aligns with my "measure twice, cut once" philosophy.
-- **Sequential Thinking:** I appreciate it when you think through problems step-by-step. Outlining a plan before diving into the solution is very helpful.
+- **Simplicity is Key:** I strongly prefer code that is simple, clean, and easy to understand. Prioritize readability over complex solutions.
+- **Reusability:** I value utility functions and reusable code blocks.
+- **Python F-Strings:** Please use f-strings for string formatting in Python, like this: `print(f"variable: {variable}")`.
+- **Don't Delete, Comment:** When refactoring, please comment out old code instead of deleting it and explain your reasoning.
+- **Sequential Thinking:** I appreciate it when you think through problems step-by-step and outline a plan before providing a solution.
 
 ---
 
 ## Interaction & Collaboration Preferences
 
-- **Ask for Clarification:** Please be proactive in asking for more details. If a request is ambiguous, don't make assumptions. It's much better for you to ask me questions to get the full context than to provide a solution that misses the mark.
-- **Example of Good Clarification:** If I say, *"There is a function in `download.py` that failed for some URLs, implement retry logic,"* I expect you to ask clarifying questions like:
-    - "How many retries should I implement?"
-    - "Should we use exponential backoff between retries? If so, what's the initial delay?"
-    - "Should we log a message each time a retry occurs?"
-- **Context is King:** I expect you to be able to read files, understand the existing code, and act based on that understanding. I will provide you with the necessary context or file contents.
-- **Problem-Solving:** I rely on you to help me with a wide range of tasks, from fixing bugs and setting up development environments to solving university homework. I trust your ability to plan, figure things out, and provide robust solutions.
+- **Ask for Clarification:** Please be proactive in asking for details if a request is ambiguous. It's better to ask questions than to make incorrect assumptions.
+- **Example of Good Clarification:** If I say, *"Implement retry logic,"* please ask about the number of retries, backoff strategy, logging, etc.
+- **Context is King:** I expect you to read and understand the context of files I provide.
+- **Output Format:**
+    - Please provide all code in Markdown blocks with the language specified.
+    - For complex topics, provide a high-level explanation followed by the code.
+    - **Do not use the canvas feature.**
+- **Problem-Solving:** I rely on you for a wide range of tasks, from fixing bugs and setting up environments to helping with university homework. I trust your ability to plan and provide robust solutions.
 
-By following these guidelines, you will be able to assist me much more effectively. Thank you!
