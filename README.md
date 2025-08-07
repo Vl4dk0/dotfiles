@@ -96,4 +96,4 @@ python -m venv debugpy
 debugpy/bin/python -m pip install debugpy
 ```
 
-TODO: consider using pyenv by default, add docker instalation steps and setup.
+TODO: add docker instalation steps and setup.
