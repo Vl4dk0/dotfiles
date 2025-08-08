@@ -10,7 +10,7 @@ return { -- SURROUND + STATUSLINE
         highlight_duration = 500,
 
         mappings = {
-          add = 'sa',
+          add = 'S',
           delete = '',
           find = '',
           find_left = '',
