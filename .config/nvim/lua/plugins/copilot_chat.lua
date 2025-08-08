@@ -9,14 +9,17 @@ return { -- COPILOT CHAT AI CHATBOT
     },
     build = 'make tiktoken',
     opts = {
-      model = 'claude-sonnet-4',
+      model = 'gpt-5',
+      headers = {
+        user = os.getenv 'USER' .. ' ',
+        assistant = 'jurko_petras: ',
+        tool = '🔧 Tool: ',
+      },
+      separator = '━━',
+      show_folds = false, -- Disable folding for cleaner look
       question_header = os.getenv 'USER' .. ' ',
       answer_header = 'jurko_petras ',
-      providers = {
-        github_models = {
-          disabled = true,
-        },
-      },
+      providers = {},
       contexts = {
         buffer = {},
         buffers = {},
