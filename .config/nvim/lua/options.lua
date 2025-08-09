@@ -71,3 +71,6 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Disable swap files
 vim.opt.swapfile = false
+
+-- show color column
+vim.opt.colorcolumn = '80'
