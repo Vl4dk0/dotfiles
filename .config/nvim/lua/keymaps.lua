@@ -72,7 +72,7 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
 -- toggle line wrap with <leader>rr
 vim.keymap.set('n', '<leader>rr', function()
   vim.wo.wrap = not vim.wo.wrap
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, desc = 'Toggle line w[r]ap' })
 
 -- remap weird w, b and e movement to W, B and E which are more predictable
 -- vim.keymap.set({ 'v', 'n' }, 'w', 'W', { noremap = true, silent = true })

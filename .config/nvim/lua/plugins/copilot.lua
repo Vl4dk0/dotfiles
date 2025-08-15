@@ -12,7 +12,7 @@ return { -- GITHUB COPILOT AI AUTOCOMPLETE
         svn = false,
         cvs = false,
       }
-      vim.g.copilot_enabled = false
+      vim.g.copilot_enabled = true
       vim.g.copilot_no_tab_map = true
       vim.api.nvim_set_keymap('i', '<C-j>', 'copilot#Accept("<CR>")', { expr = true, silent = true })
       vim.api.nvim_set_keymap('i', '<C-d>', 'copilot#Dismiss()', { expr = true, silent = true })

@@ -34,10 +34,24 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 Install stuff using Homebrew.
 
 ```bash
-brew install neovim python fnm tmux stow zsh tldr gemini-cli
+brew install neovim fnm tmux stow zsh tldr gemini-cli direnv fzf starship gh lazygit tree ripgrep fd
 ```
 
-## 4. Set Up Node.js using fnm
+Setup git
+
+```bash
+gh extension install github/gh-copilot
+gh auth login
+gh auth setup-git
+```
+
+## 4. Install Oh My Zsh
+
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+## 5. Set Up Node.js using fnm
 
 Use FNM to install and set the latest Long-Term Support (LTS) version of Node.js.
 
@@ -46,7 +60,7 @@ fnm install --lts
 fnm use --lts
 ```
 
-## 5. Install Rust from rustup
+## 6. Install Rust from rustup
 
 Install Rust using the official `rustup` installer.
 
@@ -55,7 +69,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 Follow the on-screen instructions to complete the installation.
 
-## 6. Stow Dotfiles
+## 7. Stow Dotfiles
 
 Use `stow` to create symlinks from the files in this repository to your home directory. This effectively "installs" your configurations.
 
@@ -65,7 +79,7 @@ stow .
 ```
 If there is error with files already existing, just delete those files and only keep those inside dotfiles, then try stowing again.
 
-## 7. Set Up Zsh & Oh My Zsh
+## 8. Set Up Zsh & Oh My Zsh
 
 Now that your `.zshrc` is in place, install Oh My Zsh and set Zsh as your default shell.
 
@@ -78,7 +92,7 @@ chsh -s $(which zsh)
 ```
 **Important:** You must **log out and log back in** for the shell change to take full effect.
 
-## 8. Finalize Neovim Setup
+## 9. Finalize Neovim Setup
 
 The last step is to let `lazy.nvim` install all your Neovim plugins.
 

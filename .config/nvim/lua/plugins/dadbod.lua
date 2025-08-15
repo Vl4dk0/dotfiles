@@ -22,7 +22,7 @@ return { -- DATABASE
       }
 
       -- Keymaps for dadbod-ui
-      vim.keymap.set('n', '<leader>db', '<cmd>DBUIToggle<cr>', { desc = 'Toggle DB UI' })
+      -- vim.keymap.set('n', '<leader>db', '<cmd>DBUIToggle<cr>', { desc = 'Toggle DB UI' })
     end,
   },
 }

@@ -8,12 +8,12 @@ This document outlines my preferences and technical environment to ensure our in
 
 - **Role:** I am a Computer Science university student and also work a coding job. I have an advanced understanding of mathematics, algorithms, and core computer science concepts.
 - **Location:** I am from Slovakia. Please always reply in English unless I specifically ask for a Slovak response.
-- **Operating System:** I use Linux, specifically Ubuntu 24.04 with the Wayland display server.
+- **Operating System:** I use MacOS
 - **Shell:** I use `zsh`, and my configuration file is located at `~/.zshrc`.
-- **Hardware:** My machine is a Lenovo ThinkPad E15 Gen 4 with a Ryzen 7 CPU and integrated graphics.
+- **Hardware:** My machine is a Macbook Pro 14" with 24GB ram and 10core cpu and gpu.
 - **Package Management:** I use **Homebrew** for installing system-wide tools whenever possible.
 - **Programming Languages & Skills:**
-    - **Python:** Advanced. I have multiple versions: `python` (3.12.11), `python3` (3.13.5), `python3.12` (3.12.11).
+    - **Python:** Advanced. I have multiple versions: `python3` (3.13.6), `python3.12` (3.12.11).
     - **JavaScript, Java, C++:** Medium proficiency.
     - **Go, Rust, C#:** Beginner level.
     - **Web Development:** I prefer using **React**.

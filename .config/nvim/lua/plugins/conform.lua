@@ -44,6 +44,7 @@ return { -- AUTOFORMAT, FORMATTING, FORMATTERS
         plaintex = { 'tex-fmt' },
         bib = { 'bibtex-tidy' },
         rust = { 'rustfmt' },
+        csharp = { 'clang-format' },
       },
     },
   },

@@ -106,6 +106,27 @@ return { -- DEBUGGING, DEBUGGER
       dap.listeners.before.event_exited.dapui_config = function()
         dapui.close()
       end
+
+      -- dap configurations
+
+      dap.adapters.coreclr = {
+        type = 'executable',
+        command = 'netcoredbg',
+        args = { '--interpreter=vscode' },
+      }
+
+      dap.configurations.cs = {
+        {
+          type = 'coreclr',
+          name = 'Launch .NET Core',
+          request = 'launch',
+          program = function()
+            return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/<ProjectName>.dll', 'file')
+          end,
+          cwd = '${workspaceFolder}',
+          stopAtEntry = true,
+        },
+      }
     end,
   },
   {

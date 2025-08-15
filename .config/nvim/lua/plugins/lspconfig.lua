@@ -63,20 +63,6 @@ return { -- LSP CONFIGURATION
       local servers = {
         clangd = {},
 
-        jdtls = {
-          settings = {
-            java = {
-              import = {
-                gradle = {
-                  wrapper = {
-                    checksums = { 'sha256:81a82aaea5abcc8ff68b3dfcb58b3c3c429378efd98e7433460610fecd7ae45f' },
-                  },
-                },
-              },
-            },
-          },
-        },
-
         lua_ls = {
           settings = {
             Lua = {
@@ -90,7 +76,7 @@ return { -- LSP CONFIGURATION
 
         ts_ls = {
           handlers = {
-            ['textDocument/publishDiagnostics'] = function(_, result, ctx, config)
+            ['textDocument/publishDiagnostics'] = function(_, result, ctx)
               if result.diagnostics == nil then
                 return
               end
@@ -112,7 +98,7 @@ return { -- LSP CONFIGURATION
                 end
               end
 
-              vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, config)
+              vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx)
             end,
           },
         },
@@ -126,6 +112,7 @@ return { -- LSP CONFIGURATION
         'shfmt',
         'yapf',
         'reorder-python-imports',
+        'pyright',
         'beautysh',
         'prettierd',
         'prettier',
@@ -133,6 +120,7 @@ return { -- LSP CONFIGURATION
         'typstyle',
         'tex-fmt',
         'bibtex-tidy',
+        'netcoredbg',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

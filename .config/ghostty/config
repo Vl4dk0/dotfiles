@@ -22,6 +22,7 @@ foreground = #ffffff
 cursor-color = #acb1ab
 selection-background = #988049
 selection-foreground = #acb1ab
+background-opacity = 0.95
 
 # [window]
 maximize = true

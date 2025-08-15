@@ -9,3 +9,8 @@
 .config/nvim/lazy-lock.json
 .zsh_secrets
 .gemini/settings.json
+.gemini/tmp
+.gemini/google_accounts.json
+.gemini/installation_id
+.gemini/oauth_creds.json
+.DS_Store
