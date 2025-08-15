@@ -14,3 +14,5 @@
 .gemini/installation_id
 .gemini/oauth_creds.json
 .DS_Store
+.config/configstore
+.config/raycast
