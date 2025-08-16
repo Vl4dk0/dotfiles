@@ -16,3 +16,6 @@
 .DS_Store
 .config/configstore
 .config/raycast
+
+playground/csharp/MatrixProject.Tests/obj/Debug/net9.0
+playground/csharp/MatrixProject/obj/Debug/net9.0
