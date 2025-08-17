@@ -151,7 +151,7 @@ return {
       dashboard.button('r', '📅 Recent files', ':Telescope oldfiles <CR>'),
       dashboard.button('e', '🔍 Explore files', ':Ex<CR>'),
       dashboard.button('f', '🔍 Find file', find_files),
-      dashboard.button('s', '🔍 Grep word', live_grep),
+      dashboard.button('s', '🔍 Find word', live_grep),
       -- dashboard.button('l', '💤 Lazy', ':Lazy<CR>'),
       dashboard.button('l', '🌱 LazyGit', ':LazyGit<CR>'),
       dashboard.button('q', '⏻  Quit', ':qa<CR>'),
