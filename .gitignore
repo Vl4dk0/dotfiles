@@ -17,5 +17,16 @@
 .config/configstore
 .config/raycast
 
-playground/csharp/MatrixProject.Tests/obj/Debug/net9.0
-playground/csharp/MatrixProject/obj/Debug/net9.0
+# The following lines are covered by the more general .NET rules below
+# playground/csharp/MatrixProject.Tests/obj/Debug/net9.0
+# playground/csharp/MatrixProject/obj/Debug/net9.0
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# .NET
+[Oo]bj/
+[Bb]in/
