@@ -34,7 +34,6 @@ return { -- GITHUB COPILOT AI AUTOCOMPLETE
         end
       end
 
-      -- Funkcia na prepínanie stavu Copilota
       local function toggle_copilot()
         local current_state = readstate()
 
