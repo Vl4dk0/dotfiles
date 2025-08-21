@@ -13,7 +13,6 @@ return { -- GITHUB COPILOT AI AUTOCOMPLETE
         cvs = false,
       }
 
-      -- Cesta k súboru, kde sa bude ukladať stav (enabled/disabled)
       local state_file = vim.fn.stdpath 'data' .. '/copilot_state'
 
       local function readstate()
