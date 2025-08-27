@@ -99,7 +99,7 @@ return {
 
         local bubble_bot = " '" .. string.rep('-', bubble_content_width) .. "'"
         local speech_line = string.rep(' ', bubble_content_width / 2 - 3) .. '\\'
-        local author_line = string.rep(' ', bubble_content_width / 2 - #author / 2) .. author
+        local author_line = string.rep(' ', bubble_content_width / 2 - (#author - 1) / 2) .. author
 
         local final_art = {
           bubble_top,
