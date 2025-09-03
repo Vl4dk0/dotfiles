@@ -111,8 +111,8 @@ vim.cmd [[
 -- set the color scheme
 vim.cmd [[
   colorscheme habamax
-  highlight Normal guibg=#101010
-  highlight NonText guibg=#101010
+  highlight Normal guibg=#282828
+  highlight NonText guibg=#282828
 ]]
 
 -- Move up 5 lines on shift + k
