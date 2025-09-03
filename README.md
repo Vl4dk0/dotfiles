@@ -110,4 +110,15 @@ python -m venv debugpy
 debugpy/bin/python -m pip install debugpy
 ```
 
+## 10. get .zsh_secrets
+
+Obtain your `~/.zsh_secrets` file or create it manually
+
+If using gemini-cli, run this command:
+```bash
+gen-config
+```
+
+it will create .gemini/settings.json file, essential for mcp's.
+
 TODO: add docker instalation steps and setup.
