@@ -17,21 +17,21 @@ palette = 14=#f591b2
 palette = 15=#ffffff
 
 # [theme]
-background = #101010
+background = #282828
 foreground = #ffffff
 cursor-color = #acb1ab
 selection-background = #988049
 selection-foreground = #acb1ab
-background-opacity = 0.95
+background-opacity = 0.7
+background-blur = 30
 
 # [window]
 maximize = true
 title = " "
-quit-after-last-window-closed = false
+quit-after-last-window-closed = true
 
 # [keybinds]
 keybind = ctrl+v=paste_from_clipboard
-keybind = ctrl+enter=toggle_window_decorations
 
 # [mouse]
-mouse-hide-while-typing = false
+mouse-hide-while-typing = true
