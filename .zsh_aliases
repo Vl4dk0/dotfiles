@@ -6,7 +6,6 @@ alias show="xdg-open"
 # Config file aliases
 alias zshrc="nvim ~/.zshrc"
 alias ghosty="nvim ~/.config/ghostty/config"
-alias ghostty="nvim ~/.config/ghostty/config"
 
 # Navigation
 alias work="cd ~/Documents/nabu/Web_scraping_data/legal_ai/scrapping/microservices/"
@@ -23,6 +22,9 @@ alias fshow='~/dotfiles/scripts/fshow.sh'
 
 # env replace alias
 alias gen-config="envsubst '\$GITHUB_TOKEN' < ~/.gemini/settings.template.json > ~/.gemini/settings.json && echo 'geminis settings.json generated'"
+
+# Laravel
+alias pa="php artisan"
 
 # gh alias
 eval "$(gh copilot alias -- zsh)"
