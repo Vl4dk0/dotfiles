@@ -24,6 +24,19 @@ return { -- LSP CONFIGURATION
     config = function()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       require('lspconfig').lua_ls.setup { capabilities = capabilities }
+      require('lspconfig').emmet_ls.setup {
+        -- on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = { 'css', 'eruby', 'html', 'javascript', 'javascriptreact', 'less', 'sass', 'scss', 'svelte', 'pug', 'typescriptreact', 'vue' },
+        init_options = {
+          html = {
+            options = {
+              -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+              ['bem.enabled'] = true,
+            },
+          },
+        },
+      }
 
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
@@ -53,7 +66,7 @@ return { -- LSP CONFIGURATION
 
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-          -- map('<leader>h', vim.lsp.buf.hover, 'Show hover information')
+          map('<leader>h', vim.lsp.buf.hover, 'Show hover information')
         end,
       })
 
