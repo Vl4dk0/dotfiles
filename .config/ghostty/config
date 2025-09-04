@@ -26,8 +26,6 @@ background-opacity = 0.7
 background-blur = 30
 
 # [window]
-maximize = true
-title = " "
 quit-after-last-window-closed = true
 
 # [keybinds]
