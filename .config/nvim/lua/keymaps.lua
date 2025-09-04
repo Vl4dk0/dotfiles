@@ -1,9 +1,6 @@
--- Diagnostic keymaps
--- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+local fun = require 'functions'
 
--- Close the current buffer
--- vim.api.nvim_set_keymap('n', '<leader>e', ':Neotree toggle position=left<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>e', ':Ex<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>e', fun.open_explorer, { noremap = true, silent = true, desc = 'Open/Go to netrw explorer tab 1' })
 
 -- Indent selected text by four spaces in visual mode
 vim.api.nvim_set_keymap('v', '<Tab>', '>gv', { noremap = true, silent = true })
@@ -51,17 +48,14 @@ vim.keymap.set('n', '<A-Up>', ':resize +2<CR>', { noremap = true, silent = true 
 -- Resize window with Ctrl + Down (not working)
 vim.keymap.set('n', '<A-Down>', ':resize -2<CR>', { noremap = true, silent = true })
 
--- Exit buffer with <laeder>e
-vim.keymap.set('n', '<leader>e', ':Ex<CR>', { noremap = true, silent = true })
-
 -- Save buffer with <laeder>w
-vim.keymap.set('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>w', ':w<CR>', { noremap = true, silent = true, desc = '[w]rite/save buffer' })
 
 -- Quit nvim with <laeder>q
-vim.keymap.set('n', '<leader>q', ':q!<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>q', ':q!<CR>', { noremap = true, silent = true, desc = '[q]uit' })
 
 -- Save and quit nvim with <leader>x
-vim.keymap.set('n', '<leader>x', ':wq!<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>x', ':wq!<CR>', { noremap = true, silent = true, desc = '[x] save and quit' })
 
 -- center the screen after ctrl-d
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
@@ -115,23 +109,31 @@ vim.cmd [[
   highlight NonText guibg=#282828
 ]]
 
+-- overriden by cinnamon.lua
 -- Move up 5 lines on shift + k
-vim.keymap.set({ 'n', 'v' }, 'K', '5k', { noremap = true, silent = true })
+-- vim.keymap.set({ 'n', 'v' }, 'K', '5k', { noremap = true, silent = true })
 
 -- Move down 5 lines on shift + j
-vim.keymap.set({ 'n', 'v' }, 'J', '5j', { noremap = true, silent = true })
+-- vim.keymap.set({ 'n', 'v' }, 'J', '5j', { noremap = true, silent = true })
 
 -- disable <C-p> in insert mode
 vim.keymap.set('i', '<C-p>', '<Esc>', { noremap = true, silent = true })
 
 -- tabs
-vim.keymap.set('n', '<leader>tn', ':tabnew<CR>', { desc = '[t]ab [n]ew', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tt', ':tabnew<CR>', { desc = '[t]ab [n]ew', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>tc', ':tabclose<CR>', { desc = '[t]ab [c]lose', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tp', ':tabprev<CR>', { desc = '[t]ab [p]rev', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tn', ':tabnext<CR>', { desc = '[t]ab [n]ext', noremap = true, silent = true })
 
-vim.keymap.set('n', '<leader>tt', ':tabnext<CR>', { desc = '[t]ab nex[t]', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>t[', ':tabprev<CR>', { desc = '[t]ab [p]rev', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>t]', ':tabnext<CR>', { desc = '[t]ab [n]ext', noremap = true, silent = true })
 
--- source current lua file
--- vim.keymap.set('n', '<leader>x', ':source %<CR>', { desc = '([x]) source current lua file', noremap = true, silent = true })
+-- press <leader>t<number> to go to that tab
+for i = 1, 9 do
+  vim.keymap.set('n', '<leader>' .. i, function()
+    fun.open_tab(i)
+  end, { desc = '[' .. i .. '] Open tab ' .. i, noremap = true, silent = true })
+end
 
 -- Noice dismiss
 vim.keymap.set({ 'n', 'v' }, '<leader>nd', ':Noice dismiss<CR>', { noremap = true, silent = true })
