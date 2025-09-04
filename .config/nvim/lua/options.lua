@@ -65,6 +65,14 @@ vim.o.timeoutlen = 400
 -- Set the timeout length for key sequences
 vim.o.ttimeoutlen = 10
 
+-- tabline
+vim.o.showtabline = 2
+vim.o.tabline = '%!v:lua.MyTabline()'
+
+-- cmd
+vim.o.showcmd = true
+vim.o.cmdheight = 1
+
 -- Show virtual text
 vim.diagnostic.config {
   virtual_text = true,
@@ -86,6 +94,11 @@ vim.cmd [[
 -- set the color scheme
 vim.cmd [[
   colorscheme habamax
+
   highlight Normal guibg=#282828
   highlight NonText guibg=#282828
+
+  highlight TabLine      guifg=#b0b0b0 guibg=#1f1f1f gui=NONE
+  highlight TabLineSel   guifg=#1f1f1f guibg=#87AFD7 gui=bold
+  highlight TabLineFill  guifg=#555555 guibg=#202020 gui=NONE
 ]]

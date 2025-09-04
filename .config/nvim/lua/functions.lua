@@ -1,4 +1,5 @@
 local fun = {}
+local has_devicons, devicons = pcall(require, 'nvim-web-devicons')
 
 -- helper to find netrw window in first tab (returns window id or nil)
 local function first_tab_netrw_win(tabs)
@@ -77,8 +78,33 @@ function _G.MyTabline()
     local name = vim.api.nvim_buf_get_name(buf)
     local tail = name ~= '' and (name:match '[^/]+$' or name) or '[No Name]'
 
-    if vim.api.nvim_get_option_value('modified', { buf = buf }) then
-      tail = tail .. '*'
+    local modified = vim.api.nvim_get_option_value('modified', { buf = buf })
+    local tail_display = modified and (tail .. '*') or tail
+
+    -- devicon (requires nvim-web-devicons and a Nerd Font)
+    local icon = ''
+    if has_devicons and name ~= '' then
+      local ext = tail:match '%.([^%.]+)$'
+      icon = (devicons.get_icon(tail, ext, { default = true }) or '') .. ' '
+    end
+
+    -- gitsigns per-buffer status (added/changed/removed + branch for current tab)
+    local gitseg = ''
+    local gs = vim.b[buf].gitsigns_status_dict
+    if gs then
+      local parts = {}
+      if (gs.added or 0) > 0 then
+        parts[#parts + 1] = '+' .. gs.added
+      end
+      if (gs.changed or 0) > 0 then
+        parts[#parts + 1] = '~' .. gs.changed
+      end
+      if (gs.removed or 0) > 0 then
+        parts[#parts + 1] = '-' .. gs.removed
+      end
+      if #parts > 0 then
+        gitseg = ' ' .. table.concat(parts)
+      end
     end
 
     local label_index
@@ -88,16 +114,13 @@ function _G.MyTabline()
       label_index = tostring(first_is_netrw and (ti - 1) or ti)
     end
 
-    table.insert(s, string.format('%s%%%dT %s %s %%T', hl, ti, label_index, tail))
+    table.insert(s, string.format('%s%%%dT %s %s%s%s %%T', hl, ti, label_index, icon, tail_display, gitseg))
     table.insert(s, '%#TabLineFill#')
   end
 
   table.insert(s, '%=%#TabLineFill#')
   return table.concat(s)
 end
-
-vim.o.showtabline = 2
-vim.o.tabline = '%!v:lua.MyTabline()'
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
