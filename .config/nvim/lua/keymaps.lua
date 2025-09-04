@@ -97,18 +97,6 @@ vim.keymap.set('n', 'vv', 'viw', { noremap = true, silent = true })
 -- I dont use the S command to rewrite a line
 vim.keymap.set({ 'v', 'n' }, 'S', '', { noremap = true, silent = true })
 
--- Clear right-click menu
-vim.cmd [[
-  aunmenu PopUp
-]]
-
--- set the color scheme
-vim.cmd [[
-  colorscheme habamax
-  highlight Normal guibg=#282828
-  highlight NonText guibg=#282828
-]]
-
 -- overriden by cinnamon.lua
 -- Move up 5 lines on shift + k
 -- vim.keymap.set({ 'n', 'v' }, 'K', '5k', { noremap = true, silent = true })
@@ -120,7 +108,7 @@ vim.cmd [[
 vim.keymap.set('i', '<C-p>', '<Esc>', { noremap = true, silent = true })
 
 -- tabs
-vim.keymap.set('n', '<leader>tt', ':tabnew<CR>', { desc = '[t]ab [n]ew', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tt', ':$tabnew<CR>', { desc = '[t]ab [n]ew', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>tc', ':tabclose<CR>', { desc = '[t]ab [c]lose', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>tp', ':tabprev<CR>', { desc = '[t]ab [p]rev', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>tn', ':tabnext<CR>', { desc = '[t]ab [n]ext', noremap = true, silent = true })

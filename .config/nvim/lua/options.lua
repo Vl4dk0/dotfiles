@@ -2,10 +2,11 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Netrw tree view
+-- Netrw
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
 vim.g.netrw_browse_split = 3
+vim.g.netrw_keepdir = 1
 
 -- Nerd Font
 vim.g.have_nerd_font = true
@@ -17,7 +18,7 @@ vim.opt.relativenumber = false
 -- Enable mouse
 vim.opt.mouse = 'a'
 
--- Sync clipboard between OS and Neovim.
+-- Sync clipboard between OS and Neovim
 vim.opt.clipboard = 'unnamedplus'
 
 -- Disable line wrapping
@@ -42,17 +43,17 @@ vim.opt.updatetime = 250
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
--- Sets how neovim will display certain whitespace characters in the editor.
+-- Sets how neovim will display certain whitespace characters in the editor
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
--- Preview substitutions live, as you type!
+-- Preview substitutions live, as you type
 vim.opt.inccommand = 'split'
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
--- Minimal number of screen lines to keep above and below the cursor.
+-- Minimal number of screen lines to keep above and below the cursor
 vim.opt.scrolloff = 7
 
 -- support CRLF files
@@ -77,5 +78,14 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Disable swap files
 vim.opt.swapfile = false
 
--- show color column
--- vim.opt.colorcolumn = '80'
+-- Clear right-click menu
+vim.cmd [[
+  aunmenu PopUp
+]]
+
+-- set the color scheme
+vim.cmd [[
+  colorscheme habamax
+  highlight Normal guibg=#282828
+  highlight NonText guibg=#282828
+]]

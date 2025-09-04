@@ -17,10 +17,6 @@
 .config/configstore
 .config/raycast
 
-# The following lines are covered by the more general .NET rules below
-# playground/csharp/MatrixProject.Tests/obj/Debug/net9.0
-# playground/csharp/MatrixProject/obj/Debug/net9.0
-
 # Python
 __pycache__/
 *.pyc
@@ -30,3 +26,6 @@ __pycache__/
 # .NET
 [Oo]bj/
 [Bb]in/
+
+# netrw
+*Netrw*
