@@ -27,6 +27,8 @@ background-blur = 30
 
 # [window]
 quit-after-last-window-closed = true
+window-height=1000
+window-width=1000
 
 # [keybinds]
 keybind = ctrl+v=paste_from_clipboard
