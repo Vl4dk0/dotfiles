@@ -19,6 +19,7 @@ alias sci-mark="~/sci-markdown/.venv/bin/python ~/sci-markdown/src/sci_markdown/
 alias loglang="~/log_lang/.venv/bin/python3 ~/log_lang/main.py"
 alias fsb='~/dotfiles/scripts/fsb.sh'
 alias fshow='~/dotfiles/scripts/fshow.sh'
+alias nexana='~/dotfiles/scripts/nexana.sh'
 
 # env replace alias
 alias gen-config="envsubst '\$GITHUB_TOKEN' < ~/.gemini/settings.template.json > ~/.gemini/settings.json && echo 'geminis settings.json generated'"
