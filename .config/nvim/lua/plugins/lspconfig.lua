@@ -23,8 +23,8 @@ return { -- LSP CONFIGURATION
 
     config = function()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      require('lspconfig').lua_ls.setup { capabilities = capabilities }
-      require('lspconfig').emmet_ls.setup {
+      vim.lsp.config('lua_ls', { capabilities = capabilities })
+      vim.lsp.config('emmet_ls', {
         -- on_attach = on_attach,
         capabilities = capabilities,
         filetypes = { 'css', 'eruby', 'html', 'javascript', 'javascriptreact', 'less', 'sass', 'scss', 'svelte', 'pug', 'typescriptreact', 'vue' },
@@ -36,7 +36,7 @@ return { -- LSP CONFIGURATION
             },
           },
         },
-      }
+      })
 
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
@@ -142,7 +142,7 @@ return { -- LSP CONFIGURATION
           function(server_name)
             local server = servers[server_name] or {}
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
+            vim.lsp.config(server_name, server)
           end,
         },
       }
