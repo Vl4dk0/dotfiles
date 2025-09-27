@@ -1,53 +1,55 @@
 return { -- AUTOCOMPLETION INTERFACE
-  'saghen/blink.cmp',
-
-  version = '1.*',
-
-  ---@module 'blink.cmp'
-  ---@type blink.cmp.Config
-  opts = {
-    keymap = { preset = 'default' },
-
-    appearance = {
-      nerd_font_variant = 'mono',
-      -- use_nvim_cmp_as_default = true,
+  { 'L3MON4D3/LuaSnip', keys = {} },
+  {
+    'saghen/blink.cmp',
+    dependencies = {
+      'rafamadriz/friendly-snippets',
     },
+    version = '*',
 
-    signature = {
-      enabled = true,
-    },
-
-    completion = {
-      accept = { auto_brackets = { enabled = true } },
-
-      list = {
-        selection = {
-          preselect = false,
-          auto_insert = false,
+    config = function()
+      require('blink.cmp').setup {
+        snippets = { preset = 'luasnip' },
+        signature = { enabled = true },
+        keymap = {
+          preset = 'default',
+          ['<C-k>'] = false,
         },
-      },
 
-      menu = {
-        draw = {
-          columns = {
-            { 'source_name', gap = 1 },
-            { 'label', 'label_description', gap = 1 },
-            { 'kind_icon', 'kind' },
+        appearance = {
+          nerd_font_variant = 'mono',
+        },
+
+        completion = {
+          accept = { auto_brackets = { enabled = true } },
+
+          list = {
+            selection = {
+              preselect = false,
+              auto_insert = false,
+            },
           },
+
+          menu = {
+            draw = {
+              columns = {
+                { 'kind_icon' },
+                { 'label', 'label_description' },
+              },
+            },
+          },
+
+          documentation = { auto_show = true },
         },
-      },
 
-      documentation = { auto_show = false },
-    },
+        sources = {
+          default = { 'lsp', 'path', 'buffer', 'omni', 'snippets' },
+        },
 
-    sources = {
-      default = { 'lsp', 'path', 'buffer', 'omni' },
-    },
+        fuzzy = { implementation = 'prefer_rust' },
+      }
 
-    fuzzy = { implementation = 'prefer_rust' },
-  },
-  opts_extend = { 'sources.default' },
-  keymap = {
-    ['<C-k>'] = false,
+      require('luasnip.loaders.from_vscode').lazy_load()
+    end,
   },
 }
