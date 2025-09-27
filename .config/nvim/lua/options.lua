@@ -77,6 +77,13 @@ vim.o.cmdheight = 1
 vim.diagnostic.config {
   virtual_text = true,
   virtual_lines = false,
+  severity_sort = true,
+  underline = true,
+
+  float = {
+    border = 'rounded',
+    source = true,
+  },
 }
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
