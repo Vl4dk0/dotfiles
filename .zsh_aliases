@@ -1,6 +1,5 @@
 # General aliases
 alias cls="clear"
-alias vim="nvim"
 alias show="xdg-open"
 
 # Config file aliases
