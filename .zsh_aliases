@@ -14,7 +14,7 @@ alias haskell="ghci"
 alias prolog="swipl"
 
 # Custom scripts
-alias sci-mark="~/sci-markdown/.venv/bin/python ~/sci-markdown/src/sci_markdown/__main__.py"
+alias scimark="~/sci-markdown/.venv/bin/python ~/sci-markdown/src/sci_markdown/__main__.py"
 alias loglang="~/log_lang/.venv/bin/python3 ~/log_lang/main.py"
 alias fsb='~/dotfiles/scripts/fsb.sh'
 alias fshow='~/dotfiles/scripts/fshow.sh'
