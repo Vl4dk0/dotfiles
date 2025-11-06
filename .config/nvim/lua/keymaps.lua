@@ -99,10 +99,10 @@ vim.keymap.set({ 'v', 'n' }, 'S', '', { noremap = true, silent = true })
 
 -- overriden by cinnamon.lua
 -- Move up 5 lines on shift + k
--- vim.keymap.set({ 'n', 'v' }, 'K', '5k', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, 'K', '5k', { noremap = true, silent = true })
 
 -- Move down 5 lines on shift + j
--- vim.keymap.set({ 'n', 'v' }, 'J', '5j', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, 'J', '5j', { noremap = true, silent = true })
 
 -- disable <C-p> in insert mode
 vim.keymap.set('i', '<C-p>', '<Esc>', { noremap = true, silent = true })
