@@ -119,20 +119,12 @@ return {
       end
 
       local function quote()
-        -- Fetch a random quote from the forismatic API (plain text format)
-        local handle = io.popen "curl -s 'https://api.forismatic.com/api/1.0/?method=getQuote&format=text&lang=en'"
-        local quote = handle:read '*a'
-        handle:close()
-
-        -- Clean up the quote text by removing trailing whitespace/newlines
-        quote = quote:gsub('^%s*', ''):gsub('%s*$', '')
-
-        -- If the API call fails or returns an empty string, provide a fallback
-        if quote == '' then
-          return 'Could not fetch quote. Check your internet connection.'
-        end
-
-        return quote
+        local quotes = {
+          'Keby bolo keby, boli by sme davno v nebi',
+          'Vladko Jancar',
+          'Moja mamka > Tvoja mamka',
+        }
+        return quotes[math.random(#quotes)] .. ' (Vladko Jancar)'
       end
 
       local text = quote()
@@ -140,7 +132,6 @@ return {
     end
 
     local function footer()
-      -- Fetch a random quote from the forismatic API (plain text format)
       return ''
     end
 
