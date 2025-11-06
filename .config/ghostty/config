@@ -23,7 +23,7 @@ cursor-color = #acb1ab
 selection-background = #988049
 selection-foreground = #acb1ab
 background-opacity = 0.7
-background-blur = 30
+background-blur = 50
 
 # [window]
 quit-after-last-window-closed = true
