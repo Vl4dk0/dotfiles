@@ -91,11 +91,6 @@ fi
 bindkey -s ^f '~/scripts/tmux-sessionizer.sh\n'
 bindkey -s ^a 'tmux a\n'
 
-cd() {
-    builtin cd "$@" || return
-    ls -a
-}
-
 
 # Herd injected PHP 8.4 configuration.
 export HERD_PHP_84_INI_SCAN_DIR="/Users/vladko/Library/Application Support/Herd/config/php/84/"
@@ -103,3 +98,6 @@ export HERD_PHP_84_INI_SCAN_DIR="/Users/vladko/Library/Application Support/Herd/
 
 # Herd injected PHP binary.
 export PATH="/Users/vladko/Library/Application Support/Herd/bin/":$PATH
+
+# LaTeX binaries
+export PATH="/Library/TeX/texbin:$PATH"
