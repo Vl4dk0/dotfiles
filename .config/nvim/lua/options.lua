@@ -15,6 +15,9 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 vim.opt.relativenumber = false
 
+-- windows
+vim.o.winborder = 'rounded'
+
 -- Enable mouse
 vim.opt.mouse = 'a'
 
@@ -96,16 +99,4 @@ vim.opt.swapfile = false
 -- Clear right-click menu
 vim.cmd [[
   aunmenu PopUp
-]]
-
--- set the color scheme
-vim.cmd [[
-  colorscheme habamax
-
-  highlight Normal guibg=#282828
-  highlight NonText guibg=#282828
-
-  highlight TabLine      guifg=#b0b0b0 guibg=#1f1f1f gui=NONE
-  highlight TabLineSel   guifg=#1f1f1f guibg=#87AFD7 gui=bold
-  highlight TabLineFill  guifg=#555555 guibg=#202020 gui=NONE
 ]]
