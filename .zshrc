@@ -52,13 +52,18 @@ setopt appendhistory
 
 source "$ZSH/oh-my-zsh.sh"
 
+if [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+    source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+if [ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+    source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 # ------------------------------------------------------------------------------
 # TOOL INITIALIZATION
 # ------------------------------------------------------------------------------
 
 # fnm (Fast Node Manager)
-# REASON FOR CHANGE: Combined the two redundant blocks into one clean check.
 if command -v fnm > /dev/null; then
     export PATH="$HOME/.local/share/fnm:$PATH"
     eval "$(fnm env --use-on-cd --shell zsh)"
@@ -74,7 +79,6 @@ source <(fzf --zsh)
 # Starship Prompt (MUST BE LAST)
 eval "$(starship init zsh)"
 
-
 # ------------------------------------------------------------------------------
 # CUSTOM FUNCTIONS, ALIASES & KEYBINDINGS
 # ------------------------------------------------------------------------------
@@ -88,6 +92,7 @@ if [ -f ~/.zsh_aliases ]; then
 fi
 
 # Keybindings
+bindkey -s '^j' autosuggest-accept
 bindkey -s ^f '~/scripts/tmux-sessionizer.sh\n'
 bindkey -s ^a 'tmux a\n'
 
