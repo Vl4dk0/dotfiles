@@ -1,6 +1,6 @@
 local fun = require 'functions'
 
-vim.keymap.set('n', '<leader>e', fun.open_explorer, { noremap = true, silent = true, desc = 'Open/Go to netrw explorer tab 1' })
+-- vim.keymap.set('n', '<leader>e', fun.open_explorer, { noremap = true, silent = true, desc = 'Open/Go to netrw explorer tab 1' })
 
 -- Indent selected text by four spaces in visual mode
 vim.api.nvim_set_keymap('v', '<Tab>', '>gv', { noremap = true, silent = true })

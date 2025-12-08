@@ -3,10 +3,17 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Netrw
-vim.g.netrw_banner = 0
-vim.g.netrw_liststyle = 3
-vim.g.netrw_browse_split = 3
-vim.g.netrw_keepdir = 1
+-- vim.g.netrw_banner = 0
+-- vim.g.netrw_liststyle = 3
+-- vim.g.netrw_browse_split = 3
+-- vim.g.netrw_keepdir = 1
+
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
 
 -- Nerd Font
 vim.g.have_nerd_font = true
