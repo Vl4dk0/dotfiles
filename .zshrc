@@ -92,9 +92,9 @@ if [ -f ~/.zsh_aliases ]; then
 fi
 
 # Keybindings
-bindkey -s '^j' autosuggest-accept
-bindkey -s ^f '~/scripts/tmux-sessionizer.sh\n'
-bindkey -s ^a 'tmux a\n'
+bindkey '^j' autosuggest-accept
+bindkey -s ^f '~/scripts/tmux-sessionizer.sh^M'
+bindkey -s ^a 'tmux a^M'
 
 
 # Herd injected PHP 8.4 configuration.
@@ -106,3 +106,6 @@ export PATH="/Users/vladko/Library/Application Support/Herd/bin/":$PATH
 
 # LaTeX binaries
 export PATH="/Library/TeX/texbin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/vladko/.antigravity/antigravity/bin:$PATH"
