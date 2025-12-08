@@ -16,7 +16,17 @@ return { -- AUTOFORMAT, FORMATTING, FORMATTERS
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
-        local disable_filetypes = { c = true, cpp = true, python = true, haskell = true, kotlin = true, json = true, typescript = true, py = true, php = true }
+        local disable_filetypes = {
+          c = true,
+          cpp = true,
+          python = true,
+          haskell = true,
+          kotlin = true,
+          json = true,
+          typescript = true,
+          py = true,
+          php = true,
+        }
         return {
           timeout_ms = 1500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
@@ -27,10 +37,7 @@ return { -- AUTOFORMAT, FORMATTING, FORMATTERS
         php = { 'pretty-php' },
         xml = { 'xmlformatter' },
         lua = { 'stylua' },
-        python = { 'yapf', 'reorder-python-imports' },
-        bash = { 'shfmt' },
-        zsh = { 'beautysh' },
-        sh = { 'shfmt' },
+        python = { 'yapf' },
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
