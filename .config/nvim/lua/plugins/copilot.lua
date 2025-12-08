@@ -71,7 +71,6 @@ return { -- GITHUB COPILOT AI AUTOCOMPLETE
 
       vim.g.copilot_no_tab_map = true
       vim.api.nvim_set_keymap('i', '<C-j>', 'copilot#Accept("<CR>")', { expr = true, silent = true })
-      vim.api.nvim_set_keymap('i', '<C-d>', 'copilot#Dismiss()', { expr = true, silent = true })
 
       -- toggle copilot
       vim.keymap.set('n', '<leader>ct', toggle_copilot, { noremap = true, silent = true, desc = 'Toggle Copilot' })
@@ -138,6 +137,27 @@ return { -- GITHUB COPILOT AI AUTOCOMPLETE
         end,
         desc = 'CopilotChat - Perplexity Search',
         mode = { 'n', 'v' },
+      },
+    },
+  },
+  {
+    'jacob411/Ollama-Copilot',
+    lazy = true,
+    dependencies = { 'nvim-lua/plenary.nvim', 'hrsh7th/cmp-nvim-lsp' },
+    opts = {
+      model_name = 'deepseek-coder:1.3b',
+      ollama_url = 'http://localhost:11434',
+      stream_suggestion = true,
+      python_command = '~/.virtualenvs/debugpy/bin/python',
+      filetypes = { 'python', 'lua', 'vim', 'markdown', 'json' },
+      ollama_model_opts = {
+        num_predict = 40,
+        temperature = 0.1,
+      },
+      keymaps = {
+        suggestion = '<leader>os',
+        reject = '<leader>or',
+        insert_accept = '<C-j>',
       },
     },
   },
