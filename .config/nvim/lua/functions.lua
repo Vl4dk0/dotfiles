@@ -2,50 +2,50 @@ local fun = {}
 local has_devicons, devicons = pcall(require, 'nvim-web-devicons')
 
 -- helper to find netrw window in first tab (returns window id or nil)
-local function first_tab_netrw_win(tabs)
-  tabs = tabs or vim.api.nvim_list_tabpages()
-  if #tabs == 0 then
-    return nil
-  end
-  local first_tab = tabs[1]
-  for _, win in ipairs(vim.api.nvim_tabpage_list_wins(first_tab)) do
-    local buf = vim.api.nvim_win_get_buf(win)
-    local ft = vim.api.nvim_get_option_value('filetype', { buf = buf })
-    if ft == 'netrw' then
-      return win
-    end
-  end
-  return nil
-end
+-- local function first_tab_netrw_win(tabs)
+--   tabs = tabs or vim.api.nvim_list_tabpages()
+--   if #tabs == 0 then
+--     return nil
+--   end
+--   local first_tab = tabs[1]
+--   for _, win in ipairs(vim.api.nvim_tabpage_list_wins(first_tab)) do
+--     local buf = vim.api.nvim_win_get_buf(win)
+--     local ft = vim.api.nvim_get_option_value('filetype', { buf = buf })
+--     if ft == 'netrw' then
+--       return win
+--     end
+--   end
+--   return nil
+-- end
 
 -- if there is a file explorer open on first tab, go to first tab
 -- if there is not file explorer open on first tab, prepend tab with a file explorer
-local function open_explorer()
-  local tabs = vim.api.nvim_list_tabpages()
-  if #tabs == 0 then
-    vim.cmd 'Ex'
-    return
-  end
+-- local function open_explorer()
+--   local tabs = vim.api.nvim_list_tabpages()
+--   if #tabs == 0 then
+--     vim.cmd 'Ex'
+--     return
+--   end
+--
+--   local netrw = first_tab_netrw_win(tabs)
+--   if netrw then
+--     vim.cmd '1tabnext'
+--     pcall(vim.api.nvim_set_current_win, netrw)
+--   else
+--     vim.cmd 'tabnew'
+--     vim.cmd 'Ex'
+--     vim.cmd 'tabmove 0'
+--   end
+-- end
 
-  local netrw = first_tab_netrw_win(tabs)
-  if netrw then
-    vim.cmd '1tabnext'
-    pcall(vim.api.nvim_set_current_win, netrw)
-  else
-    vim.cmd 'tabnew'
-    vim.cmd 'Ex'
-    vim.cmd 'tabmove 0'
-  end
-end
-
-fun.open_explorer = open_explorer
+-- fun.open_explorer = open_explorer
 
 local function open_tab(tab_index)
   local tabs = vim.api.nvim_list_tabpages()
 
-  if first_tab_netrw_win(tabs) then
-    tab_index = tab_index + 1
-  end
+  -- if first_tab_netrw_win(tabs) then
+  --   tab_index = tab_index + 1
+  -- end
 
   if tab_index < 1 or tab_index > #tabs then
     vim.notify('Tab index out of range', vim.log.levels.WARN)
@@ -68,7 +68,7 @@ function _G.MyTabline()
   end
 
   -- reuse existing helper: first_tab_netrw_win(tabs) returns window id or nil
-  local first_is_netrw = first_tab_netrw_win(tabs) ~= nil
+  -- local first_is_netrw = first_tab_netrw_win(tabs) ~= nil
 
   for ti, tab in ipairs(tabs) do
     local current = (tab == vim.api.nvim_get_current_tabpage())
@@ -107,12 +107,12 @@ function _G.MyTabline()
       end
     end
 
-    local label_index
-    if ti == 1 and first_is_netrw then
-      label_index = 'e'
-    else
-      label_index = tostring(first_is_netrw and (ti - 1) or ti)
-    end
+    local label_index = ti
+    -- if ti == 1 and first_is_netrw then
+    --   label_index = 'e'
+    -- else
+    --   label_index = tostring(first_is_netrw and (ti - 1) or ti)
+    -- end
 
     table.insert(s, string.format('%s%%%dT %s %s%s%s %%T', hl, ti, label_index, icon, tail_display, gitseg))
     table.insert(s, '%#TabLineFill#')
