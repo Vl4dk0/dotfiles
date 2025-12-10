@@ -109,3 +109,14 @@ export PATH="/Library/TeX/texbin:$PATH"
 
 # Added by Antigravity
 export PATH="/Users/vladko/.antigravity/antigravity/bin:$PATH"
+
+# bun completions
+[ -s "/Users/vladko/.bun/_bun" ] && source "/Users/vladko/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
