@@ -17,13 +17,13 @@ palette = 14=#f591b2
 palette = 15=#ffffff
 
 # [theme]
-background = #282828
+background-image = ~/Pictures/wallpapers/windows_black_bg_blurred.png
+background-image-opacity = 0.25
+background = #101010
 foreground = #ffffff
 cursor-color = #acb1ab
 selection-background = #988049
 selection-foreground = #acb1ab
-background-opacity = 0.7
-background-blur = 50
 
 # [window]
 quit-after-last-window-closed = true

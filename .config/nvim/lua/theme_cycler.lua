@@ -20,6 +20,7 @@ local themes = {
       hi Normal      guibg=NONE ctermbg=NONE
       hi NormalNC    guibg=NONE ctermbg=NONE
       hi EndOfBuffer guibg=NONE ctermbg=NONE
+      hi CursorLine guibg=NONE ctermbg=NONE
 
       highlight TelescopeSelection guibg=#303030 guifg=NONE
       highlight TelescopeSelectionCaret guibg=#303030 guifg=#87AFD7

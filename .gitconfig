@@ -4,16 +4,23 @@
 [core]
 	eol = lf
 	autocrlf = input
-	pager = 
+	pager = delta --diff-so-fancy --line-numbers
 [init]
 	defaultBranch = main
 [alias]
 	lg = log --all --oneline --graph --decorate
+	undo = reset --soft HEAD^
 [credential "https://github.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+[diff]
+	colorMoved = default
 [push]
 	autoSetupRemote = true

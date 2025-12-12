@@ -142,13 +142,13 @@ return { -- GITHUB COPILOT AI AUTOCOMPLETE
   },
   {
     'jacob411/Ollama-Copilot',
-    lazy = true,
+    lazy = false,
     dependencies = { 'nvim-lua/plenary.nvim', 'hrsh7th/cmp-nvim-lsp' },
     opts = {
       model_name = 'deepseek-coder:1.3b',
       ollama_url = 'http://localhost:11434',
       stream_suggestion = true,
-      python_command = '~/.virtualenvs/debugpy/bin/python',
+      python_command = '/Users/vladko/.virtualenvs/copilot/bin/python',
       filetypes = { 'python', 'lua', 'vim', 'markdown', 'json' },
       ollama_model_opts = {
         num_predict = 40,
