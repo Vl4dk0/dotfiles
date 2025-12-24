@@ -19,6 +19,7 @@ palette = 15=#ffffff
 # [theme]
 background-image = ~/Pictures/wallpapers/windows_black_bg_blurred.png
 background-image-opacity = 0.25
+background-image-fit = stretch
 background = #101010
 foreground = #ffffff
 cursor-color = #acb1ab

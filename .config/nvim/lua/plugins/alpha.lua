@@ -33,6 +33,8 @@ return {
           '.venv',
           '-E',
           '__pycache__',
+          '-E',
+          'target',
         },
       }
     end

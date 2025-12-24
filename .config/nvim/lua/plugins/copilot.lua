@@ -140,25 +140,4 @@ return { -- GITHUB COPILOT AI AUTOCOMPLETE
       },
     },
   },
-  {
-    'jacob411/Ollama-Copilot',
-    lazy = false,
-    dependencies = { 'nvim-lua/plenary.nvim', 'hrsh7th/cmp-nvim-lsp' },
-    opts = {
-      model_name = 'deepseek-coder:1.3b',
-      ollama_url = 'http://localhost:11434',
-      stream_suggestion = true,
-      python_command = '/Users/vladko/.virtualenvs/copilot/bin/python',
-      filetypes = { 'python', 'lua', 'vim', 'markdown', 'json' },
-      ollama_model_opts = {
-        num_predict = 40,
-        temperature = 0.1,
-      },
-      keymaps = {
-        suggestion = '<leader>os',
-        reject = '<leader>or',
-        insert_accept = '<C-j>',
-      },
-    },
-  },
 }

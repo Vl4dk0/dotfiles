@@ -89,6 +89,8 @@ return { -- SEARCH TOOL
         '.venv',
         '-E',
         '__pycache__',
+        '-E',
+        'target',
       }
 
       local builtin = require 'telescope.builtin'

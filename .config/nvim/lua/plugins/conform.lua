@@ -19,12 +19,10 @@ return { -- AUTOFORMAT, FORMATTING, FORMATTERS
         local disable_filetypes = {
           c = true,
           cpp = true,
-          python = true,
           haskell = true,
           kotlin = true,
           json = true,
           typescript = true,
-          py = true,
           php = true,
         }
         return {
@@ -37,7 +35,7 @@ return { -- AUTOFORMAT, FORMATTING, FORMATTERS
         php = { 'pretty-php' },
         xml = { 'xmlformatter' },
         lua = { 'stylua' },
-        python = { 'yapf' },
+        python = {},
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         typescript = { 'prettierd', 'prettier', stop_after_first = true },

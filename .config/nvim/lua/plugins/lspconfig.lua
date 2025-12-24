@@ -88,8 +88,7 @@ return { -- LSP CONFIGURATION
       vim.list_extend(ensure_installed, {
         'stylua',
         'shfmt',
-        'yapf',
-        'reorder-python-imports',
+        'ruff',
         'beautysh',
         'prettierd',
         'prettier',
