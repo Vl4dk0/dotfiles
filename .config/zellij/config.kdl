@@ -167,7 +167,7 @@ keybinds clear-defaults=true {
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl a" { SwitchToMode "locked"; }
-        // bind "Ctrl q" { Quit; }
+        bind "Ctrl q" { Quit; }
     }
     shared_except "locked" "entersearch" {
         bind "enter" { SwitchToMode "locked"; }
@@ -392,7 +392,7 @@ default_mode "locked"
 //   - true (default)
 //   - false
 // 
-// session_serialization false
+session_serialization false
  
 // Whether pane viewports are serialized along with the session, default is false
 // Options:
