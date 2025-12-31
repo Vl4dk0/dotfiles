@@ -93,9 +93,14 @@ fi
 
 # Keybindings
 bindkey '^j' autosuggest-accept
-bindkey -s ^f '~/scripts/tmux-sessionizer.sh^M'
-bindkey -s ^a 'tmux a^M'
 
+# Tmux
+# bindkey -s ^f '~/scripts/tmux-sessionizer.sh^M'
+# bindkey -s ^a 'tmux a^M'
+
+# Zellij
+bindkey -s ^f '~/scripts/zellij-sessionizer.sh^M'
+bindkey -s ^a '~/scripts/zellij-smart-attach.sh^M'
 
 # Herd injected PHP 8.4 configuration.
 export HERD_PHP_84_INI_SCAN_DIR="/Users/vladko/Library/Application Support/Herd/config/php/84/"
