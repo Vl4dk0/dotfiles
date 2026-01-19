@@ -5,7 +5,7 @@ return {
   },
   cmd = { 'NvimTreeToggle', 'NvimTreeOpen', 'NvimTreeFocus', 'NvimTreeFindFile' },
   keys = {
-    { '<leader>e', ':NvimTreeToggle<CR>', desc = 'Open NvimTree' },
+    { '<leader>e', ':NvimTreeFindFileToggle<CR>', desc = 'Open NvimTree at File' },
   },
   opts = {
     on_attach = function(bufnr)
