@@ -1,58 +1,165 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": ["opencode-antigravity-auth"],
+  "plugin": [
+    "opencode-antigravity-auth@1.3.0",
+    "@tarquinen/opencode-dcp@latest",
+    "@mohak34/opencode-notifier",
+  ],
   "permission": {
     "edit": "ask",
-    "bash": "ask",
+    "bash": {
+      "*": "ask",
+      "ls": "allow",
+      "ls *": "allow",
+      "cat": "allow",
+      "cat *": "allow",
+      "cd": "allow",
+      "cd *": "allow",
+      "pwd": "allow",
+      "find": "allow",
+      "find *": "allow",
+      "grep": "allow",
+      "grep *": "allow",
+      "rg": "allow",
+      "rg *": "allow",
+      "diff": "allow",
+      "diff *": "allow",
+      "git status": "allow",
+      "git log": "allow",
+      "git log *": "allow",
+      "git diff": "allow",
+      "git diff *": "allow",
+      "git show": "allow",
+      "git show *": "allow",
+      "gh issue list": "allow",
+      "gh issue list *": "allow",
+      "gh issue view": "allow",
+      "gh issue view *": "allow",
+      "gh pr list": "allow",
+      "gh pr list *": "allow",
+      "gh pr view": "allow",
+      "gh pr view *": "allow",
+      "gh pr checks": "allow",
+      "gh pr checks *": "allow",
+      "gh pr diff": "allow",
+      "gh pr diff *": "allow",
+      "gh repo view": "allow",
+      "gh repo view *": "allow",
+      "gh status": "allow",
+      "gh run list": "allow",
+      "gh run list *": "allow",
+      "gh run view": "allow",
+      "gh run view *": "allow",
+      "gh search *": "allow",
+      "gh browse": "allow",
+      "gh browse *": "allow",
+      "gh release list": "allow",
+      "gh release list *": "allow",
+      "gh release view": "allow",
+      "gh release view *": "allow",
+      "gh gist list": "allow",
+      "gh gist list *": "allow",
+      "gh gist view": "allow",
+      "gh gist view *": "allow",
+      "gh variable list": "allow",
+      "gh variable list *": "allow",
+      "gh extension list": "allow",
+      "gh extension list *": "allow",
+      "basedpyright": "allow",
+      "basedpyright *": "allow",
+      "echo": "allow",
+      "echo *": "allow",
+      "date": "allow",
+      "tree": "allow",
+      "tree *": "allow",
+      "tldr": "allow",
+      "tldr *": "allow",
+      "man": "allow",
+      "man *": "allow",
+      "which": "allow",
+      "which *": "allow",
+      "whoami": "allow",
+      "head": "allow",
+      "head *": "allow",
+      "tail": "allow",
+      "tail *": "allow",
+      "wc": "allow",
+      "wc *": "allow",
+      "du": "allow",
+      "du *": "allow",
+      "df": "allow",
+      "df *": "allow",
+      "ps": "allow",
+      "ps *": "allow",
+      "uptime": "allow",
+      "pytest": "allow",
+      "pytest *": "allow",
+      "python -m py_compile": "allow",
+      "python -m py_compile *": "allow",
+      "python3 -m py_compile": "allow",
+      "python3 -m py_compile *": "allow",
+      "npm list": "allow",
+      "npm list *": "allow",
+      "npm ls": "allow",
+      "npm ls *": "allow",
+      "npm view": "allow",
+      "npm view *": "allow",
+      "npm info": "allow",
+      "npm info *": "allow",
+      "npm outdated": "allow",
+      "npm outdated *": "allow",
+      "npm search": "allow",
+      "npm search *": "allow",
+      "npm help": "allow",
+      "npm help *": "allow",
+      "npm doctor": "allow",
+      "npm doctor *": "allow",
+      "npm audit": "allow",
+      "npm audit *": "allow",
+      "npm config list": "allow",
+      "npm config list *": "allow",
+      "npm config get": "allow",
+      "npm config get *": "allow",
+    },
   },
   "provider": {
     "google": {
       "models": {
-        "gemini-3-pro-high": {
+        "antigravity-gemini-3-pro-high": {
           "name": "Gemini 3 Pro High (Antigravity)",
           "limit": {
             "context": 1048576,
-            "output": 65535
-          }
+            "output": 65535,
+          },
+          "modalities": {
+            "input": ["text", "image", "pdf"],
+            "output": ["text"],
+          },
         },
-        "gemini-3-pro-low": {
+        "antigravity-gemini-3-pro-low": {
           "name": "Gemini 3 Pro Low (Antigravity)",
           "limit": {
             "context": 1048576,
-            "output": 65535
-          }
+            "output": 65535,
+          },
+          "modalities": {
+            "input": ["text", "image", "pdf"],
+            "output": ["text"],
+          },
         },
-        "claude-sonnet-4-5": {
+        "antigravity-claude-sonnet-4-5": {
           "name": "Claude Sonnet 4.5 (Antigravity)",
           "limit": {
             "context": 200000,
-            "output": 64000
-          }
+            "output": 64000,
+          },
+          "modalities": {
+            "input": ["text", "image", "pdf"],
+            "output": ["text"],
+          },
         },
-        "claude-sonnet-4-5-thinking": {
-          "name": "Claude Sonnet 4.5 Thinking (Antigravity)",
-          "limit": {
-            "context": 200000,
-            "output": 64000
-          }
-        },
-        "claude-opus-4-5-thinking": {
-          "name": "Claude Opus 4.5 Thinking (Antigravity)",
-          "limit": {
-            "context": 200000,
-            "output": 64000
-          }
-        },
-        "gpt-oss-120b-medium": {
-          "name": "GPT-OSS 120B Medium (Antigravity)",
-          "limit": {
-            "context": 131072,
-            "output": 32768
-          }
-        }
-      }
+      },
     },
-
     "ollama": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "Ollama (local)",
@@ -62,7 +169,7 @@
       "models": {
         "qwen2.5-coder:14b": {
           "name": "Qwen 2.5 Coder 14B",
-        }
+        },
       },
     },
   },
