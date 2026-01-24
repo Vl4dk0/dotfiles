@@ -33,11 +33,21 @@ fi
 if [[ "$SELECTED_LINE" == "$NEW_SESSION_OPT" ]]; then
     read -p "Enter new session name: " SESSION_NAME
 
+    layout_file="$HOME/dotfiles/zellij/layouts/three-tab-default.kdl"
+    
     # If empty, let Zellij generate a random name
     if [[ -z "$SESSION_NAME" ]]; then
-        zellij
+        if [[ -f "$layout_file" ]]; then
+            zellij -n "$layout_file"
+        else
+            zellij
+        fi
     else
-        zellij -s "$SESSION_NAME"
+        if [[ -f "$layout_file" ]]; then
+            zellij -n "$layout_file" -s "$SESSION_NAME"
+        else
+            zellij -s "$SESSION_NAME"
+        fi
     fi
     exit 0
 else

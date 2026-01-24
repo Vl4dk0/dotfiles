@@ -20,9 +20,14 @@ if [[ -n $ZELLIJ ]]; then
 fi
 
 # Check if the session exists
-if zellij ls 2>/dev/null | grep "$selected_name"; then
+if zellij list-sessions 2>/dev/null | grep -q "^${selected_name} "; then
     zellij attach "$selected_name"
 else
     cd "$selected"
-    zellij -s "$selected_name"
+    layout_file="$HOME/dotfiles/zellij/layouts/three-tab-default.kdl"
+    if [[ -f "$layout_file" ]]; then
+        zellij -n "$layout_file" -s "$selected_name"
+    else
+        zellij -s "$selected_name"
+    fi
 fi
