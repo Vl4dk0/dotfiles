@@ -75,6 +75,7 @@ eval "$(direnv hook zsh)"
 # fzf (Fuzzy Finder)
 export FZF_DEFAULT_OPTS="--color pointer:#00CC00"
 source <(fzf --zsh)
+bindkey -r "^[c"
 
 # Starship Prompt (MUST BE LAST)
 eval "$(starship init zsh)"

@@ -26,6 +26,3 @@ alias gen-config="envsubst '\$GITHUB_TOKEN' < ~/.gemini/settings.template.json >
 
 # Laravel
 alias pa="php artisan"
-
-# gh alias
-eval "$(gh copilot alias -- zsh)"
