@@ -5,6 +5,7 @@
 	eol = lf
 	autocrlf = input
 	pager = delta --diff-so-fancy --line-numbers
+	excludesfile = ~/.gitignore_global
 [init]
 	defaultBranch = main
 [alias]

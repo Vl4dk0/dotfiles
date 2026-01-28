@@ -1,0 +1,202 @@
+# Lazygit Configuration
+# Optimized for delta integration and vim-style workflow
+
+# Git integration with delta pager
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never --syntax-theme=base16
+
+# UI Theme - matching green color scheme (#00cc00)
+gui:
+  # Color theme
+  theme:
+    activeBorderColor:
+      - '#00cc00'
+      - bold
+    inactiveBorderColor:
+      - '#606060'
+    selectedLineBgColor:
+      - '#404040'
+    selectedRangeBgColor:
+      - '#404040'
+    cherryPickedCommitBgColor:
+      - '#00cc00'
+    cherryPickedCommitFgColor:
+      - '#000000'
+    unstagedChangesColor:
+      - '#ff6c6b'
+    defaultFgColor:
+      - '#d7ede1'
+  
+  # Display preferences
+  showBranchCommitHash: true
+  showCommandLog: false
+  showBottomLine: false
+  showFileTree: true
+  showListFooter: false
+  showRandomTip: false
+  nerdFontsVersion: "3"
+  
+  # Diff view
+  sidePanelWidth: 0.3333
+  expandFocusedSidePanel: false
+  mainPanelSplitMode: 'flexible'
+  
+  # Commit message length
+  commitLength:
+    show: true
+  
+  # Mouse support
+  mouseEvents: true
+
+# Always show branch graph (as requested!)
+gitBehavior:
+  showGraph: 'always'
+
+# Custom keybindings - vim-style
+keybinding:
+  universal:
+    quit: 'q'
+    quit-alt1: '<c-c>'
+    return: '<esc>'
+    quitWithoutChangingDirectory: 'Q'
+    togglePanel: '<tab>'
+    prevItem: '<up>'
+    nextItem: '<down>'
+    prevItem-alt: 'k'
+    nextItem-alt: 'j'
+    prevPage: ','
+    nextPage: '.'
+    scrollLeft: 'H'
+    scrollRight: 'L'
+    gotoTop: 'g'
+    gotoBottom: 'G'
+    toggleRangeSelect: 'v'
+    rangeSelectDown: '<s-down>'
+    rangeSelectUp: '<s-up>'
+    prevBlock: '<left>'
+    nextBlock: '<right>'
+    prevBlock-alt: 'h'
+    nextBlock-alt: 'l'
+    nextMatch: 'n'
+    prevMatch: 'N'
+    startSearch: '/'
+    optionMenu: '<disabled>'
+    optionMenu-alt1: '?'
+    select: '<space>'
+    goInto: '<enter>'
+    confirm: '<enter>'
+    remove: 'd'
+    new: 'n'
+    edit: 'e'
+    openFile: 'o'
+    scrollUpMain: '<c-u>'
+    scrollDownMain: '<c-d>'
+    scrollUpMain-alt1: 'K'
+    scrollDownMain-alt1: 'J'
+    executeCustomCommand: ':'
+    createRebaseOptionsMenu: 'm'
+    pushFiles: 'P'
+    pullFiles: 'p'
+    refresh: 'R'
+    createPatchOptionsMenu: '<c-p>'
+    nextTab: ']'
+    prevTab: '['
+    nextScreenMode: '+'
+    prevScreenMode: '_'
+    undo: 'z'
+    redo: '<c-z>'
+    filteringMenu: '<c-s>'
+    diffingMenu: 'W'
+    diffingMenu-alt: '<c-e>'
+    copyToClipboard: '<c-o>'
+    openRecentRepos: '<c-r>'
+    submitEditorText: '<enter>'
+    extrasMenu: '@'
+    toggleWhitespaceInDiffView: '<c-w>'
+    increaseContextInDiffView: '}'
+    decreaseContextInDiffView: '{'
+  
+  files:
+    commitChanges: 'c'
+    commitChangesWithoutHook: 'w'
+    amendLastCommit: 'A'
+    commitChangesWithEditor: 'C'
+    findBaseCommitForFixup: '<c-f>'
+    confirmDiscard: 'x'
+    ignoreFile: 'i'
+    refreshFiles: 'r'
+    stashAllChanges: 's'
+    viewStashOptions: 'S'
+    toggleStagedAll: 'a'
+    viewResetOptions: 'D'
+    fetch: 'f'
+    toggleTreeView: '`'
+    openMergeTool: 'M'
+    openStatusFilter: '<c-b>'
+  
+  branches:
+    createPullRequest: 'o'
+    viewPullRequestOptions: 'O'
+    copyPullRequestURL: '<c-y>'
+    checkoutBranchByName: 'c'
+    forceCheckoutBranch: 'F'
+    rebaseBranch: 'r'
+    renameBranch: 'R'
+    mergeIntoCurrentBranch: 'M'
+    viewGitFlowOptions: 'i'
+    fastForward: 'f'
+    createTag: 'T'
+    pushTag: 'P'
+    setUpstream: 'u'
+    fetchRemote: 'f'
+  
+  commits:
+    squashDown: 's'
+    renameCommit: 'r'
+    renameCommitWithEditor: 'R'
+    viewResetOptions: 'g'
+    markCommitAsFixup: 'f'
+    createFixupCommit: 'F'
+    squashAboveCommits: 'S'
+    moveDownCommit: '<c-j>'
+    moveUpCommit: '<c-k>'
+    amendToCommit: 'A'
+    pickCommit: 'p'
+    revertCommit: 't'
+    cherryPickCopy: 'c'
+    pasteCommits: 'v'
+    tagCommit: 'T'
+    checkoutCommit: '<space>'
+    resetCherryPick: '<c-R>'
+    copyCommitMessageToClipboard: '<c-y>'
+    openLogMenu: '<c-l>'
+    viewBisectOptions: 'b'
+
+# Confirm before quitting
+confirmOnQuit: false
+
+# Notification settings
+notARepository: 'prompt'
+promptToReturnFromSubprocess: false
+
+# OS config
+os:
+  editPreset: 'nvim'
+  
+# Update checking
+update:
+  method: never
+
+# Custom commands
+customCommands:
+  - key: '<c-t>'
+    context: 'global'
+    description: 'Create new worktree'
+    prompts:
+      - type: 'input'
+        title: 'New worktree name'
+        key: 'Name'
+    command: 'git worktree add {{.Form.Name}}'
+    loadingText: 'Creating worktree...'

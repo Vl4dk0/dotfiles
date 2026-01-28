@@ -187,6 +187,8 @@ keybinds clear-defaults=true {
         bind "7" { GoToTab 7; SwitchToMode "locked"; }
         bind "8" { GoToTab 8; SwitchToMode "locked"; }
         bind "9" { GoToTab 9; SwitchToMode "locked"; }
+        // Quick access to edit scrollback (instead of Ctrl+a, s, e)
+        bind "e" { EditScrollback; SwitchToMode "locked"; }
     }
     shared_except "locked" "entersearch" "renametab" "renamepane" "move" {
         bind "m" { SwitchToMode "move"; }
