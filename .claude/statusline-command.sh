@@ -21,7 +21,6 @@ if command -v jq &>/dev/null; then
     input_tokens=$(echo "$input" | jq -r '.context_window.total_input_tokens // 0')
     output_tokens=$(echo "$input" | jq -r '.context_window.total_output_tokens // 0')
     used_pct=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d'.' -f1)
-    window_size=$(echo "$input" | jq -r '.context_window.context_window_size // 200000')
     cost=$(echo "$input" | jq -r '.cost.total_cost_usd // 0')
 else
     # Fallback to grep/sed for systems without jq
@@ -29,7 +28,6 @@ else
     input_tokens=$(echo "$input" | grep -o '"total_input_tokens":[0-9]*' | cut -d':' -f2)
     output_tokens=$(echo "$input" | grep -o '"total_output_tokens":[0-9]*' | cut -d':' -f2)
     used_pct=$(echo "$input" | grep -o '"used_percentage":[0-9.]*' | cut -d':' -f2 | cut -d'.' -f1)
-    window_size=$(echo "$input" | grep -o '"context_window_size":[0-9]*' | cut -d':' -f2)
     cost=$(echo "$input" | grep -o '"total_cost_usd":[0-9.]*' | cut -d':' -f2)
 
     # Set defaults if extraction failed
@@ -37,12 +35,8 @@ else
     input_tokens=${input_tokens:-0}
     output_tokens=${output_tokens:-0}
     used_pct=${used_pct:-0}
-    window_size=${window_size:-200000}
     cost=${cost:-0}
 fi
-
-# Calculate remaining tokens
-remaining=$((window_size - input_tokens - output_tokens))
 
 # Choose color based on context usage
 if [ "$used_pct" -lt 50 ]; then
@@ -56,10 +50,9 @@ RESET="\033[0m"
 
 # Format the output
 # Format: [Model] | ↓input ↑output | XX% used (remaining left) | $cost
-printf "%b%s%b | ↓%s ↑%s | %b%d%%%b used (%s left) | %.2f$\n" \
+printf "%b%s%b | ↓%s ↑%s | %b%d%%%b used | %.2f$\n" \
     "$COLOR" "$model" "$RESET" \
     "$(format_tokens $input_tokens)" \
     "$(format_tokens $output_tokens)" \
     "$COLOR" "$used_pct" "$RESET" \
-    "$(format_tokens $remaining)" \
     "$cost"
