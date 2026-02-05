@@ -62,19 +62,9 @@
       "WebSearch",
       "WebFetch"
     ],
-    "deny": [
-      "Read(./.env)",
-      "Read(./.env.*)",
-      "Read(./secrets/**)"
-    ],
+    "deny": ["Read(./.env)", "Read(./.env.*)", "Read(./secrets/**)"],
     "defaultMode": "default"
   },
-  "model": "sonnet",
-  "statusLine": {
-    "type": "command",
-    "command": "bash /Users/vladko/.claude/statusline-command.sh"
-  },
-  "promptSuggestionEnabled": false,
   "hooks": {
     "PostToolUse": [
       {
@@ -87,5 +77,14 @@
         ]
       }
     ]
-  }
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/vladko/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true
+  },
+  "promptSuggestionEnabled": false
 }
