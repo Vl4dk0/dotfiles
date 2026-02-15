@@ -22,7 +22,9 @@ return { -- SEARCH TOOL
       vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = 'NONE' })
 
       require('telescope').setup {
-        defaults = {},
+        defaults = {
+          file_ignore_patterns = { 'raycast/extensions' },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown {},
@@ -91,6 +93,8 @@ return { -- SEARCH TOOL
         '__pycache__',
         '-E',
         'target',
+        '-E',
+        'raycast/extensions',
       }
 
       local builtin = require 'telescope.builtin'
@@ -133,6 +137,8 @@ return { -- SEARCH TOOL
               '!\\.git',
               '--glob',
               '!node_modules',
+              '--glob',
+              '!raycast/extensions',
               '--color=never',
               '--no-heading',
               '--with-filename',

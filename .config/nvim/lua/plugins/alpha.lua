@@ -35,6 +35,8 @@ return {
           '__pycache__',
           '-E',
           'target',
+          '-E',
+          'raycast/extensions',
         },
       }
     end
