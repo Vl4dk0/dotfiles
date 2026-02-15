@@ -37,6 +37,10 @@ return {
           'target',
           '-E',
           'raycast/extensions',
+          '-E',
+          '.gemini/antigravity',
+          '-E',
+          '.gemini/tmp',
         },
       }
     end

@@ -23,7 +23,7 @@ return { -- SEARCH TOOL
 
       require('telescope').setup {
         defaults = {
-          file_ignore_patterns = { 'raycast/extensions' },
+          file_ignore_patterns = { 'raycast/extensions', '.gemini/antigravity', '.gemini/tmp' },
         },
         extensions = {
           ['ui-select'] = {
@@ -95,6 +95,10 @@ return { -- SEARCH TOOL
         'target',
         '-E',
         'raycast/extensions',
+        '-E',
+        '.gemini/antigravity',
+        '-E',
+        '.gemini/tmp',
       }
 
       local builtin = require 'telescope.builtin'
@@ -139,6 +143,10 @@ return { -- SEARCH TOOL
               '!node_modules',
               '--glob',
               '!raycast/extensions',
+              '--glob',
+              '!.gemini/antigravity',
+              '--glob',
+              '!.gemini/tmp',
               '--color=never',
               '--no-heading',
               '--with-filename',
