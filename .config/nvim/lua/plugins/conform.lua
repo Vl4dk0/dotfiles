@@ -52,6 +52,7 @@ return { -- AUTOFORMAT, FORMATTING, FORMATTERS
         rust = { 'rustfmt' },
         csharp = { 'csharpier' },
         cs = { 'csharpier' },
+        c = { 'clang-format' },
       },
     },
   },
