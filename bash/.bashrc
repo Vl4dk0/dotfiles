@@ -13,6 +13,7 @@ esac
 export EDITOR='nvim'
 export VISUAL='nvim'
 export TERM='xterm-256color'
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
 # ----------------------------------------------------------------------------
 # History
