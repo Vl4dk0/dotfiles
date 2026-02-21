@@ -3,10 +3,8 @@
 
 # Git integration with delta pager
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never --syntax-theme=base16
-
+  pagers:
+    - pager: delta --paging=never
 # UI Theme - matching green color scheme (#00cc00)
 gui:
   # Color theme
@@ -28,7 +26,6 @@ gui:
       - '#ff6c6b'
     defaultFgColor:
       - '#d7ede1'
-  
   # Display preferences
   showBranchCommitHash: true
   showCommandLog: false
@@ -37,23 +34,18 @@ gui:
   showListFooter: false
   showRandomTip: false
   nerdFontsVersion: "3"
-  
   # Diff view
   sidePanelWidth: 0.3333
   expandFocusedSidePanel: false
   mainPanelSplitMode: 'flexible'
-  
   # Commit message length
   commitLength:
     show: true
-  
   # Mouse support
   mouseEvents: true
-
 # Always show branch graph (as requested!)
 gitBehavior:
   showGraph: 'always'
-
 # Custom keybindings - vim-style
 keybinding:
   universal:
@@ -95,7 +87,7 @@ keybinding:
     scrollDownMain: '<c-d>'
     scrollUpMain-alt1: 'K'
     scrollDownMain-alt1: 'J'
-    executeCustomCommand: ':'
+    executeShellCommand: ':'
     createRebaseOptionsMenu: 'm'
     pushFiles: 'P'
     pullFiles: 'p'
@@ -117,7 +109,6 @@ keybinding:
     toggleWhitespaceInDiffView: '<c-w>'
     increaseContextInDiffView: '}'
     decreaseContextInDiffView: '{'
-  
   files:
     commitChanges: 'c'
     commitChangesWithoutHook: 'w'
@@ -133,9 +124,8 @@ keybinding:
     viewResetOptions: 'D'
     fetch: 'f'
     toggleTreeView: '`'
-    openMergeTool: 'M'
+    openMergeOptions: 'M'
     openStatusFilter: '<c-b>'
-  
   branches:
     createPullRequest: 'o'
     viewPullRequestOptions: 'O'
@@ -151,7 +141,6 @@ keybinding:
     pushTag: 'P'
     setUpstream: 'u'
     fetchRemote: 'f'
-  
   commits:
     squashDown: 's'
     renameCommit: 'r'
@@ -173,22 +162,17 @@ keybinding:
     copyCommitMessageToClipboard: '<c-y>'
     openLogMenu: '<c-l>'
     viewBisectOptions: 'b'
-
 # Confirm before quitting
 confirmOnQuit: false
-
 # Notification settings
 notARepository: 'prompt'
 promptToReturnFromSubprocess: false
-
 # OS config
 os:
   editPreset: 'nvim'
-  
 # Update checking
 update:
   method: never
-
 # Custom commands
 customCommands:
   - key: '<c-t>'
