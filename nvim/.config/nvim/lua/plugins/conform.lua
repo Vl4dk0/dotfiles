@@ -44,6 +44,7 @@ return { -- AUTOFORMAT, FORMATTING, FORMATTERS
         rust = { 'rustfmt' },
         csharp = { 'csharpier' },
         cs = { 'csharpier' },
+        sh = { 'beautysh' },
       },
     },
   },

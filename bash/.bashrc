@@ -2,8 +2,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-*i*) ;;
-*) return ;;
+    *i*) ;;
+    *) return ;;
 esac
 
 # ----------------------------------------------------------------------------
@@ -30,11 +30,11 @@ shopt -s checkwinsize
 # ----------------------------------------------------------------------------
 
 if [ -x /usr/bin/dircolors ]; then
-	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	alias ls='ls --color=auto'
-	alias grep='grep --color=auto'
-	alias fgrep='fgrep --color=auto'
-	alias egrep='egrep --color=auto'
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 alias ll='ls -alF'
@@ -43,7 +43,7 @@ alias l='ls -CF'
 alias s='sudo '
 
 if [ -f ~/.bash_aliases ]; then
-	. ~/.bash_aliases
+    . ~/.bash_aliases
 fi
 
 # ----------------------------------------------------------------------------
@@ -51,11 +51,11 @@ fi
 # ----------------------------------------------------------------------------
 
 if ! shopt -oq posix; then
-	if [ -f /usr/share/bash-completion/bash_completion ]; then
-		. /usr/share/bash-completion/bash_completion
-	elif [ -f /etc/bash_completion ]; then
-		. /etc/bash_completion
-	fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
 
 # ----------------------------------------------------------------------------
@@ -63,22 +63,25 @@ fi
 # ----------------------------------------------------------------------------
 
 if command -v direnv >/dev/null 2>&1; then
-	eval "$(direnv hook bash)"
+    eval "$(direnv hook bash)"
 fi
 
 if command -v fzf >/dev/null 2>&1; then
-	export FZF_DEFAULT_OPTS="--color=pointer:#00CC00"
-	if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
-		. /usr/share/doc/fzf/examples/key-bindings.bash
-	fi
-	if [ -f /usr/share/doc/fzf/examples/completion.bash ]; then
-		. /usr/share/doc/fzf/examples/completion.bash
-	fi
-	if [ -f ~/.fzf.bash ]; then
-		. ~/.fzf.bash
-	fi
+    export FZF_DEFAULT_OPTS="--color=pointer:#00CC00"
+    if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
+        . /usr/share/doc/fzf/examples/key-bindings.bash
+    fi
+    if [ -f /usr/share/doc/fzf/examples/completion.bash ]; then
+        . /usr/share/doc/fzf/examples/completion.bash
+    fi
+    if [ -f ~/.fzf.bash ]; then
+        . ~/.fzf.bash
+    fi
 fi
 
 if command -v starship >/dev/null 2>&1; then
-	eval "$(starship init bash)"
+    eval "$(starship init bash)"
 fi
+
+# opencode
+export PATH=/home/vladko/.opencode/bin:$PATH
