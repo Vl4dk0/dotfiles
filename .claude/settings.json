@@ -76,7 +76,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/vladko/.claude/ruffbasedpyright.sh"
+            "command": "bash /Users/vladko/.claude/autoformat.sh"
           }
         ]
       }
