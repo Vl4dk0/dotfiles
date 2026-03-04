@@ -13,41 +13,23 @@ return {
     local dashboard = require 'alpha.themes.dashboard'
 
     -- Functions for the dashboard
+    local excluded = require 'exclusions'
+
     local function find_files()
       local builtin = require 'telescope.builtin'
       builtin.find_files {
-        find_command = {
-          'fd',
-          '--type',
-          'f',
-          '--strip-cwd-prefix',
-          '--hidden',
-          '--no-ignore',
-          '-E',
-          '.git',
-          '-E',
-          'node_modules',
-          '-E',
-          '.next',
-          '-E',
-          '.venv',
-          '-E',
-          '__pycache__',
-          '-E',
-          'target',
-          '-E',
-          'raycast/extensions',
-          '-E',
-          '.gemini/antigravity',
-          '-E',
-          '.gemini/tmp',
-        },
+        find_command = vim.list_extend(
+          { 'fd', '--type', 'f', '--strip-cwd-prefix', '--hidden', '--no-ignore' },
+          excluded.fd_excludes()
+        ),
       }
     end
 
     local function live_grep()
       local builtin = require 'telescope.builtin'
-      builtin.live_grep { additional_args = { '--hidden' } }
+      builtin.live_grep {
+        additional_args = vim.list_extend({ '--hidden' }, excluded.rg_excludes()),
+      }
     end
 
     local function header()

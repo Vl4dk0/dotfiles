@@ -19,11 +19,12 @@ return { -- SEARCH TOOL
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
+      local excluded = require 'exclusions'
       vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = 'NONE' })
 
       require('telescope').setup {
         defaults = {
-          file_ignore_patterns = { 'raycast/extensions', '.gemini/antigravity', '.gemini/tmp' },
+          file_ignore_patterns = excluded.telescope_ignore(),
         },
         extensions = {
           ['ui-select'] = {
@@ -74,32 +75,10 @@ return { -- SEARCH TOOL
       pcall(require('telescope').load_extension, 'noice')
       pcall(require('telescope').load_extension, 'zf-native')
 
-      local find_command = {
-        'fd',
-        '--type',
-        'f',
-        '--strip-cwd-prefix',
-        '--hidden',
-        '--no-ignore',
-        '-E',
-        '.git',
-        '-E',
-        'node_modules',
-        '-E',
-        '.next',
-        '-E',
-        '.venv',
-        '-E',
-        '__pycache__',
-        '-E',
-        'target',
-        '-E',
-        'raycast/extensions',
-        '-E',
-        '.gemini/antigravity',
-        '-E',
-        '.gemini/tmp',
-      }
+      local find_command = vim.list_extend(
+        { 'fd', '--type', 'f', '--strip-cwd-prefix', '--hidden', '--no-ignore' },
+        excluded.fd_excludes()
+      )
 
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
@@ -135,18 +114,9 @@ return { -- SEARCH TOOL
               table.insert(args, pieces[2])
             end
 
-            return vim.list_extend(args, {
-              '--hidden',
-              '--glob',
-              '!\\.git',
-              '--glob',
-              '!node_modules',
-              '--glob',
-              '!raycast/extensions',
-              '--glob',
-              '!.gemini/antigravity',
-              '--glob',
-              '!.gemini/tmp',
+            local rg_args = { '--hidden' }
+            vim.list_extend(rg_args, excluded.rg_excludes())
+            vim.list_extend(rg_args, {
               '--color=never',
               '--no-heading',
               '--with-filename',
@@ -154,6 +124,7 @@ return { -- SEARCH TOOL
               '--column',
               '--smart-case',
             })
+            return vim.list_extend(args, rg_args)
           end,
 
           entry_maker = make_entry.gen_from_vimgrep(opts),
