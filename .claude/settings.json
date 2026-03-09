@@ -62,11 +62,7 @@
       "WebSearch",
       "WebFetch"
     ],
-    "deny": [
-      "Read(./.env)",
-      "Read(./.env.*)",
-      "Read(./secrets/**)"
-    ],
+    "deny": ["Read(./.env)", "Read(./.env.*)", "Read(./secrets/**)"],
     "defaultMode": "default"
   },
   "hooks": {
@@ -90,5 +86,6 @@
     "typescript-lsp@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true
   },
+  "env": { "ENABLE_LSP_TOOL": "1" },
   "promptSuggestionEnabled": false
 }
