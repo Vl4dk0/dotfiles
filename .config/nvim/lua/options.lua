@@ -18,6 +18,9 @@ vim.opt.termguicolors = true
 -- Nerd Font
 vim.g.have_nerd_font = true
 
+-- autoreload buffers
+vim.opt.autoread = true
+
 -- Show line numbers
 vim.opt.number = true
 vim.opt.relativenumber = false

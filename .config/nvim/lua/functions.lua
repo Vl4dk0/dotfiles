@@ -40,6 +40,16 @@ local has_devicons, devicons = pcall(require, 'nvim-web-devicons')
 
 -- fun.open_explorer = open_explorer
 
+local autoread_group = vim.api.nvim_create_augroup('external-refresh', { clear = true })
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter' }, {
+  group = autoread_group,
+  callback = function()
+    if vim.api.nvim_get_mode().mode ~= 'c' then
+      vim.cmd 'checktime'
+    end
+  end,
+})
+
 local function open_tab(tab_index)
   local tabs = vim.api.nvim_list_tabpages()
 
