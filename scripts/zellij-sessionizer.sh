@@ -15,7 +15,7 @@ selected_name=$(basename "$selected" | tr . _)
 
 # Check if we are currently inside a Zellij session
 if [[ -n $ZELLIJ ]]; then
-    echo "Already in a Zellij session. Use 'Ctrl + a' then 'o + w' to switch sessions."
+    echo "Already in a Zellij session. Use 'Ctrl + a' then 'f' to switch sessions."
     exit 0
 fi
 
@@ -24,10 +24,5 @@ if zellij list-sessions 2>/dev/null | grep -q "^${selected_name} "; then
     zellij attach "$selected_name"
 else
     cd "$selected"
-    layout_file="$HOME/dotfiles/zellij/layouts/three-tab-default.kdl"
-    if [[ -f "$layout_file" ]]; then
-        zellij -n "$layout_file" -s "$selected_name"
-    else
-        zellij -s "$selected_name"
-    fi
+    zellij -s "$selected_name"
 fi

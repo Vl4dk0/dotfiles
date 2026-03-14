@@ -189,6 +189,13 @@ keybinds clear-defaults=true {
         bind "9" { GoToTab 9; SwitchToMode "locked"; }
         // Quick access to edit scrollback (instead of Ctrl+a, s, e)
         bind "e" { EditScrollback; SwitchToMode "locked"; }
+        bind "f" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+            SwitchToMode "locked"
+        }
     }
     shared_except "locked" "entersearch" "renametab" "renamepane" "move" {
         bind "m" { SwitchToMode "move"; }

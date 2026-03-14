@@ -103,6 +103,22 @@ bindkey '^j' autosuggest-accept
 bindkey -s ^f '~/scripts/zellij-sessionizer.sh^M'
 bindkey -s ^a '~/scripts/zellij-smart-attach.sh^M'
 
+# Zellij: auto-rename tab to current process
+function zellij_tab_preexec() {
+    if [[ -n "$ZELLIJ" ]]; then
+        local title=$(echo "$1" | xargs)
+        zellij action rename-tab "$title"
+    fi
+}
+function zellij_tab_precmd() {
+    if [[ -n "$ZELLIJ" ]]; then
+        zellij action rename-tab "shell"
+    fi
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook preexec zellij_tab_preexec
+add-zsh-hook precmd zellij_tab_precmd
+
 # Herd injected PHP 8.4 configuration.
 export HERD_PHP_84_INI_SCAN_DIR="/Users/vladko/Library/Application Support/Herd/config/php/84/"
 
