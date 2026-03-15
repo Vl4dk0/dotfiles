@@ -5,8 +5,6 @@
     {
       "context": "Chat",
       "bindings": {
-        "enter": "chat:newline",
-        "shift+enter": "chat:submit",
         "ctrl+p": "chat:modelPicker",
         "ctrl+shift+t": "chat:thinkingToggle"
       }
