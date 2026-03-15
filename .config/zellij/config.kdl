@@ -176,7 +176,9 @@ keybinds clear-defaults=true {
         bind "esc" { SwitchToMode "locked"; }
         // Quick tab navigation - stay in normal mode for rapid scrolling
         bind "h" { GoToPreviousTab; }
+        bind "H" { MoveTab "left"; }
         bind "l" { GoToNextTab; }
+        bind "L" { MoveTab "right"; }
         // Direct tab jumping - return to locked mode
         bind "1" { GoToTab 1; SwitchToMode "locked"; }
         bind "2" { GoToTab 2; SwitchToMode "locked"; }
@@ -196,6 +198,8 @@ keybinds clear-defaults=true {
             }
             SwitchToMode "locked"
         }
+        bind "d" { Detach; }
+        bind "n" { NewTab; }
     }
     shared_except "locked" "entersearch" "renametab" "renamepane" "move" {
         bind "m" { SwitchToMode "move"; }
