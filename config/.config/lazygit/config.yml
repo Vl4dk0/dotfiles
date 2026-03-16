@@ -5,12 +5,12 @@
 git:
   pagers:
     - pager: delta --paging=never
-# UI Theme - matching green color scheme (#00cc00)
+# UI Theme - matching green color scheme (#5C9CF5)
 gui:
   # Color theme
   theme:
     activeBorderColor:
-      - '#00cc00'
+      - '#5C9CF5'
       - bold
     inactiveBorderColor:
       - '#606060'
@@ -19,7 +19,7 @@ gui:
     selectedRangeBgColor:
       - '#404040'
     cherryPickedCommitBgColor:
-      - '#00cc00'
+      - '#5C9CF5'
     cherryPickedCommitFgColor:
       - '#000000'
     unstagedChangesColor:

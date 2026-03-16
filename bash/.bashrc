@@ -67,7 +67,7 @@ if command -v direnv >/dev/null 2>&1; then
 fi
 
 if command -v fzf >/dev/null 2>&1; then
-    export FZF_DEFAULT_OPTS="--color pointer:#00CC00"
+    export FZF_DEFAULT_OPTS="--color pointer:#5C9CF5"
     if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
         . /usr/share/doc/fzf/examples/key-bindings.bash
     fi
