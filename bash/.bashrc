@@ -67,7 +67,7 @@ if command -v direnv >/dev/null 2>&1; then
 fi
 
 if command -v fzf >/dev/null 2>&1; then
-    export FZF_DEFAULT_OPTS="--color=pointer:#00CC00"
+    export FZF_DEFAULT_OPTS="--color pointer:#00CC00"
     if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
         . /usr/share/doc/fzf/examples/key-bindings.bash
     fi
@@ -81,6 +81,27 @@ fi
 
 if command -v starship >/dev/null 2>&1; then
     eval "$(starship init bash)"
+fi
+
+# ----------------------------------------------------------------------------
+# Tmux helpers
+# ----------------------------------------------------------------------------
+
+if command -v tmux >/dev/null 2>&1 && command -v fzf >/dev/null 2>&1; then
+    if [[ $- == *i* ]]; then
+        __tmux_sessionizer() {
+            ~/scripts/tmux-sessionizer.sh
+        }
+
+        __tmux_session_switcher() {
+            ~/scripts/tmux-session-switcher.sh
+        }
+
+        if [[ -z $TMUX ]]; then
+            bind -x '"\C-f":__tmux_sessionizer'
+            bind -x '"\C-g":__tmux_session_switcher'
+        fi
+    fi
 fi
 
 # opencode
