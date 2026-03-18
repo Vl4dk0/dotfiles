@@ -17,8 +17,6 @@ return { -- AUTOFORMAT, FORMATTING, FORMATTERS
       notify_on_error = false,
       format_on_save = function(bufnr)
         local disable_filetypes = {
-          c = true,
-          cpp = true,
           haskell = true,
           kotlin = true,
           json = true,
@@ -41,7 +39,7 @@ return { -- AUTOFORMAT, FORMATTING, FORMATTERS
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
         typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         java = { 'clang-format' },
-        toml = { 'prettierd', 'prettier', stop_after_first = true },
+        toml = { 'tombi' },
         typst = { 'typstfmt', 'typstyle' },
         html = { 'prettierd', 'prettier', stop_after_first = true },
         css = { 'prettierd', 'prettier', stop_after_first = true },
