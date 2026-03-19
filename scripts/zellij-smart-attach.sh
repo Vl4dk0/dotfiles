@@ -33,9 +33,9 @@ fi
 if [[ "$SELECTED_LINE" == "$NEW_SESSION_OPT" ]]; then
     read -p "Enter new session name: " SESSION_NAME
 
-    # If empty, let Zellij generate a random name
+    # If empty, name it after the directory you are in
     if [[ -z "$SESSION_NAME" ]]; then
-        zellij
+        zellij -s "$(basename "$PWD")"
     else
         zellij -s "$SESSION_NAME"
     fi
