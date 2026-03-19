@@ -119,6 +119,16 @@ autoload -Uz add-zsh-hook
 add-zsh-hook preexec zellij_tab_preexec
 add-zsh-hook precmd zellij_tab_precmd
 
+# Yazi cd integration
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 # Herd injected PHP 8.4 configuration.
 export HERD_PHP_84_INI_SCAN_DIR="/Users/vladko/Library/Application Support/Herd/config/php/84/"
 
