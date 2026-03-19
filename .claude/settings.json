@@ -72,7 +72,6 @@
     ],
     "defaultMode": "default"
   },
-  "model": "haiku",
   "hooks": {
     "PostToolUse": [
       {
@@ -94,5 +93,6 @@
     "typescript-lsp@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true
   },
-  "promptSuggestionEnabled": false
+  "promptSuggestionEnabled": false,
+  "model": "opus"
 }
