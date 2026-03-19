@@ -38,7 +38,7 @@ return { -- AUTOFORMAT, FORMATTING, FORMATTERS
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
         typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-        java = { 'clang-format' },
+        java = { 'google-java-format' },
         toml = { 'tombi' },
         typst = { 'typstfmt', 'typstyle' },
         html = { 'prettierd', 'prettier', stop_after_first = true },

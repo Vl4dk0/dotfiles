@@ -96,6 +96,8 @@ return { -- LSP CONFIGURATION
         'typstyle',
         'tex-fmt',
         'bibtex-tidy',
+        'google-java-format',
+        'jdtls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
