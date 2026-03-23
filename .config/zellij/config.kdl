@@ -199,7 +199,7 @@ keybinds clear-defaults=true {
             SwitchToMode "locked"
         }
         bind "d" { Detach; }
-        bind "n" { NewTab; }
+        bind "n" { NewTab; SwitchToMode "locked"; }
     }
     shared_except "locked" "entersearch" "renametab" "renamepane" "move" {
         bind "m" { SwitchToMode "move"; }
