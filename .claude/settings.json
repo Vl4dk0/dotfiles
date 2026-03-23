@@ -5,6 +5,8 @@
   },
   "permissions": {
     "allow": [
+      "Bash(* --help)",
+      "Bash(* --version)",
       "Bash(ls*)",
       "Bash(cat*)",
       "Bash(pwd*)",
@@ -65,11 +67,7 @@
       "WebSearch",
       "WebFetch"
     ],
-    "deny": [
-      "Read(./.env)",
-      "Read(./.env.*)",
-      "Read(./secrets/**)"
-    ],
+    "deny": ["Read(./.env)", "Read(./.env.*)", "Read(./secrets/**)"],
     "defaultMode": "default"
   },
   "hooks": {
@@ -93,6 +91,5 @@
     "typescript-lsp@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true
   },
-  "promptSuggestionEnabled": false,
-  "model": "opus"
+  "promptSuggestionEnabled": false
 }
