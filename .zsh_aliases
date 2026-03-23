@@ -2,6 +2,7 @@
 alias cls="clear"
 alias show="xdg-open"
 alias nv="nvim"
+alias sz="du -sh"
 
 # Config file aliases
 alias zshrc="nvim ~/.zshrc"
