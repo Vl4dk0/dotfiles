@@ -13,16 +13,9 @@ fi
 # Sanitize session name
 selected_name=$(basename "$selected" | tr . _)
 
-# Check if we are currently inside a Zellij session
 if [[ -n $ZELLIJ ]]; then
-    echo "Already in a Zellij session. Use 'Ctrl + a' then 'f' to switch sessions."
-    exit 0
-fi
-
-# Check if the session exists
-if zellij list-sessions 2>/dev/null | grep -q "^${selected_name} "; then
-    zellij attach "$selected_name"
+    zellij attach --create-background "$selected_name" options --default-cwd "$selected"
+    zellij action switch-session "$selected_name"
 else
-    cd "$selected"
-    zellij -s "$selected_name"
+    cd "$selected" && zellij attach --create "$selected_name"
 fi

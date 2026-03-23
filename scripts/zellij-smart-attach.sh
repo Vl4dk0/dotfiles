@@ -31,14 +31,14 @@ if [[ -z "$SELECTED_LINE" ]]; then
 fi
 
 if [[ "$SELECTED_LINE" == "$NEW_SESSION_OPT" ]]; then
-    read -p "Enter new session name: " SESSION_NAME
+    SESSION_NAME="$(basename "$PWD")"
 
-    # If empty, name it after the directory you are in
-    if [[ -z "$SESSION_NAME" ]]; then
-        zellij -s "$(basename "$PWD")"
-    else
-        zellij -s "$SESSION_NAME"
+    if zellij list-sessions 2>/dev/null | awk -v name="$SESSION_NAME" '$1==name {found=1} END{exit !found}'; then
+        echo "Error: Session already exists: $SESSION_NAME"
+        exit 1
     fi
+
+    zellij -s "$SESSION_NAME"
     exit 0
 else
     # Extract session name (first word of the selected line)
