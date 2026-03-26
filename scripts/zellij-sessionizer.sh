@@ -14,8 +14,7 @@ fi
 selected_name=$(basename "$selected" | tr . _)
 
 if [[ -n $ZELLIJ ]]; then
-    zellij attach --create-background "$selected_name" options --default-cwd "$selected"
-    zellij action switch-session "$selected_name"
+    zellij action switch-session --cwd "$selected" "$selected_name"
 else
     cd "$selected" && zellij attach --create "$selected_name"
 fi
