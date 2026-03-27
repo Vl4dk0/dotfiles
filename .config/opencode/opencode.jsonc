@@ -94,16 +94,7 @@
       "options": {
         "baseURL": "http://localhost:11434/v1",
       },
-      "models": {
-        "mdq100/qwen3.5-coder:35b": {
-          "name": "Qwen3 Coder 30B (local)",
-          "limit": { "context": 32768, "output": 32768 },
-          "modalities": {
-            "input": ["text"],
-            "output": ["text"],
-          },
-        },
-      },
+      "models": {},
     },
   },
 }
