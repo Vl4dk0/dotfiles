@@ -50,6 +50,8 @@ return { -- AUTOFORMAT, FORMATTING, FORMATTERS
         rust = { 'rustfmt' },
         csharp = { 'csharpier' },
         cs = { 'csharpier' },
+        swift = { 'swiftformat' },
+        r = { 'air' },
       },
     },
   },

@@ -82,6 +82,15 @@ return { -- LSP CONFIGURATION
         },
       }
 
+      -- sourcekit-lsp ships with Xcode, not Mason
+      vim.lsp.config('sourcekit', {
+        capabilities = capabilities,
+        cmd = { 'xcrun', 'sourcekit-lsp' },
+        filetypes = { 'swift', 'objc', 'objcpp' },
+        root_markers = { 'Package.swift', '.git', 'compile_commands.json' },
+      })
+      vim.lsp.enable('sourcekit')
+
       require('mason').setup()
 
       local ensure_installed = vim.tbl_keys(servers or {})
