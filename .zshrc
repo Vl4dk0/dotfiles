@@ -26,7 +26,6 @@ export VISUAL='nvim'
 # Set terminal type
 export TERM='xterm-256color'
 
-
 # ------------------------------------------------------------------------------
 # OH MY ZSH CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -44,7 +43,6 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zshhistory
 setopt appendhistory
-
 
 # ------------------------------------------------------------------------------
 # SOURCING CORE LIBS & FRAMEWORKS
@@ -64,7 +62,7 @@ fi
 # ------------------------------------------------------------------------------
 
 # fnm (Fast Node Manager)
-if command -v fnm > /dev/null; then
+if command -v fnm >/dev/null; then
     export PATH="$HOME/.local/share/fnm:$PATH"
     eval "$(fnm env --use-on-cd --shell zsh)"
 fi
@@ -121,17 +119,16 @@ add-zsh-hook precmd zellij_tab_precmd
 
 # Yazi cd integration
 function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
 }
 
 # Herd injected PHP 8.4 configuration.
 export HERD_PHP_84_INI_SCAN_DIR="/Users/vladko/Library/Application Support/Herd/config/php/84/"
-
 
 # Herd injected PHP binary.
 export PATH="/Users/vladko/Library/Application Support/Herd/bin/":$PATH
@@ -148,3 +145,6 @@ export PATH="/Users/vladko/.antigravity/antigravity/bin:$PATH"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Prefer user-local executables (eg. snapback symlink in ~/.local/bin)
+export PATH="$HOME/.local/bin:$PATH"
