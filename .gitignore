@@ -1,9 +1,12 @@
-.config/gh/**
-.config/gh-copilot/**
-.config/ghc/**
-.config/go/**
-.config/swi-prolog/**
-.config/github-copilot/**
+.config/gh
+.config/gh-copilot
+.config/ghc
+.config/go
+.config/swi-prolog
+.config/github-copilot
+/.config/zed
+/.config/cagent
+/.config/snapback
 
 .config/xp_project
 .config/nvim/lazy-lock.json
