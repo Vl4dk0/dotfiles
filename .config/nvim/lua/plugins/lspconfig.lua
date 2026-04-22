@@ -54,7 +54,7 @@ return { -- LSP CONFIGURATION
 
         ts_ls = {
           handlers = {
-            ['textDocument/publishDiagnostics'] = function(_, result, ctx)
+            ['textDocument/publishDiagnostics'] = function(err, result, ctx, config)
               if result.diagnostics == nil then
                 return
               end
@@ -76,7 +76,7 @@ return { -- LSP CONFIGURATION
                 end
               end
 
-              vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx)
+              vim.diagnostic.on_publish_diagnostics(err, result, ctx, config)
             end,
           },
         },
